@@ -38,7 +38,7 @@
     }
 
     #splash.hidden {
-      display: none; /* Pas de transition, disparition instantanée */
+      display: none;
     }
 
     /* PAGE PRINCIPALE */
@@ -87,6 +87,7 @@
       padding-bottom: 3px;
       border-bottom: 1px solid transparent;
       transition: color 0.3s ease, border-bottom 0.3s ease;
+      cursor: pointer;
     }
 
     #location-btn:hover {
@@ -110,11 +111,34 @@
   </div>
 
   <!-- LOCALISATION -->
-  <a id="location-btn" href="https://earth.google.com/web/@48.75453851,2.41349318,47.51504992a,174.46396721d,35y,26.03891465h,72.74998411t,360r/data=CgRCAggBOgMKATBCAggASg0I____________ARAA" target="_blank">
-    Choisy-le-Roi
-  </a>
+  <a id="location-btn" href="#" target="_blank">Choisy-le-Roi</a>
 
   <script>
+    // --- Détection appareil ---
+    const ua = navigator.userAgent;
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const isAndroid = /Android/i.test(ua);
+
+    const links = {
+      // iPhone/iPad → Apple Plans
+      ios: "https://maps.apple.com/frame?center=48.754479,2.413426&distance=157.346162&map=hybrid&pitch=30.000000&span=0.000818,0.001283",
+      // Android → Google Maps Abidjan 😂
+      android: "https://www.google.com/maps/search/?api=1&query=5.345317,-4.024429",
+      // Ordi → Google Earth Choisy-le-Roi
+      desktop: "https://earth.google.com/web/@48.75453851,2.41349318,47.51504992a,174.46396721d,35y,26.03891465h,72.74998411t,360r/data=CgRCAggBOgMKATBCAggASg0I____________ARAA"
+    };
+
+    const btn = document.getElementById('location-btn');
+
+    if (isIOS) {
+      btn.href = links.ios;
+    } else if (isAndroid) {
+      btn.href = links.android;
+    } else {
+      btn.href = links.desktop;
+    }
+
+    // --- Splash screen ---
     const video = document.getElementById('intro-video');
     const splash = document.getElementById('splash');
     const main = document.getElementById('main');
@@ -124,13 +148,9 @@
       main.classList.add('visible');
     }
 
-    // Passage instantané quand la vidéo se termine
     video.addEventListener('ended', showMain);
-
-    // Sécurité si la vidéo ne charge pas
     setTimeout(showMain, 6000);
 
-    // Sur mobile, forcer la lecture au premier touch
     document.addEventListener('touchstart', function() {
       video.play();
     }, { once: true });
