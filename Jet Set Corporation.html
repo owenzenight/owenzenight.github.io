@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jet Set Corporation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #000;
+      overflow: hidden;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    /* SPLASH SCREEN */
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease;
+    }
+
+    #splash video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #splash.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* PAGE PRINCIPALE */
+    #main {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    #main.visible {
+      opacity: 1;
+    }
+
+    #main h1 {
+      color: #fff;
+      font-size: 4rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SPLASH SCREEN -->
+  <div id="splash">
+    <video id="intro-video" autoplay muted playsinline>
+      <source src="intro_screen_jm.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- PAGE PRINCIPALE -->
+  <div id="main">
+    <h1>Welcome</h1>
+  </div>
+
+  <script>
+    const video = document.getElementById('intro-video');
+    const splash = document.getElementById('splash');
+    const main = document.getElementById('main');
+
+    // Quand la vidéo se termine, on cache le splash et on affiche la page
+    video.addEventListener('ended', () => {
+      splash.classList.add('hidden');
+      main.classList.add('visible');
+      document.body.style.overflow = 'auto';
+    });
+
+    // Sécurité : si la vidéo ne charge pas, on cache le splash après 4 secondes
+    setTimeout(() => {
+      if (!splash.classList.contains('hidden')) {
+        splash.classList.add('hidden');
+        main.classList.add('visible');
+        document.body.style.overflow = 'auto';
+      }
+    }, 4000);
+  </script>
+
+</body>
+</html>
