@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Jet Set Corporation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -16,7 +17,6 @@
       height: 100%;
       background: #000;
       overflow: hidden;
-      font-family: 'Helvetica Neue', sans-serif;
     }
 
     /* SPLASH SCREEN */
@@ -65,13 +65,81 @@
       opacity: 1;
     }
 
+    /* Fond avec effet violet subtil */
+    #main::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(120, 40, 200, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
     #main h1 {
-      color: #fff;
-      font-size: clamp(2rem, 8vw, 5rem);
-      font-weight: 300;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(4rem, 15vw, 10rem);
+      font-weight: 400;
       text-align: center;
+      background: linear-gradient(
+        90deg,
+        #ff0000,
+        #ff8800,
+        #ffff00,
+        #00cc00,
+        #0088ff,
+        #8800ff,
+        #ff00cc
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeIn 1.5s ease forwards;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* BOUTON LOCALISATION */
+    #location-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(120, 40, 200, 0.15);
+      border: 1px solid rgba(150, 80, 255, 0.3);
+      border-radius: 50px;
+      padding: 10px 16px;
+      color: #fff;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      z-index: 100;
+      font-family: 'Helvetica Neue', sans-serif;
+      text-transform: uppercase;
+    }
+
+    #location-btn:hover {
+      background: rgba(120, 40, 200, 0.35);
+      border-color: rgba(150, 80, 255, 0.7);
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(120, 40, 200, 0.4);
+    }
+
+    #location-btn svg {
+      width: 13px;
+      height: 13px;
+      fill: #a060ff;
+      flex-shrink: 0;
     }
   </style>
 </head>
@@ -89,6 +157,14 @@
     <h1>Welcome</h1>
   </div>
 
+  <!-- BOUTON LOCALISATION -->
+  <a id="location-btn" href="https://earth.google.com/web/@48.76254,2.40888,34a,5000d,35y,0h,0t,0r" target="_blank">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+    </svg>
+    Choisy-le-Roi
+  </a>
+
   <script>
     const video = document.getElementById('intro-video');
     const splash = document.getElementById('splash');
@@ -102,13 +178,9 @@
       }
     }
 
-    // Quand la vidéo se termine
     video.addEventListener('ended', showMain);
-
-    // Sécurité : si la vidéo ne charge pas, on passe après 5 secondes
     setTimeout(showMain, 5000);
 
-    // Sur mobile, forcer la lecture au premier touch
     document.addEventListener('touchstart', function() {
       video.play();
     }, { once: true });
