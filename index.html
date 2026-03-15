@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Jet Set Corporation</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -28,75 +28,65 @@
       height: 100%;
       z-index: 9999;
       background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.8s ease;
     }
 
     #splash video {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
     #splash.hidden {
-      opacity: 0;
-      pointer-events: none;
+      display: none; /* Pas de transition, disparition instantanée */
     }
 
     /* PAGE PRINCIPALE */
     #main {
+      display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 1.2s ease;
+      background: #000000;
     }
 
     #main.visible {
-      opacity: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* WELCOME */
     #main h1 {
-      font-family: 'Poiret One', cursive;
-      font-size: clamp(3rem, 12vw, 9rem);
-      font-weight: 400;
-      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 300;
+      font-size: clamp(1.8rem, 7vw, 7rem);
+      color: #ffffff;
       text-align: center;
-      letter-spacing: 0.6em;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
-      animation: fadeIn 2s ease forwards;
-      padding-right: 0.6em; /* compense le letter-spacing sur le dernier caractère */
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      width: 100%;
+      padding: 0 5vw;
     }
 
     /* LIEN LOCALISATION */
     #location-btn {
       position: fixed;
-      bottom: 28px;
-      right: 28px;
+      bottom: 24px;
+      right: 24px;
       color: rgba(255, 255, 255, 0.4);
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       letter-spacing: 0.25em;
       text-decoration: none;
       text-transform: uppercase;
-      font-family: 'Poiret One', cursive;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 300;
       z-index: 100;
       padding-bottom: 3px;
       border-bottom: 1px solid transparent;
-      transition: all 0.4s ease;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
     }
 
     #location-btn:hover {
@@ -130,16 +120,17 @@
     const main = document.getElementById('main');
 
     function showMain() {
-      if (!splash.classList.contains('hidden')) {
-        splash.classList.add('hidden');
-        main.classList.add('visible');
-        document.body.style.overflow = 'auto';
-      }
+      splash.classList.add('hidden');
+      main.classList.add('visible');
     }
 
+    // Passage instantané quand la vidéo se termine
     video.addEventListener('ended', showMain);
-    setTimeout(showMain, 5000);
 
+    // Sécurité si la vidéo ne charge pas
+    setTimeout(showMain, 6000);
+
+    // Sur mobile, forcer la lecture au premier touch
     document.addEventListener('touchstart', function() {
       video.play();
     }, { once: true });
