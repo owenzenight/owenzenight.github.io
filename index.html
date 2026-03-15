@@ -39,16 +39,14 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0.5em;
     }
     #main.visible { display: flex; }
 
-    /* CANVAS SERPENT en arrière-plan */
+    /* CANVAS SERPENT */
     #snake-canvas {
       position: fixed;
       inset: 0;
       z-index: 0;
-      opacity: 0.35;
     }
 
     /* TEXTE */
@@ -59,7 +57,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.3em;
+      gap: 0.4em;
     }
 
     h1 {
@@ -75,7 +73,7 @@
     #enter-link {
       font-family: 'Orbitron', sans-serif;
       font-weight: 300;
-      font-size: clamp(0.9rem, 3vw, 2.5rem);
+      font-size: clamp(0.8rem, 2.5vw, 2rem);
       color: rgba(255,255,255,0.35);
       letter-spacing: 0.5em;
       text-transform: uppercase;
@@ -84,14 +82,13 @@
       padding-bottom: 3px;
       border-bottom: 1px solid transparent;
       transition: color 0.3s, border-color 0.3s;
-      margin-top: 0.3em;
     }
     #enter-link:hover {
       color: rgba(255,255,255,0.9);
       border-bottom: 1px solid rgba(255,255,255,0.9);
     }
 
-    /* Score serpent */
+    /* Score */
     #score {
       position: fixed;
       top: 20px;
@@ -103,35 +100,22 @@
       color: rgba(255,255,255,0.2);
       z-index: 2;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    /* Flèches mobile */
-    #mobile-controls {
-      display: none;
+    /* Hint clavier */
+    #hint {
       position: fixed;
-      bottom: 60px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 10;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-    .ctrl-row { display: flex; gap: 4px; }
-    .ctrl-btn {
-      width: 44px;
-      height: 44px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: #fff;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 6px;
-      cursor: pointer;
-      user-select: none;
       font-family: 'Orbitron', sans-serif;
+      font-size: 0.45rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.12);
+      z-index: 2;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
     /* LIEN LOCALISATION */
@@ -166,62 +150,46 @@
     </video>
   </div>
 
-  <!-- PAGE PRINCIPALE -->
+  <!-- PAGE -->
   <div id="main">
     <canvas id="snake-canvas"></canvas>
-
     <div id="score">score : 0</div>
-
     <div class="title-block">
       <h1>Welcome</h1>
       <a id="enter-link" href="portfolio.html">— enter —</a>
     </div>
-
-    <!-- Contrôles mobile -->
-    <div id="mobile-controls">
-      <div class="ctrl-row">
-        <div class="ctrl-btn" id="btn-up">▲</div>
-      </div>
-      <div class="ctrl-row">
-        <div class="ctrl-btn" id="btn-left">◄</div>
-        <div class="ctrl-btn" id="btn-down">▼</div>
-        <div class="ctrl-btn" id="btn-right">►</div>
-      </div>
-    </div>
+    <div id="hint">↑ ↓ ← → / z q s d</div>
   </div>
 
-  <!-- LOCALISATION -->
   <a id="location-btn" href="#" target="_blank">Choisy-le-Roi</a>
 
   <script>
-    // --- Détection appareil ---
+    // --- Détection ---
     const ua = navigator.userAgent;
     const isIOS = /iPhone|iPad|iPod/i.test(ua);
     const isAndroid = /Android/i.test(ua);
     const isMobile = isIOS || isAndroid;
 
-    const links = {
-      ios: "https://maps.apple.com/frame?center=48.754479,2.413426&distance=157.346162&map=hybrid&pitch=30.000000&span=0.000818,0.001283",
-      android: "https://www.google.com/maps/search/?api=1&query=5.345317,-4.024429",
-      desktop: "https://earth.google.com/web/@48.75453851,2.41349318,47.51504992a,174.46396721d,35y,26.03891465h,72.74998411t,360r/data=CgRCAggBOgMKATBCAggASg0I____________ARAA"
-    };
-
+    // Localisation
     const locBtn = document.getElementById('location-btn');
-    if (isIOS) locBtn.href = links.ios;
-    else if (isAndroid) locBtn.href = links.android;
-    else locBtn.href = links.desktop;
+    if (isIOS) locBtn.href = "https://maps.apple.com/frame?center=48.754479,2.413426&distance=157.346162&map=hybrid&pitch=30.000000&span=0.000818,0.001283";
+    else if (isAndroid) locBtn.href = "https://www.google.com/maps/search/?api=1&query=5.345317,-4.024429";
+    else locBtn.href = "https://earth.google.com/web/@48.75453851,2.41349318,47.51504992a,174.46396721d,35y,26.03891465h,72.74998411t,360r/data=CgRCAggBOgMKATBCAggASg0I____________ARAA";
 
-    // --- Splash ---
+    // Splash
     const video = document.getElementById('intro-video');
     const splash = document.getElementById('splash');
-    const main = document.getElementById('main');
+    const main  = document.getElementById('main');
 
     function showMain() {
       splash.classList.add('hidden');
       main.classList.add('visible');
-      initSnake();
-      if (isMobile) {
-        document.getElementById('mobile-controls').style.display = 'flex';
+      if (!isMobile) initSnake();
+      else {
+        // Sur mobile : pas de serpent, pas de hint
+        document.getElementById('snake-canvas').style.display = 'none';
+        document.getElementById('score').style.display = 'none';
+        document.getElementById('hint').style.display = 'none';
       }
     }
 
@@ -229,60 +197,108 @@
     setTimeout(showMain, 6000);
     document.addEventListener('touchstart', () => video.play(), { once: true });
 
-    // --- JEU SERPENT ---
+    // --- SERPENT ---
     function initSnake() {
       const canvas = document.getElementById('snake-canvas');
       const ctx = canvas.getContext('2d');
-      const CELL = 16;
+      const CELL = 24; // pixels plus gros
+      const GREEN = '#3dff3d';
+      const DARK_GREEN = '#1a8c1a';
+      const RED = '#ff2222';
 
       function resize() {
-        canvas.width = window.innerWidth;
+        canvas.width  = window.innerWidth;
         canvas.height = window.innerHeight;
       }
       resize();
       window.addEventListener('resize', resize);
 
-      const cols = () => Math.floor(canvas.width / CELL);
+      const cols = () => Math.floor(canvas.width  / CELL);
       const rows = () => Math.floor(canvas.height / CELL);
 
-      let snake = [{ x: 10, y: 10 }];
-      let dir = { x: 1, y: 0 };
+      let snake   = [{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }];
+      let dir     = { x: 1, y: 0 };
       let nextDir = { x: 1, y: 0 };
-      let food = spawnFood();
-      let score = 0;
+      let food    = spawnFood();
+      let score   = 0;
       const scoreEl = document.getElementById('score');
 
       function spawnFood() {
-        return {
-          x: Math.floor(Math.random() * (cols() - 2)) + 1,
-          y: Math.floor(Math.random() * (rows() - 2)) + 1
-        };
+        let f;
+        do {
+          f = {
+            x: Math.floor(Math.random() * (cols() - 2)) + 1,
+            y: Math.floor(Math.random() * (rows() - 2)) + 1
+          };
+        } while (snake.some(s => s.x === f.x && s.y === f.y));
+        return f;
+      }
+
+      function drawCell(x, y, color) {
+        ctx.fillStyle = color;
+        ctx.fillRect(x * CELL, y * CELL, CELL - 1, CELL - 1);
+      }
+
+      function drawHead(x, y) {
+        // Corps de la tête
+        ctx.fillStyle = GREEN;
+        ctx.fillRect(x * CELL, y * CELL, CELL - 1, CELL - 1);
+
+        // Yeux : petits carrés noirs selon la direction
+        ctx.fillStyle = '#000';
+        const eyeSize = Math.max(2, Math.floor(CELL / 6));
+        const offset  = Math.floor(CELL / 4);
+
+        if (dir.x === 1) { // droite
+          ctx.fillRect(x*CELL + CELL - offset - eyeSize, y*CELL + offset,              eyeSize, eyeSize);
+          ctx.fillRect(x*CELL + CELL - offset - eyeSize, y*CELL + CELL - offset - eyeSize - 1, eyeSize, eyeSize);
+        } else if (dir.x === -1) { // gauche
+          ctx.fillRect(x*CELL + offset, y*CELL + offset,              eyeSize, eyeSize);
+          ctx.fillRect(x*CELL + offset, y*CELL + CELL - offset - eyeSize - 1, eyeSize, eyeSize);
+        } else if (dir.y === -1) { // haut
+          ctx.fillRect(x*CELL + offset,              y*CELL + offset, eyeSize, eyeSize);
+          ctx.fillRect(x*CELL + CELL - offset - eyeSize - 1, y*CELL + offset, eyeSize, eyeSize);
+        } else { // bas
+          ctx.fillRect(x*CELL + offset,              y*CELL + CELL - offset - eyeSize - 1, eyeSize, eyeSize);
+          ctx.fillRect(x*CELL + CELL - offset - eyeSize - 1, y*CELL + CELL - offset - eyeSize - 1, eyeSize, eyeSize);
+        }
+
+        // Langue rouge
+        ctx.fillStyle = RED;
+        const lSize = Math.max(2, Math.floor(CELL / 8));
+        const cx = x * CELL + Math.floor((CELL - 1) / 2);
+        const cy = y * CELL + Math.floor((CELL - 1) / 2);
+
+        if (dir.x === 1)  ctx.fillRect(x*CELL + CELL - 1, cy - lSize, lSize * 2, lSize);
+        if (dir.x === -1) ctx.fillRect(x*CELL - lSize * 2, cy - lSize, lSize * 2, lSize);
+        if (dir.y === -1) ctx.fillRect(cx - lSize, y*CELL - lSize * 2, lSize, lSize * 2);
+        if (dir.y === 1)  ctx.fillRect(cx - lSize, y*CELL + CELL - 1, lSize, lSize * 2);
       }
 
       function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Serpent
-        snake.forEach((seg, i) => {
-          const alpha = 0.4 + (i / snake.length) * 0.6;
-          ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-          ctx.fillRect(seg.x * CELL, seg.y * CELL, CELL - 1, CELL - 1);
-        });
+        // Corps
+        for (let i = 1; i < snake.length; i++) {
+          drawCell(snake[i].x, snake[i].y, GREEN);
+        }
 
-        // Nourriture (pixel clignotant)
-        ctx.fillStyle = `rgba(255, 255, 255, ${0.5 + 0.5 * Math.sin(Date.now() / 200)})`;
+        // Tête
+        drawHead(snake[0].x, snake[0].y);
+
+        // Nourriture clignotante verte
+        const pulse = 0.6 + 0.4 * Math.sin(Date.now() / 200);
+        ctx.fillStyle = `rgba(61, 255, 61, ${pulse})`;
         ctx.fillRect(food.x * CELL, food.y * CELL, CELL - 1, CELL - 1);
       }
 
       function update() {
-        dir = nextDir;
-        const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+        dir = { ...nextDir };
+        const head = {
+          x: (snake[0].x + dir.x + cols()) % cols(),
+          y: (snake[0].y + dir.y + rows()) % rows()
+        };
 
-        // Wrap autour des bords
-        head.x = (head.x + cols()) % cols();
-        head.y = (head.y + rows()) % rows();
-
-        // Mange la nourriture
         if (head.x === food.x && head.y === food.y) {
           score++;
           scoreEl.textContent = `score : ${score}`;
@@ -291,48 +307,30 @@
           snake.pop();
         }
 
-        // Collision avec lui-même → reset
         if (snake.some(s => s.x === head.x && s.y === head.y)) {
-          snake = [{ x: 10, y: 10 }];
-          dir = { x: 1, y: 0 };
+          snake   = [{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }];
+          dir     = { x: 1, y: 0 };
           nextDir = { x: 1, y: 0 };
-          score = 0;
+          score   = 0;
           scoreEl.textContent = `score : 0`;
         }
 
         snake.unshift(head);
       }
 
-      // Flèches clavier
+      // Clavier
       document.addEventListener('keydown', e => {
-        if (e.key === 'ArrowUp'    && dir.y !== 1)  nextDir = { x: 0, y: -1 };
-        if (e.key === 'ArrowDown'  && dir.y !== -1) nextDir = { x: 0, y: 1 };
-        if (e.key === 'ArrowLeft'  && dir.x !== 1)  nextDir = { x: -1, y: 0 };
-        if (e.key === 'ArrowRight' && dir.x !== -1) nextDir = { x: 1, y: 0 };
-        // Empêche le scroll de la page avec les flèches
-        if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) {
-          e.preventDefault();
-        }
+        const k = e.key;
+        if ((k==='ArrowUp'    || k==='z') && dir.y !==  1) nextDir = { x: 0, y: -1 };
+        if ((k==='ArrowDown'  || k==='s') && dir.y !== -1) nextDir = { x: 0, y:  1 };
+        if ((k==='ArrowLeft'  || k==='q') && dir.x !==  1) nextDir = { x: -1, y: 0 };
+        if ((k==='ArrowRight' || k==='d') && dir.x !== -1) nextDir = { x:  1, y: 0 };
+        if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(k)) e.preventDefault();
       });
 
-      // Boutons mobile
-      document.getElementById('btn-up')?.addEventListener('click',    () => { if (dir.y !== 1)  nextDir = { x: 0, y: -1 }; });
-      document.getElementById('btn-down')?.addEventListener('click',  () => { if (dir.y !== -1) nextDir = { x: 0, y: 1 }; });
-      document.getElementById('btn-left')?.addEventListener('click',  () => { if (dir.x !== 1)  nextDir = { x: -1, y: 0 }; });
-      document.getElementById('btn-right')?.addEventListener('click', () => { if (dir.x !== -1) nextDir = { x: 1, y: 0 }; });
+      setInterval(update, 120);
 
-      // Loop
-      function loop() {
-        update();
-        draw();
-      }
-      setInterval(loop, 120);
-
-      // Render continu pour l'animation du pixel nourriture
-      function render() {
-        draw();
-        requestAnimationFrame(render);
-      }
+      function render() { draw(); requestAnimationFrame(render); }
       render();
     }
   </script>
