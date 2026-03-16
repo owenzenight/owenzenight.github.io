@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -236,15 +236,32 @@
 
       function updateParticles() {
         particles.forEach(p => {
-          p.y    += p.vy;
-          p.x    += p.vx;
-          p.vy   += 0.3; // gravité
-          p.alpha -= 0.018;
-          p.size  = Math.max(1, p.size - 0.3);
-        });
-        particles = particles.filter(p => p.alpha > 0 && p.y < canvas.height + 40);
+          p.vy += 0.4; // gravité
+          p.y  += p.vy;
+          p.x  += p.vx;
 
-        // Tous les pixels sont tombés → retour état WAITING
+          // Sol = bas de l'écran
+          const floor = canvas.height - p.size;
+          if (p.y >= floor) {
+            p.y  = floor;
+            p.vy = -p.vy * 0.45; // rebond amorti
+            p.vx *= 0.8;
+            if (Math.abs(p.vy) < 0.8) {
+              p.vy = 0;
+              p.vx *= 0.9;
+            }
+            // Disparition seulement une fois posé
+            p.alpha -= 0.025;
+          }
+
+          // Pendant la chute, pas de disparition
+          if (p.y < floor - 1) {
+            p.alpha = Math.max(p.alpha, 0.9);
+          }
+        });
+
+        particles = particles.filter(p => p.alpha > 0);
+
         if (particles.length === 0) {
           state = STATE.WAITING;
           hintEl.style.opacity = '1';
