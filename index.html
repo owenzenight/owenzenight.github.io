@@ -7,58 +7,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #000;
-    }
-
-    /* SPLASH */
-    #splash {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: #000;
-    }
-    #splash video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    #splash { position: fixed; inset: 0; z-index: 9999; background: #000; }
+    #splash video { width: 100%; height: 100%; object-fit: cover; display: block; }
     #splash.hidden { display: none; }
 
-    /* PAGE PRINCIPALE */
-    #main {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: #000;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+    #main { display: none; position: fixed; inset: 0; background: #000; flex-direction: column; align-items: center; justify-content: center; }
     #main.visible { display: flex; }
 
-    /* CANVAS SERPENT */
-    #snake-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-    }
+    #snake-canvas { position: fixed; inset: 0; z-index: 0; }
 
-    /* TEXTE */
-    .title-block {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4em;
-    }
+    .title-block { position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.4em; }
 
     h1 {
       font-family: 'Orbitron', sans-serif;
@@ -83,74 +43,40 @@
       border-bottom: 1px solid transparent;
       transition: color 0.3s, border-color 0.3s;
     }
-    #enter-link:hover {
-      color: rgba(255,255,255,0.9);
-      border-bottom: 1px solid rgba(255,255,255,0.9);
-    }
+    #enter-link:hover { color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(255,255,255,0.9); }
 
-    /* Score */
     #score {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.55rem;
-      letter-spacing: 0.3em;
-      color: rgba(255,255,255,0.2);
-      z-index: 2;
-      text-transform: uppercase;
-      white-space: nowrap;
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+      font-family: 'Orbitron', sans-serif; font-size: 0.55rem; letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.2); z-index: 2; text-transform: uppercase; white-space: nowrap;
     }
 
-    /* Hint clavier */
     #hint {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.45rem;
-      letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.12);
-      z-index: 2;
-      text-transform: uppercase;
-      white-space: nowrap;
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      font-family: 'Orbitron', sans-serif; font-size: 0.45rem; letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.12); z-index: 2; text-transform: uppercase; white-space: nowrap;
+      transition: opacity 0.5s;
     }
 
-    /* LIEN LOCALISATION */
     #location-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      color: rgba(255,255,255,0.4);
-      font-size: 0.6rem;
-      letter-spacing: 0.25em;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 300;
-      z-index: 100;
-      padding-bottom: 3px;
-      border-bottom: 1px solid transparent;
+      position: fixed; bottom: 24px; right: 24px;
+      color: rgba(255,255,255,0.4); font-size: 0.6rem; letter-spacing: 0.25em;
+      text-decoration: none; text-transform: uppercase;
+      font-family: 'Orbitron', sans-serif; font-weight: 300;
+      z-index: 100; padding-bottom: 3px; border-bottom: 1px solid transparent;
       transition: color 0.3s, border-color 0.3s;
     }
-    #location-btn:hover {
-      color: rgba(255,255,255,0.9);
-      border-bottom: 1px solid rgba(255,255,255,0.9);
-    }
+    #location-btn:hover { color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(255,255,255,0.9); }
   </style>
 </head>
 <body>
 
-  <!-- SPLASH -->
   <div id="splash">
     <video id="intro-video" autoplay muted playsinline webkit-playsinline>
       <source src="intro.mp4" type="video/mp4">
     </video>
   </div>
 
-  <!-- PAGE -->
   <div id="main">
     <canvas id="snake-canvas"></canvas>
     <div id="score">score : 0</div>
@@ -158,35 +84,31 @@
       <h1>Welcome</h1>
       <a id="enter-link" href="portfolio.html">— enter —</a>
     </div>
-    <div id="hint">↑ ↓ ← → / z q s d</div>
+    <div id="hint">↑ ↓ ← → / z q s d — appuie pour jouer</div>
   </div>
 
   <a id="location-btn" href="#" target="_blank">Choisy-le-Roi</a>
 
   <script>
-    // --- Détection ---
     const ua = navigator.userAgent;
     const isIOS = /iPhone|iPad|iPod/i.test(ua);
     const isAndroid = /Android/i.test(ua);
     const isMobile = isIOS || isAndroid;
 
-    // Localisation
     const locBtn = document.getElementById('location-btn');
     if (isIOS) locBtn.href = "https://maps.apple.com/frame?center=48.754479,2.413426&distance=157.346162&map=hybrid&pitch=30.000000&span=0.000818,0.001283";
     else if (isAndroid) locBtn.href = "https://www.google.com/maps/search/?api=1&query=5.345317,-4.024429";
     else locBtn.href = "https://earth.google.com/web/@48.75453851,2.41349318,47.51504992a,174.46396721d,35y,26.03891465h,72.74998411t,360r/data=CgRCAggBOgMKATBCAggASg0I____________ARAA";
 
-    // Splash
-    const video = document.getElementById('intro-video');
+    const video  = document.getElementById('intro-video');
     const splash = document.getElementById('splash');
-    const main  = document.getElementById('main');
+    const main   = document.getElementById('main');
 
     function showMain() {
       splash.classList.add('hidden');
       main.classList.add('visible');
       if (!isMobile) initSnake();
       else {
-        // Sur mobile : pas de serpent, pas de hint
         document.getElementById('snake-canvas').style.display = 'none';
         document.getElementById('score').style.display = 'none';
         document.getElementById('hint').style.display = 'none';
@@ -197,141 +119,205 @@
     setTimeout(showMain, 6000);
     document.addEventListener('touchstart', () => video.play(), { once: true });
 
-    // --- SERPENT ---
+    // ===================== SNAKE =====================
     function initSnake() {
-      const canvas = document.getElementById('snake-canvas');
-      const ctx = canvas.getContext('2d');
-      const CELL = 24; // pixels plus gros
-      const GREEN = '#3dff3d';
-      const DARK_GREEN = '#1a8c1a';
-      const RED = '#ff2222';
+      const canvas  = document.getElementById('snake-canvas');
+      const ctx     = canvas.getContext('2d');
+      const scoreEl = document.getElementById('score');
+      const hintEl  = document.getElementById('hint');
 
-      function resize() {
-        canvas.width  = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
+      const CELL      = 24;
+      const GREEN     = '#2a8c2a';
+      const RED       = '#ff2222';
+      const SPEED     = 160; // ms par tick (plus lent)
+
+      function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
       resize();
       window.addEventListener('resize', resize);
 
       const cols = () => Math.floor(canvas.width  / CELL);
       const rows = () => Math.floor(canvas.height / CELL);
 
-      let snake   = [{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }];
+      // États
+      const STATE = { WAITING: 'waiting', PLAYING: 'playing', DYING: 'dying' };
+      let state   = STATE.WAITING;
+
+      let snake   = null;
       let dir     = { x: 1, y: 0 };
       let nextDir = { x: 1, y: 0 };
-      let food    = spawnFood();
+      let food    = null;
       let score   = 0;
-      const scoreEl = document.getElementById('score');
+      let particles = []; // pixels qui tombent
+
+      function startSnake() {
+        const cx = Math.floor(cols() / 2);
+        const cy = Math.floor(rows() / 2);
+        snake   = [{ x: cx, y: cy }, { x: cx - 1, y: cy }, { x: cx - 2, y: cy }];
+        dir     = { x: 1, y: 0 };
+        nextDir = { x: 1, y: 0 };
+        food    = spawnFood();
+        score   = 0;
+        scoreEl.textContent = 'score : 0';
+        particles = [];
+        state   = STATE.PLAYING;
+        hintEl.style.opacity = '0';
+      }
 
       function spawnFood() {
         let f;
         do {
-          f = {
-            x: Math.floor(Math.random() * (cols() - 2)) + 1,
-            y: Math.floor(Math.random() * (rows() - 2)) + 1
-          };
-        } while (snake.some(s => s.x === f.x && s.y === f.y));
+          f = { x: Math.floor(Math.random() * (cols()-2))+1, y: Math.floor(Math.random() * (rows()-2))+1 };
+        } while (snake && snake.some(s => s.x === f.x && s.y === f.y));
         return f;
       }
 
-      function drawCell(x, y, color) {
-        ctx.fillStyle = color;
-        ctx.fillRect(x * CELL, y * CELL, CELL - 1, CELL - 1);
-      }
-
+      // Dessin tête
       function drawHead(x, y) {
-        // Corps de la tête
         ctx.fillStyle = GREEN;
-        ctx.fillRect(x * CELL, y * CELL, CELL - 1, CELL - 1);
+        ctx.fillRect(x*CELL, y*CELL, CELL-1, CELL-1);
 
-        // Yeux : petits carrés noirs selon la direction
+        // Yeux
         ctx.fillStyle = '#000';
-        const eyeSize = Math.max(2, Math.floor(CELL / 6));
-        const offset  = Math.floor(CELL / 4);
-
-        if (dir.x === 1) { // droite
-          ctx.fillRect(x*CELL + CELL - offset - eyeSize, y*CELL + offset,              eyeSize, eyeSize);
-          ctx.fillRect(x*CELL + CELL - offset - eyeSize, y*CELL + CELL - offset - eyeSize - 1, eyeSize, eyeSize);
-        } else if (dir.x === -1) { // gauche
-          ctx.fillRect(x*CELL + offset, y*CELL + offset,              eyeSize, eyeSize);
-          ctx.fillRect(x*CELL + offset, y*CELL + CELL - offset - eyeSize - 1, eyeSize, eyeSize);
-        } else if (dir.y === -1) { // haut
-          ctx.fillRect(x*CELL + offset,              y*CELL + offset, eyeSize, eyeSize);
-          ctx.fillRect(x*CELL + CELL - offset - eyeSize - 1, y*CELL + offset, eyeSize, eyeSize);
-        } else { // bas
-          ctx.fillRect(x*CELL + offset,              y*CELL + CELL - offset - eyeSize - 1, eyeSize, eyeSize);
-          ctx.fillRect(x*CELL + CELL - offset - eyeSize - 1, y*CELL + CELL - offset - eyeSize - 1, eyeSize, eyeSize);
+        const es = Math.max(2, Math.floor(CELL/5));
+        const off = Math.floor(CELL/4);
+        if (dir.x === 1) {
+          ctx.fillRect(x*CELL+CELL-off-es, y*CELL+off, es, es);
+          ctx.fillRect(x*CELL+CELL-off-es, y*CELL+CELL-off-es-1, es, es);
+        } else if (dir.x === -1) {
+          ctx.fillRect(x*CELL+off, y*CELL+off, es, es);
+          ctx.fillRect(x*CELL+off, y*CELL+CELL-off-es-1, es, es);
+        } else if (dir.y === -1) {
+          ctx.fillRect(x*CELL+off, y*CELL+off, es, es);
+          ctx.fillRect(x*CELL+CELL-off-es-1, y*CELL+off, es, es);
+        } else {
+          ctx.fillRect(x*CELL+off, y*CELL+CELL-off-es-1, es, es);
+          ctx.fillRect(x*CELL+CELL-off-es-1, y*CELL+CELL-off-es-1, es, es);
         }
 
-        // Langue rouge
+        // Langue
         ctx.fillStyle = RED;
-        const lSize = Math.max(2, Math.floor(CELL / 8));
-        const cx = x * CELL + Math.floor((CELL - 1) / 2);
-        const cy = y * CELL + Math.floor((CELL - 1) / 2);
+        const ls = Math.max(2, Math.floor(CELL/7));
+        const mx = x*CELL + Math.floor((CELL-1)/2);
+        const my = y*CELL + Math.floor((CELL-1)/2);
+        if (dir.x === 1)  ctx.fillRect(x*CELL+CELL-1, my-ls, ls*2, ls);
+        if (dir.x === -1) ctx.fillRect(x*CELL-ls*2,   my-ls, ls*2, ls);
+        if (dir.y === -1) ctx.fillRect(mx-ls, y*CELL-ls*2,   ls, ls*2);
+        if (dir.y === 1)  ctx.fillRect(mx-ls, y*CELL+CELL-1, ls, ls*2);
+      }
 
-        if (dir.x === 1)  ctx.fillRect(x*CELL + CELL - 1, cy - lSize, lSize * 2, lSize);
-        if (dir.x === -1) ctx.fillRect(x*CELL - lSize * 2, cy - lSize, lSize * 2, lSize);
-        if (dir.y === -1) ctx.fillRect(cx - lSize, y*CELL - lSize * 2, lSize, lSize * 2);
-        if (dir.y === 1)  ctx.fillRect(cx - lSize, y*CELL + CELL - 1, lSize, lSize * 2);
+      // Mort → particules qui tombent
+      function triggerDeath() {
+        state = STATE.DYING;
+        particles = snake.map(seg => ({
+          x: seg.x * CELL + Math.random() * CELL,
+          y: seg.y * CELL + Math.random() * CELL,
+          vy: 1 + Math.random() * 3,
+          vx: (Math.random() - 0.5) * 2,
+          size: CELL - 1,
+          alpha: 1
+        }));
+        snake = null;
+        food  = null;
+      }
+
+      function updateParticles() {
+        particles.forEach(p => {
+          p.y    += p.vy;
+          p.x    += p.vx;
+          p.vy   += 0.3; // gravité
+          p.alpha -= 0.018;
+          p.size  = Math.max(1, p.size - 0.3);
+        });
+        particles = particles.filter(p => p.alpha > 0 && p.y < canvas.height + 40);
+
+        // Tous les pixels sont tombés → retour état WAITING
+        if (particles.length === 0) {
+          state = STATE.WAITING;
+          hintEl.style.opacity = '1';
+        }
+      }
+
+      function drawParticles() {
+        particles.forEach(p => {
+          ctx.fillStyle = `rgba(42, 140, 42, ${p.alpha})`;
+          ctx.fillRect(p.x, p.y, p.size, p.size);
+        });
+      }
+
+      // Update jeu
+      let lastTick = 0;
+      function update(ts) {
+        if (state === STATE.PLAYING && ts - lastTick > SPEED) {
+          lastTick = ts;
+          dir = { ...nextDir };
+          const head = {
+            x: (snake[0].x + dir.x + cols()) % cols(),
+            y: (snake[0].y + dir.y + rows()) % rows()
+          };
+
+          if (head.x === food.x && head.y === food.y) {
+            score++;
+            scoreEl.textContent = `score : ${score}`;
+            food = spawnFood();
+          } else {
+            snake.pop();
+          }
+
+          if (snake.some(s => s.x === head.x && s.y === head.y)) {
+            snake.unshift(head);
+            triggerDeath();
+            return;
+          }
+
+          snake.unshift(head);
+        }
+
+        if (state === STATE.DYING) updateParticles();
       }
 
       function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Corps
-        for (let i = 1; i < snake.length; i++) {
-          drawCell(snake[i].x, snake[i].y, GREEN);
+        if (state === STATE.PLAYING && snake) {
+          // Corps
+          for (let i = 1; i < snake.length; i++) {
+            ctx.fillStyle = GREEN;
+            ctx.fillRect(snake[i].x*CELL, snake[i].y*CELL, CELL-1, CELL-1);
+          }
+          drawHead(snake[0].x, snake[0].y);
+
+          // Nourriture
+          const pulse = 0.5 + 0.5 * Math.sin(Date.now() / 200);
+          ctx.fillStyle = `rgba(42, 200, 42, ${pulse})`;
+          ctx.fillRect(food.x*CELL, food.y*CELL, CELL-1, CELL-1);
         }
 
-        // Tête
-        drawHead(snake[0].x, snake[0].y);
-
-        // Nourriture clignotante verte
-        const pulse = 0.6 + 0.4 * Math.sin(Date.now() / 200);
-        ctx.fillStyle = `rgba(61, 255, 61, ${pulse})`;
-        ctx.fillRect(food.x * CELL, food.y * CELL, CELL - 1, CELL - 1);
+        if (state === STATE.DYING) drawParticles();
       }
 
-      function update() {
-        dir = { ...nextDir };
-        const head = {
-          x: (snake[0].x + dir.x + cols()) % cols(),
-          y: (snake[0].y + dir.y + rows()) % rows()
-        };
-
-        if (head.x === food.x && head.y === food.y) {
-          score++;
-          scoreEl.textContent = `score : ${score}`;
-          food = spawnFood();
-        } else {
-          snake.pop();
-        }
-
-        if (snake.some(s => s.x === head.x && s.y === head.y)) {
-          snake   = [{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }];
-          dir     = { x: 1, y: 0 };
-          nextDir = { x: 1, y: 0 };
-          score   = 0;
-          scoreEl.textContent = `score : 0`;
-        }
-
-        snake.unshift(head);
+      // Loop principal
+      function loop(ts) {
+        update(ts);
+        draw();
+        requestAnimationFrame(loop);
       }
+      requestAnimationFrame(loop);
 
       // Clavier
+      const KEYS = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','z','q','s','d'];
       document.addEventListener('keydown', e => {
-        const k = e.key;
-        if ((k==='ArrowUp'    || k==='z') && dir.y !==  1) nextDir = { x: 0, y: -1 };
-        if ((k==='ArrowDown'  || k==='s') && dir.y !== -1) nextDir = { x: 0, y:  1 };
-        if ((k==='ArrowLeft'  || k==='q') && dir.x !==  1) nextDir = { x: -1, y: 0 };
-        if ((k==='ArrowRight' || k==='d') && dir.x !== -1) nextDir = { x:  1, y: 0 };
-        if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(k)) e.preventDefault();
+        if (!KEYS.includes(e.key)) return;
+        if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) e.preventDefault();
+
+        // Démarrer si en attente
+        if (state === STATE.WAITING) { startSnake(); return; }
+        if (state !== STATE.PLAYING) return;
+
+        if ((e.key==='ArrowUp'    || e.key==='z') && dir.y !==  1) nextDir = { x:0, y:-1 };
+        if ((e.key==='ArrowDown'  || e.key==='s') && dir.y !== -1) nextDir = { x:0, y:1  };
+        if ((e.key==='ArrowLeft'  || e.key==='q') && dir.x !==  1) nextDir = { x:-1, y:0 };
+        if ((e.key==='ArrowRight' || e.key==='d') && dir.x !== -1) nextDir = { x:1,  y:0 };
       });
-
-      setInterval(update, 120);
-
-      function render() { draw(); requestAnimationFrame(render); }
-      render();
     }
   </script>
 
