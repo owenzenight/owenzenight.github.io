@@ -115,9 +115,23 @@
       }
     }
 
+    // Force play dès que possible
+    function tryPlay() {
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          // Si bloqué, on attend le premier touch
+          document.addEventListener('touchstart', () => video.play(), { once: true });
+        });
+      }
+    }
+    tryPlay();
+
     video.addEventListener('ended', showMain);
     setTimeout(showMain, 6000);
-    document.addEventListener('touchstart', () => video.play(), { once: true });
+
+    // Si la vidéo ne se lance pas du tout, on affiche la page au bout de 1s
+    video.addEventListener('error', showMain);
 
     // ===================== SNAKE =====================
     function initSnake() {
