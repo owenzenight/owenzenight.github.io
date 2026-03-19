@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -10,64 +11,78 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
 
-    #splash { position: fixed; inset: 0; z-index: 9999; background: #000; }
-    #splash video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    #splash.hidden { display: none; }
+```
+#splash { position: fixed; inset: 0; z-index: 9999; background: #000; }
+#splash video { width: 100%; height: 100%; object-fit: cover; display: block; }
+#splash.hidden { display: none; }
 
-    #main { display: none; position: fixed; inset: 0; background: #000; flex-direction: column; align-items: center; justify-content: center; }
-    #main.visible { display: flex; }
+#main { display: none; position: fixed; inset: 0; background: #000; flex-direction: column; align-items: center; justify-content: center; }
+#main.visible { display: flex; }
 
-    #snake-canvas { position: fixed; inset: 0; z-index: 0; }
+#snake-canvas { position: fixed; inset: 0; z-index: 0; }
 
-    .title-block { position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.4em; }
+.title-block { position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.4em; }
 
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 300;
-      font-size: clamp(1.8rem, 7vw, 7rem);
-      color: #ffffff;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      padding-right: 0.35em;
-    }
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.8rem, 7vw, 7rem);
+  color: #ffffff;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  padding-right: 0.35em;
+}
 
-    #enter-link {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 300;
-      font-size: clamp(0.8rem, 2.5vw, 2rem);
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding-right: 0.5em;
-      padding-bottom: 3px;
-      border-bottom: 1px solid transparent;
-      transition: color 0.3s, border-color 0.3s;
-    }
-    #enter-link:hover { color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(255,255,255,0.9); }
+#enter-link {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.8rem, 2.5vw, 2rem);
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-right: 0.5em;
+  padding-bottom: 6px;
+  position: relative;
+  transition: color 0.3s;
+}
+#enter-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0.25em;
+  right: 0.25em;
+  height: 1px;
+  background: rgba(255,255,255,0);
+  transition: background 0.3s;
+}
+#enter-link:hover { color: rgba(255,255,255,0.9); }
+#enter-link:hover::after { background: rgba(255,255,255,0.9); }
 
-    #score {
-      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-      font-family: 'Orbitron', sans-serif; font-size: 0.55rem; letter-spacing: 0.3em;
-      color: rgba(255,255,255,0.2); z-index: 2; text-transform: uppercase; white-space: nowrap;
-    }
+#score {
+  position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+  font-family: 'Orbitron', sans-serif; font-size: 0.55rem; letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.2); z-index: 2; text-transform: uppercase; white-space: nowrap;
+}
 
-    #hint {
-      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-      font-family: 'Orbitron', sans-serif; font-size: 0.45rem; letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.12); z-index: 2; text-transform: uppercase; white-space: nowrap;
-      transition: opacity 0.5s;
-    }
+#hint {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  font-family: 'Orbitron', sans-serif; font-size: 0.45rem; letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.12); z-index: 2; text-transform: uppercase; white-space: nowrap;
+  transition: opacity 0.5s;
+}
 
-    #location-btn {
-      position: fixed; bottom: 24px; right: 24px;
-      color: rgba(255,255,255,0.4); font-size: 0.6rem; letter-spacing: 0.25em;
-      text-decoration: none; text-transform: uppercase;
-      font-family: 'Orbitron', sans-serif; font-weight: 300;
-      z-index: 100; padding-bottom: 3px; border-bottom: 1px solid transparent;
-      transition: color 0.3s, border-color 0.3s;
-    }
-    #location-btn:hover { color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(255,255,255,0.9); }
+#location-btn {
+  position: fixed; bottom: 24px; right: 24px;
+  color: rgba(255,255,255,0.4); font-size: 0.6rem; letter-spacing: 0.25em;
+  text-decoration: none; text-transform: uppercase;
+  font-family: 'Orbitron', sans-serif; font-weight: 300;
+  z-index: 100; padding-bottom: 3px; border-bottom: 1px solid transparent;
+  transition: color 0.3s, border-color 0.3s;
+}
+#location-btn:hover { color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(255,255,255,0.9); }
+```
+
   </style>
 </head>
 <body>
@@ -88,7 +103,7 @@
     <div id="hint">↑ ↓ ← → / z q s d — appuie pour jouer</div>
   </div>
 
-  <a id="location-btn" href="#" target="_blank">Choisy-le-Roi</a>
+<a id="location-btn" href="#" target="_blank">Choisy-le-Roi</a>
 
   <script>
     const ua = navigator.userAgent;
