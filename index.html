@@ -22,64 +22,26 @@
     .title-block { position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.4em; }
 
     h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 300;
-      font-size: clamp(1.8rem, 7vw, 7rem);
-      color: #ffffff;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      padding-right: 0.35em;
+      font-family: 'Orbitron', sans-serif; font-weight: 300;
+      font-size: clamp(1.8rem, 7vw, 7rem); color: #ffffff;
+      letter-spacing: 0.35em; text-transform: uppercase; padding-right: 0.35em;
     }
 
     #enter-link {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 300;
-      font-size: clamp(0.8rem, 2.5vw, 2rem);
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding-right: 0.5em;
-      padding-bottom: 6px;
-      position: relative;
-      transition: color 0.3s;
+      font-family: 'Orbitron', sans-serif; font-weight: 300;
+      font-size: clamp(0.8rem, 2.5vw, 2rem); color: rgba(255,255,255,0.35);
+      letter-spacing: 0.5em; text-transform: uppercase; text-decoration: none;
+      padding-right: 0.5em; padding-bottom: 6px; position: relative; transition: color 0.3s;
     }
     #enter-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(100% - 0.5em);
-      height: 1px;
-      background: rgba(255,255,255,0);
-      transition: background 0.3s;
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: calc(100% - 0.5em); height: 1px; background: rgba(255,255,255,0); transition: background 0.3s;
     }
     #enter-link:hover { color: rgba(255,255,255,0.9); }
     #enter-link:hover::after { background: rgba(255,255,255,0.9); }
 
-    #score {
-      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-      font-family: 'Orbitron', sans-serif; font-size: 0.55rem; letter-spacing: 0.3em;
-      color: rgba(255,255,255,0.2); z-index: 2; text-transform: uppercase; white-space: nowrap;
-    }
-
-    #hint {
-      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-      font-family: 'Orbitron', sans-serif; font-size: 0.45rem; letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.12); z-index: 2; text-transform: uppercase; white-space: nowrap;
-      transition: opacity 0.5s;
-    }
-
-    #location-btn {
-      position: fixed; bottom: 24px; right: 24px;
-      color: rgba(255,255,255,0.4); font-size: 0.6rem; letter-spacing: 0.25em;
-      text-decoration: none; text-transform: uppercase;
-      font-family: 'Orbitron', sans-serif; font-weight: 300;
-      z-index: 100; padding-bottom: 3px; border-bottom: 1px solid transparent;
-      transition: color 0.3s, border-color 0.3s;
-    }
-    #location-btn:hover { color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(255,255,255,0.9); }
+    #score { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); font-family: 'Orbitron', sans-serif; font-size: 0.55rem; color: rgba(255,255,255,0.2); z-index: 2; text-transform: uppercase; }
+    #hint { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); font-family: 'Orbitron', sans-serif; font-size: 0.45rem; color: rgba(255,255,255,0.12); z-index: 2; text-transform: uppercase; }
   </style>
 </head>
 <body>
@@ -100,152 +62,53 @@
     <div id="hint">↑ ↓ ← → / z q s d — appuie pour jouer</div>
   </div>
 
-<a id="location-btn" href="#" target="_blank">Choisy-le-Roi</a>
-
   <script>
-    const ua = navigator.userAgent;
-    const isIOS = /iPhone|iPad|iPod/i.test(ua);
-    const isAndroid = /Android/i.test(ua);
-    const isMobile = isIOS || isAndroid;
-
-    const locBtn = document.getElementById('location-btn');
-    if (isIOS) locBtn.href = "https://maps.apple.com/frame?center=48.754479,2.413426&distance=157.346162&map=hybrid&pitch=30.000000&span=0.000818,0.001283";
-    else if (isAndroid) locBtn.href = "https://www.google.com/maps/search/?api=1&query=5.345317,-4.024429";
-    else locBtn.href = "https://earth.google.com/web/@48.75453851,2.41349318,47.51504992a,174.46396721d,35y,26.03891465h,72.74998411t,360r/data=CgRCAggBOgMKATBCAggASg0I____________ARAA";
-
-    const video  = document.getElementById('intro-video');
+    const video = document.getElementById('intro-video');
     const splash = document.getElementById('splash');
-    const main   = document.getElementById('main');
+    const main = document.getElementById('main');
 
     function showMain() {
       splash.classList.add('hidden');
       main.classList.add('visible');
-      if (!isMobile) initSnake();
-      else {
-        document.getElementById('snake-canvas').style.display = 'none';
-        document.getElementById('score').style.display = 'none';
-        document.getElementById('hint').style.display = 'none';
-      }
+      initSnake();
     }
-
-    function tryPlay() {
-      const p = video.play();
-      if (p !== undefined) {
-        p.catch(() => {
-          document.addEventListener('touchstart', () => video.play(), { once: true });
-        });
-      }
-    }
-    tryPlay();
 
     video.addEventListener('ended', showMain);
+    // Sécurité si la vidéo met trop de temps
     setTimeout(showMain, 6000);
-    video.addEventListener('error', showMain);
 
+    // --- LE JEU DU SERPENT ---
     function initSnake() {
-      const canvas  = document.getElementById('snake-canvas');
-      const ctx     = canvas.getContext('2d');
+      const canvas = document.getElementById('snake-canvas');
+      const ctx = canvas.getContext('2d');
       const scoreEl = document.getElementById('score');
-      const hintEl  = document.getElementById('hint');
+      const CELL = 24;
+      let snake = [{x: 10, y: 10}];
+      let dir = {x: 1, y: 0};
+      
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
 
-      const CELL      = 24;
-      const GREEN     = '#2a8c2a';
-      const RED       = '#ff2222';
-      const SPEED     = 160; 
-
-      function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-      resize();
-      window.addEventListener('resize', resize);
-
-      const cols = () => Math.floor(canvas.width  / CELL);
-      const rows = () => Math.floor(canvas.height / CELL);
-
-      const STATE = { WAITING: 'waiting', PLAYING: 'playing', DYING: 'dying' };
-      let state   = STATE.WAITING;
-
-      let snake   = null;
-      let dir     = { x: 1, y: 0 };
-      let nextDir = { x: 1, y: 0 };
-      let food    = null;
-      let score   = 0;
-      let particles = []; 
-
-      function startSnake() {
-        const cx = Math.floor(cols() / 2);
-        const cy = Math.floor(rows() / 2);
-        snake   = [{ x: cx, y: cy }, { x: cx - 1, y: cy }, { x: cx - 2, y: cy }];
-        dir     = { x: 1, y: 0 };
-        nextDir = { x: 1, y: 0 };
-        food    = spawnFood();
-        score   = 0;
-        scoreEl.textContent = 'score : 0';
-        particles = [];
-        state   = STATE.PLAYING;
-        hintEl.style.opacity = '0';
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#2a8c2a';
+        snake.forEach(s => ctx.fillRect(s.x*CELL, s.y*CELL, CELL-1, CELL-1));
       }
 
-      function spawnFood() {
-        let f;
-        do {
-          f = { x: Math.floor(Math.random() * (cols()-2))+1, y: Math.floor(Math.random() * (rows()-2))+1 };
-        } while (snake && snake.some(s => s.x === f.x && s.y === f.y));
-        return f;
-      }
+      setInterval(() => {
+        const head = {x: snake[0].x + dir.x, y: snake[0].y + dir.y};
+        snake.unshift(head);
+        snake.pop();
+        draw();
+      }, 160);
 
-      function drawHead(x, y) {
-        ctx.fillStyle = GREEN;
-        ctx.fillRect(x*CELL, y*CELL, CELL-1, CELL-1);
-
-        ctx.fillStyle = '#000';
-        const es = Math.max(2, Math.floor(CELL/5));
-        const off = Math.floor(CELL/4);
-        if (dir.x === 1) {
-          ctx.fillRect(x*CELL+CELL-off-es, y*CELL+off, es, es);
-          ctx.fillRect(x*CELL+CELL-off-es, y*CELL+CELL-off-es-1, es, es);
-        } else if (dir.x === -1) {
-          ctx.fillRect(x*CELL+off, y*CELL+off, es, es);
-          ctx.fillRect(x*CELL+off, y*CELL+CELL-off-es-1, es, es);
-        } else if (dir.y === -1) {
-          ctx.fillRect(x*CELL+off, y*CELL+off, es, es);
-          ctx.fillRect(x*CELL+CELL-off-es-1, y*CELL+off, es, es);
-        } else {
-          ctx.fillRect(x*CELL+off, y*CELL+CELL-off-es-1, es, es);
-          ctx.fillRect(x*CELL+CELL-off-es-1, y*CELL+CELL-off-es-1, es, es);
-        }
-
-        ctx.fillStyle = RED;
-        const ls = Math.max(2, Math.floor(CELL/7));
-        const mx = x*CELL + Math.floor((CELL-1)/2);
-        const my = y*CELL + Math.floor((CELL-1)/2);
-        if (dir.x === 1)  ctx.fillRect(x*CELL+CELL-1, my-ls, ls*2, ls);
-        if (dir.x === -1) ctx.fillRect(x*CELL-ls*2,   my-ls, ls*2, ls);
-        if (dir.y === -1) ctx.fillRect(mx-ls, y*CELL-ls*2,   ls, ls*2);
-        if (dir.y === 1)  ctx.fillRect(mx-ls, y*CELL+CELL-1, ls, ls*2);
-      }
-
-      function triggerDeath() {
-        state = STATE.DYING;
-        particles = snake.map(seg => ({
-          x: seg.x * CELL + Math.random() * CELL,
-          y: seg.y * CELL + Math.random() * CELL,
-          vy: 1 + Math.random() * 3,
-          vx: (Math.random() - 0.5) * 2,
-          size: CELL - 1,
-          alpha: 1
-        }));
-        snake = null;
-        food  = null;
-      }
-
-      function updateParticles() {
-        particles.forEach(p => {
-          p.vy += 0.4;
-          p.y  += p.vy;
-          p.x  += p.vx;
-
-          const floor = canvas.height - p.size;
-          if (p.y >= floor) {
-            p.y  = floor;
-            p.vy = -p.vy * 0.45;
-            p.vx *= 0.8;
-            if (Math.abs(p.vy) < 0.
+      window.addEventListener('keydown', e => {
+        if(e.key === 'z' || e.key === 'ArrowUp') dir = {x: 0, y: -1};
+        if(e.key === 's' || e.key === 'ArrowDown') dir = {x: 0, y: 1};
+        if(e.key === 'q' || e.key === 'ArrowLeft') dir = {x: -1, y: 0};
+        if(e.key === 'd' || e.key === 'ArrowRight') dir = {x: 1, y: 0};
+      });
+    }
+  </script>
+</body>
+</html>
