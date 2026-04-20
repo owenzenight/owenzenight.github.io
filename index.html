@@ -19,7 +19,21 @@
 
     #snake-canvas { position: fixed; inset: 0; z-index: 0; }
 
-    .title-block { position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.4em; }
+    /* Le bloc titre parfaitement centré */
+    .title-block { 
+      position: relative; 
+      z-index: 1; 
+      text-align: center; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      gap: 15px; 
+    }
+
+    .welcome-link {
+      text-decoration: none;
+      display: inline-block;
+    }
 
     h1 {
       font-family: 'Orbitron', sans-serif;
@@ -27,8 +41,8 @@
       font-size: clamp(1.8rem, 7vw, 7rem);
       color: #ffffff;
       letter-spacing: 0.35em;
+      margin-right: -0.35em; /* Compense le letter-spacing pour un centrage parfait */
       text-transform: uppercase;
-      padding-right: 0.35em;
     }
 
     #enter-link {
@@ -37,20 +51,22 @@
       font-size: clamp(0.8rem, 2.5vw, 2rem);
       color: rgba(255,255,255,0.35);
       letter-spacing: 0.5em;
+      margin-right: -0.5em; /* Compense le letter-spacing pour un centrage parfait */
       text-transform: uppercase;
       text-decoration: none;
-      padding-right: 0.5em;
       padding-bottom: 6px;
       position: relative;
       transition: color 0.3s;
+      display: inline-block;
     }
+    
+    /* La barre de survol parfaitement alignée sous le texte */
     #enter-link::after {
       content: '';
       position: absolute;
       bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(100% - 0.5em);
+      left: 0;
+      width: 100%;
       height: 1px;
       background: rgba(255,255,255,0);
       transition: background 0.3s;
@@ -93,10 +109,14 @@
   <div id="main">
     <canvas id="snake-canvas"></canvas>
     <div id="score">score : 0</div>
+    
     <div class="title-block">
-      <h1>Welcome</h1>
-      <a id="enter-link" href="portfolio/">— enter —</a>
+      <a href="portfolio/index.html" class="welcome-link">
+        <h1>Welcome</h1>
+      </a>
+      <a id="enter-link" href="portfolio/index.html">— enter —</a>
     </div>
+
     <div id="hint">↑ ↓ ← → / z q s d — appuie pour jouer</div>
   </div>
 
@@ -133,7 +153,6 @@
       const p = video.play();
       if (p !== undefined) {
         p.catch(() => {
-          // Si bloqué, on attend le premier touch
           document.addEventListener('touchstart', () => video.play(), { once: true });
         });
       }
@@ -142,11 +161,9 @@
 
     video.addEventListener('ended', showMain);
     setTimeout(showMain, 6000);
-
-    // Si la vidéo ne se lance pas du tout, on affiche la page
     video.addEventListener('error', showMain);
 
-    // ===================== SNAKE (Version Originale) =====================
+    // ===================== SNAKE =====================
     function initSnake() {
       const canvas  = document.getElementById('snake-canvas');
       const ctx     = canvas.getContext('2d');
@@ -165,7 +182,6 @@
       const cols = () => Math.floor(canvas.width  / CELL);
       const rows = () => Math.floor(canvas.height / CELL);
 
-      // États
       const STATE = { WAITING: 'waiting', PLAYING: 'playing', DYING: 'dying' };
       let state   = STATE.WAITING;
 
@@ -198,12 +214,10 @@
         return f;
       }
 
-      // Dessin tête avec yeux et langue
       function drawHead(x, y) {
         ctx.fillStyle = GREEN;
         ctx.fillRect(x*CELL, y*CELL, CELL-1, CELL-1);
 
-        // Yeux
         ctx.fillStyle = '#000';
         const es = Math.max(2, Math.floor(CELL/5));
         const off = Math.floor(CELL/4);
@@ -221,7 +235,6 @@
           ctx.fillRect(x*CELL+CELL-off-es-1, y*CELL+CELL-off-es-1, es, es);
         }
 
-        // Langue
         ctx.fillStyle = RED;
         const ls = Math.max(2, Math.floor(CELL/7));
         const mx = x*CELL + Math.floor((CELL-1)/2);
@@ -232,7 +245,6 @@
         if (dir.y === 1)  ctx.fillRect(mx-ls, y*CELL+CELL-1, ls, ls*2);
       }
 
-      // Mort → particules qui tombent
       function triggerDeath() {
         state = STATE.DYING;
         particles = snake.map(seg => ({
@@ -249,25 +261,21 @@
 
       function updateParticles() {
         particles.forEach(p => {
-          p.vy += 0.4; // gravité
+          p.vy += 0.4; 
           p.y  += p.vy;
           p.x  += p.vx;
 
-          // Sol = bas de l'écran
           const floor = canvas.height - p.size;
           if (p.y >= floor) {
             p.y  = floor;
-            p.vy = -p.vy * 0.45; // rebond amorti
+            p.vy = -p.vy * 0.45; 
             p.vx *= 0.8;
             if (Math.abs(p.vy) < 0.8) {
               p.vy = 0;
               p.vx *= 0.9;
             }
-            // Disparition seulement une fois posé
             p.alpha -= 0.025;
           }
-
-          // Pendant la chute, pas de disparition
           if (p.y < floor - 1) {
             p.alpha = Math.max(p.alpha, 0.9);
           }
@@ -288,7 +296,6 @@
         });
       }
 
-      // Update jeu
       let lastTick = 0;
       function update(ts) {
         if (state === STATE.PLAYING && ts - lastTick > SPEED) {
@@ -315,7 +322,6 @@
 
           snake.unshift(head);
         }
-
         if (state === STATE.DYING) updateParticles();
       }
 
@@ -323,14 +329,12 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         if (state === STATE.PLAYING && snake) {
-          // Corps
           for (let i = 1; i < snake.length; i++) {
             ctx.fillStyle = GREEN;
             ctx.fillRect(snake[i].x*CELL, snake[i].y*CELL, CELL-1, CELL-1);
           }
           drawHead(snake[0].x, snake[0].y);
 
-          // Nourriture
           const pulse = 0.5 + 0.5 * Math.sin(Date.now() / 200);
           ctx.fillStyle = `rgba(42, 200, 42, ${pulse})`;
           ctx.fillRect(food.x*CELL, food.y*CELL, CELL-1, CELL-1);
@@ -339,7 +343,6 @@
         if (state === STATE.DYING) drawParticles();
       }
 
-      // Loop principal
       function loop(ts) {
         update(ts);
         draw();
@@ -347,13 +350,11 @@
       }
       requestAnimationFrame(loop);
 
-      // Clavier
       const KEYS = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','z','q','s','d'];
       document.addEventListener('keydown', e => {
         if (!KEYS.includes(e.key)) return;
         if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) e.preventDefault();
 
-        // Démarrer si en attente
         if (state === STATE.WAITING) { startSnake(); return; }
         if (state !== STATE.PLAYING) return;
 
@@ -365,12 +366,5 @@
     }
   </script>
 
-  <div class="title-block">
-      <a href="portfolio/index.html" style="text-decoration: none;">
-        <h1>Welcome</h1>
-      </a>
-      <a id="enter-link" href="portfolio/index.html">— enter —</a>
-    </div>
-  
 </body>
 </html>
