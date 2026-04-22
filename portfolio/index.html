@@ -3,128 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E6 - Parcours & Veille | Jet Set Corporation</title>
+    <title>Portfolio E4/E5 | Jet Set Corporation</title>
     <link rel="icon" type="image/png" href="../assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #000000; --primary: #7c3aff; --secondary: #c026d3; --neon: #a855f7;
             --glass-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1);
             --text-main: #ffffff; --text-muted: #a0a0a0;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-color); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
-
+        body { background: var(--bg-color); color: var(--text-main); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+        
         nav {
-            padding: 24px 5%; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--glass-border);
         }
-        .brand { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; }
-        .nav-links { display: flex; gap: 24px; }
-        .nav-links a {
-            color: var(--text-muted); text-decoration: none; font-family: 'Syne', sans-serif;
-            font-weight: 700; font-size: 0.9rem; text-transform: uppercase; transition: color 0.3s;
-            letter-spacing: 0.1em;
-        }
-        .nav-links a:hover, .nav-links a.active { color: var(--text-main); }
+        .brand { font-family: 'Syne', sans-serif; font-weight: 800; color: #fff; text-decoration: none; font-size: 1.5rem; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 20px; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--neon); }
 
-        header { padding: 60px 5% 20px; text-align: center; }
-        header h1 {
-            font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 4rem); font-weight: 800;
-            background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
+        header { padding: 80px 5% 40px; text-align: center; }
+        header h1 { font-family: 'Syne', sans-serif; font-size: 3rem; background: linear-gradient(to right, #fff, var(--neon)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 5%; display: grid; grid-template-columns: 1fr; gap: 40px; }
-        @media(min-width: 768px) { .container { grid-template-columns: 1fr 1fr; } }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5% 100px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
 
-        .section-box {
-            background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 40px;
-        }
-
-        /* --- STYLES DE LA PHOTO DE PROFIL --- */
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
+        .card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: 0.3s; }
+        .card:hover { border-color: var(--neon); transform: translateY(-5px); }
+        .tag { display: inline-block; padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: bold; margin-bottom: 15px; }
+        .tag-e5 { background: rgba(124, 58, 255, 0.2); color: var(--neon); }
+        .tag-tp { background: rgba(255, 255, 255, 0.1); color: #ccc; }
         
-        .profile-pic {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary);
-            box-shadow: 0 0 20px rgba(124, 58, 255, 0.4);
-        }
-
-        .section-box h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; color: var(--neon); }
-        .section-box p { color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
-        
-        .certif-box { border-left: 3px solid var(--secondary); padding-left: 16px; margin-top: 24px; }
-        .certif-box h4 { font-family: 'Syne', sans-serif; font-size: 1.1rem; margin-bottom: 5px; }
-
-        .veille-tools { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-        .tool { background: rgba(124, 58, 255, 0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; color: var(--text-main); }
+        h3 { font-family: 'Syne', sans-serif; margin-bottom: 15px; }
+        .tech-stack { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+        .tech-badge { font-size: 0.7rem; background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px; border: 1px solid var(--glass-border); }
     </style>
 </head>
 <body>
-
     <nav>
         <a href="../" class="brand">JSC.</a>
         <div class="nav-links">
             <a href="../">Accueil</a>
-            <a href="../portfolio/index.html">Portfolio (E4)</a>
-            <a href="#" class="active">Parcours (E6)</a>
-            <a href="../planning/index.html">Planning</a>
+            <a href="#" class="active">Portfolio</a>
+            <a href="../e6/">Parcours (E6)</a>
+            <a href="../planning/">Planning</a>
         </div>
     </nav>
 
     <header>
-        <h1>Parcours & Veille Tech.</h1>
+        <h1>Projets & Réalisations</h1>
+        <p style="color: var(--text-muted);">Épreuves E4 et E5 - Administration Systèmes et Réseaux</p>
     </header>
 
     <div class="container">
-        <div class="section-box">
-            
-            <div class="profile-header">
-                <img src="../assets/ma-photo.jpg" alt="Owen - Photo de profil" class="profile-pic">
-                <div>
-                    <h2>Owen</h2>
-                    <p style="margin: 0; color: #fff; font-weight: bold;">Étudiant BTS SIO SISR</p>
+        <h2 style="margin-bottom: 30px; font-family: 'Syne'; border-left: 4px solid var(--primary); padding-left: 15px;">Épreuve E5 : Projets Majeurs</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="tag tag-e5">E5 - RÉSEAU</span>
+                <h3>Architecture VLAN & Routage OSPF</h3>
+                <p>Mise en place d'une infrastructure multi-sites sécurisée avec segmentation par VLANs et routage dynamique.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">Cisco IOS</span>
+                    <span class="tech-badge">OSPF v2</span>
+                    <span class="tech-badge">802.1Q</span>
                 </div>
             </div>
-
-            <p>Étudiant en deuxième année de <strong>BTS SIO option SISR</strong> (Solutions d'Infrastructure, Systèmes et Réseaux). Passionné par l'administration des systèmes Linux/Windows et l'architecture des réseaux sécurisés.</p>
-            
-            <div class="certif-box">
-                <h4>Cisco NetAcad</h4>
-                <p>Certification : "Notions de base sur les réseaux" (Networking Basics). Maîtrise des protocoles TCP/IP, IPv4/IPv6, et configuration initiale des équipements Cisco.</p>
-            </div>
-            
-            <div class="certif-box" style="border-left-color: var(--primary);">
-                <h4>Compétences Clés</h4>
-                <p>Routage (OSPF), Commutation (VLAN, Trunk), Services (DHCP, DNS, AD), Sécurité (Pare-feu, HSRP).</p>
+            <div class="card">
+                <span class="tag tag-e5">E5 - SYSTÈME</span>
+                <h3>Haute Disponibilité HSRP</h3>
+                <p>Configuration de la redondance de passerelle pour assurer une continuité de service en cas de panne routeur.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">HSRP</span>
+                    <span class="tech-badge">Failover</span>
+                    <span class="tech-badge">SLA Monitor</span>
+                </div>
             </div>
         </div>
 
-        <div class="section-box">
-            <h2>Veille Technologique</h2>
-            <p>Dans le cadre de mon épreuve E6, j'effectue une veille technologique active sur le thème de la <strong>Cybersécurité et l'Architecture Zero Trust</strong>.</p>
-            <p>Le modèle "Zero Trust" (Ne faire confiance à personne) devient le standard de sécurité face aux menaces internes et externes. Je surveille particulièrement l'évolution des outils d'authentification forte et de micro-segmentation réseau.</p>
-            
-            <h4 style="margin-top: 20px; font-family: 'Syne';">Outils utilisés pour la veille :</h4>
-            <div class="veille-tools">
-                <span class="tool">Feedly (Flux RSS)</span>
-                <span class="tool">Twitter (InfoSec)</span>
-                <span class="tool">ANSSI (Alertes)</span>
-                <span class="tool">Google Alerts</span>
+        <h2 style="margin-top: 60px; margin-bottom: 30px; font-family: 'Syne'; border-left: 4px solid var(--secondary); padding-left: 15px;">Travaux Pratiques & Labos</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="tag tag-tp">LAB</span>
+                <h3>Serveur DHCP Centralisé</h3>
+                <p>Relais DHCP (IP Helper-Address) sur commutateurs de niveau 3.</p>
+            </div>
+            <div class="card">
+                <span class="tag tag-tp">LAB</span>
+                <h3>Virtualisation Proxmox</h3>
+                <p>Déploiement de containers LXC et VMs Debian sécurisées.</p>
+            </div>
+            <div class="card">
+                <span class="tag tag-tp">LAB</span>
+                <h3>Supervision Zabbix</h3>
+                <p>Mise en place d'alertes SNMP sur équipements réseau Cisco.</p>
             </div>
         </div>
     </div>
-
 </body>
 </html>
