@@ -3,101 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio E4/E5 | Jet Set Corporation</title>
+    <title>Portfolio Hub | Jet Set Corporation</title>
     <link rel="icon" type="image/png" href="../assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #000000; --primary: #7c3aff; --secondary: #c026d3; --neon: #a855f7;
+            --bg-color: #000000; --primary: #7c3aff; --neon: #a855f7;
             --glass-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1);
             --text-main: #ffffff; --text-muted: #a0a0a0;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); color: var(--text-main); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+        body { background: var(--bg-color); color: var(--text-main); font-family: 'DM Sans', sans-serif; }
         
         nav {
-            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--glass-border);
+            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--glass-border);
         }
-        .brand { font-family: 'Syne', sans-serif; font-weight: 800; color: #fff; text-decoration: none; font-size: 1.5rem; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 20px; font-weight: 500; transition: 0.3s; }
+        .brand { font-family: 'Syne', sans-serif; font-weight: 800; color: #fff; text-decoration: none; font-size: 1.4rem; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 25px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; }
         .nav-links a:hover, .nav-links a.active { color: var(--neon); }
 
-        header { padding: 80px 5% 40px; text-align: center; }
-        header h1 { font-family: 'Syne', sans-serif; font-size: 3rem; background: linear-gradient(to right, #fff, var(--neon)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .container { max-width: 1000px; margin: 100px auto; padding: 0 5%; text-align: center; }
+        h1 { font-family: 'Syne', sans-serif; font-size: 3rem; margin-bottom: 50px; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 5% 100px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
-
-        .card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: 0.3s; }
-        .card:hover { border-color: var(--neon); transform: translateY(-5px); }
-        .tag { display: inline-block; padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: bold; margin-bottom: 15px; }
-        .tag-e5 { background: rgba(124, 58, 255, 0.2); color: var(--neon); }
-        .tag-tp { background: rgba(255, 255, 255, 0.1); color: #ccc; }
-        
-        h3 { font-family: 'Syne', sans-serif; margin-bottom: 15px; }
-        .tech-stack { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
-        .tech-badge { font-size: 0.7rem; background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px; border: 1px solid var(--glass-border); }
+        .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .hub-card { 
+            background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; 
+            padding: 40px 20px; text-decoration: none; color: #fff; transition: 0.3s; display: block;
+        }
+        .hub-card:hover { transform: translateY(-10px); border-color: var(--primary); background: rgba(124, 58, 255, 0.1); }
+        .hub-card h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; margin-bottom: 15px; color: var(--neon); }
+        .hub-card p { color: var(--text-muted); font-size: 1rem; }
     </style>
 </head>
 <body>
     <nav>
         <a href="../" class="brand">JSC.</a>
         <div class="nav-links">
-            <a href="../">Accueil</a>
             <a href="#" class="active">Portfolio</a>
-            <a href="../e6/">Parcours (E6)</a>
+            <a href="../e5/">E5</a>
+            <a href="../e6/">E6</a>
             <a href="../planning/">Planning</a>
         </div>
     </nav>
 
-    <header>
-        <h1>Projets & Réalisations</h1>
-        <p style="color: var(--text-muted);">Épreuves E4 et E5 - Administration Systèmes et Réseaux</p>
-    </header>
-
     <div class="container">
-        <h2 style="margin-bottom: 30px; font-family: 'Syne'; border-left: 4px solid var(--primary); padding-left: 15px;">Épreuve E5 : Projets Majeurs</h2>
-        <div class="grid">
-            <div class="card">
-                <span class="tag tag-e5">E5 - RÉSEAU</span>
-                <h3>Architecture VLAN & Routage OSPF</h3>
-                <p>Mise en place d'une infrastructure multi-sites sécurisée avec segmentation par VLANs et routage dynamique.</p>
-                <div class="tech-stack">
-                    <span class="tech-badge">Cisco IOS</span>
-                    <span class="tech-badge">OSPF v2</span>
-                    <span class="tech-badge">802.1Q</span>
-                </div>
-            </div>
-            <div class="card">
-                <span class="tag tag-e5">E5 - SYSTÈME</span>
-                <h3>Haute Disponibilité HSRP</h3>
-                <p>Configuration de la redondance de passerelle pour assurer une continuité de service en cas de panne routeur.</p>
-                <div class="tech-stack">
-                    <span class="tech-badge">HSRP</span>
-                    <span class="tech-badge">Failover</span>
-                    <span class="tech-badge">SLA Monitor</span>
-                </div>
-            </div>
-        </div>
-
-        <h2 style="margin-top: 60px; margin-bottom: 30px; font-family: 'Syne'; border-left: 4px solid var(--secondary); padding-left: 15px;">Travaux Pratiques & Labos</h2>
-        <div class="grid">
-            <div class="card">
-                <span class="tag tag-tp">LAB</span>
-                <h3>Serveur DHCP Centralisé</h3>
-                <p>Relais DHCP (IP Helper-Address) sur commutateurs de niveau 3.</p>
-            </div>
-            <div class="card">
-                <span class="tag tag-tp">LAB</span>
-                <h3>Virtualisation Proxmox</h3>
-                <p>Déploiement de containers LXC et VMs Debian sécurisées.</p>
-            </div>
-            <div class="card">
-                <span class="tag tag-tp">LAB</span>
-                <h3>Supervision Zabbix</h3>
-                <p>Mise en place d'alertes SNMP sur équipements réseau Cisco.</p>
-            </div>
+        <h1>Mon Portfolio SISR</h1>
+        <div class="hub-grid">
+            <a href="../e5/" class="hub-card">
+                <h2>Épreuve E5</h2>
+                <p>Missions d'administration systèmes et réseau, et laboratoires Cisco Packet Tracer.</p>
+            </a>
+            <a href="../e6/" class="hub-card">
+                <h2>Épreuve E6</h2>
+                <p>Parcours de professionnalisation, tableau de compétences et veille technologique.</p>
+            </a>
+            <a href="../planning/" class="hub-card">
+                <h2>Planning</h2>
+                <p>Organisation et suivi de mes interventions techniques.</p>
+            </a>
         </div>
     </div>
 </body>
