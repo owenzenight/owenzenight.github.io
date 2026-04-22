@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E6 - Parcours SISR | Jet Set Corporation</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #000000; --primary: #7c3aff; --secondary: #c026d3; --neon: #a855f7;
+            --glass-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff; --text-muted: #a0a0a0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg-color); color: var(--text-main); font-family: 'DM Sans', sans-serif; }
+        
+        nav {
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--glass-border);
+        }
+        .brand { font-family: 'Syne', sans-serif; font-weight: 800; color: #fff; text-decoration: none; font-size: 1.5rem; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 20px; font-weight: 500; }
+        .nav-links a.active { color: var(--neon); }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 5%; }
+        
+        .profile-section { display: flex; align-items: center; gap: 30px; margin-bottom: 60px; background: var(--glass-bg); padding: 40px; border-radius: 30px; border: 1px solid var(--glass-border); flex-wrap: wrap; }
+        .profile-pic { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; box-shadow: 0 0 20px var(--primary); }
+        
+        h2 { font-family: 'Syne', sans-serif; color: var(--neon); margin-bottom: 25px; }
+
+        /* Tableau stylisé */
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--glass-bg); border-radius: 15px; overflow: hidden; border: 1px solid var(--glass-border); }
+        th { background: rgba(124, 58, 255, 0.2); color: white; text-align: left; padding: 15px; font-family: 'Syne'; }
+        td { padding: 15px; border-bottom: 1px solid var(--glass-border); font-size: 0.9rem; }
+        .status { font-weight: bold; color: #22c55e; } /* Vert pour acquis */
+
+        .veille-box { margin-top: 50px; padding: 30px; border-radius: 20px; border: 1px solid var(--glass-border); background: linear-gradient(145deg, rgba(255,255,255,0.02), rgba(124, 58, 255, 0.05)); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../" class="brand">JSC.</a>
+        <div class="nav-links">
+            <a href="../">Accueil</a>
+            <a href="../portfolio/">Portfolio</a>
+            <a href="#" class="active">Parcours (E6)</a>
+            <a href="../planning/">Planning</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="profile-section">
+            <img src="../assets/ma-photo.jpg" alt="Owen" class="profile-pic">
+            <div>
+                <h1 style="font-family: 'Syne'; font-size: 2.5rem;">Owen [NOM]</h1>
+                <p style="color: var(--neon); font-weight: bold;">Étudiant BTS SIO option SISR</p>
+                <p style="color: var(--text-muted); margin-top: 10px;">Passionné par les infrastructures réseaux et la cybersécurité. Actuellement en [Année] au lycée [Nom].</p>
+            </div>
+        </div>
+
+        <h2>Tableau de Compétences (SISR)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Bloc</th>
+                    <th>Compétence</th>
+                    <th>Contexte</th>
+                    <th>État</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>B1</td>
+                    <td>Support et mise à disposition des services</td>
+                    <td>Gestion tickets GLPI</td>
+                    <td class="status">Acquis</td>
+                </tr>
+                <tr>
+                    <td>B2</td>
+                    <td>Administration systèmes et réseaux</td>
+                    <td>Config. Switches/Routeurs Cisco</td>
+                    <td class="status">Acquis</td>
+                </tr>
+                <tr>
+                    <td>B3</td>
+                    <td>Cybersécurité</td>
+                    <td>Audit de vulnérabilités Nmap</td>
+                    <td class="status">En cours</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="veille-box">
+            <h2>Veille Technologique</h2>
+            <p><strong>Sujet :</strong> La Cybersécurité et le modèle Zero Trust.</p>
+            <p style="margin-top: 10px; color: var(--text-muted);">J'utilise <strong>Feedly</strong> et les alertes de l'<strong>ANSSI</strong> pour suivre l'évolution des menaces et des solutions de micro-segmentation réseau.</p>
+        </div>
+    </div>
+</body>
+</html>
