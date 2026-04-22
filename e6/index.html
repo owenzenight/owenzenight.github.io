@@ -30,18 +30,8 @@
 
         .container { max-width: 900px; margin: 0 auto; padding: 0 5% 100px; }
 
-        /* Carte Page de Garde */
-        .cover-card {
-            background: linear-gradient(145deg, rgba(124, 58, 255, 0.1), rgba(0,0,0,0));
-            border: 1px solid var(--primary); border-radius: 16px; padding: 25px;
-            display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;
-        }
-        .cover-card h3 { font-family: 'Syne', sans-serif; color: var(--neon); }
-        .btn-cover { background: var(--primary); color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 0.85rem; transition: 0.3s; }
-        .btn-cover:hover { box-shadow: 0 0 15px var(--primary); }
-
         /* Grille des Fiches E6 */
-        .fiche-container { display: flex; flex-direction: column; gap: 30px; }
+        .fiche-container { display: flex; flex-direction: column; gap: 30px; margin-top: 20px; }
         .fiche-card {
             background: var(--glass-bg); border: 1px solid var(--glass-border);
             border-radius: 20px; padding: 35px; transition: 0.3s;
@@ -62,7 +52,6 @@
         .btn-dl:hover { background: var(--secondary); color: #fff; }
 
         @media (max-width: 600px) {
-            .cover-card { flex-direction: column; text-align: center; gap: 20px; }
             .action-btns { flex-direction: column; }
         }
     </style>
@@ -84,15 +73,6 @@
     </header>
 
     <div class="container">
-        
-        <div class="cover-card">
-            <div>
-                <h3>Page de Présentation Officielle</h3>
-                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">Document d'identification du candidat (Owen LE MOAL).</p>
-            </div>
-            <a href="fichiers/Page_de_garde_E6_Owen.pdf" target="_blank" class="btn-cover">Consulter le document</a>
-        </div>
-
         <div class="fiche-container">
             <div class="fiche-card">
                 <div class="fiche-header">
@@ -106,8 +86,8 @@
                     Mise en place du protocole HSRP (Hot Standby Router Protocol) entre deux routeurs Cisco 2901 pour garantir la continuité de service. En cas de panne du routeur principal, le basculement s'effectue automatiquement de manière transparente pour les utilisateurs.
                 </p>
                 <div class="action-btns">
-                    <a href="fichiers/Fiche_E6_Owen_R1.pdf" target="_blank" class="btn btn-view">👁️ Consulter la fiche</a>
-                    <a href="fichiers/Fiche_E6_Owen_R1.pdf" download class="btn btn-dl">⬇️ Télécharger (PDF)</a>
+                    <a href="fichiers/Fiche_E6_Owen_R1.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
+                    <a href="fichiers/Fiche_E6_Owen_R1.pdf" download class="btn btn-dl">Télécharger (PDF)</a>
                 </div>
             </div>
 
@@ -123,8 +103,8 @@
                     Déploiement d'une solution de supervision active (Zabbix 6.0) sur un serveur Debian 12 hébergé sous Proxmox. L'objectif est de surveiller en temps réel l'état des équipements (Routeur Cisco 2901) et d'identifier rapidement les défaillances.
                 </p>
                 <div class="action-btns">
-                    <a href="fichiers/Fiche_E6_Owen_R2.pdf" target="_blank" class="btn btn-view">👁️ Consulter la fiche</a>
-                    <a href="fichiers/Fiche_E6_Owen_R2.pdf" download class="btn btn-dl">⬇️ Télécharger (PDF)</a>
+                    <a href="fichiers/Fiche_E6_Owen_R2.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
+                    <a href="fichiers/Fiche_E6_Owen_R2.pdf" download class="btn btn-dl">Télécharger (PDF)</a>
                 </div>
             </div>
         </div>
