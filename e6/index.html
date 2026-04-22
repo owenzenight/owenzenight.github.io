@@ -30,7 +30,6 @@
 
         .container { max-width: 900px; margin: 0 auto; padding: 0 5% 100px; }
 
-        /* Grille des Fiches E6 */
         .fiche-container { display: flex; flex-direction: column; gap: 30px; margin-top: 20px; }
         .fiche-card {
             background: var(--glass-bg); border: 1px solid var(--glass-border);
@@ -43,6 +42,7 @@
         .fiche-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; margin-top: 5px; }
         
         .fiche-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; }
+        .fiche-desc strong { color: var(--neon); }
         
         .action-btns { display: flex; gap: 15px; }
         .btn { flex: 1; text-align: center; padding: 12px; border-radius: 10px; font-weight: bold; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
@@ -69,7 +69,7 @@
 
     <header>
         <h1>Épreuve E6</h1>
-        <p>Parcours de professionnalisation : présentation de mes réalisations professionnelles et situations vécues en entreprise (TechNet Solutions).</p>
+        <p>Présentation des situations professionnelles réalisées au sein de l'organisation TechNet Solutions.</p>
     </header>
 
     <div class="container">
@@ -78,16 +78,16 @@
                 <div class="fiche-header">
                     <div>
                         <span class="fiche-num">RÉALISATION N°1</span>
-                        <h2 class="fiche-title">Haute disponibilité et redondance (HSRP)</h2>
+                        <h2 class="fiche-title">Haute disponibilité et redondance réseau</h2>
                     </div>
                 </div>
                 <p class="fiche-desc">
                     <strong>Contexte :</strong> TechNet Solutions. <br>
-                    Mise en place du protocole HSRP (Hot Standby Router Protocol) entre deux routeurs Cisco 2901 pour garantir la continuité de service. En cas de panne du routeur principal, le basculement s'effectue automatiquement de manière transparente pour les utilisateurs.
+                    Mise en œuvre du protocole <strong>HSRP (Hot Standby Router Protocol)</strong> sur des routeurs Cisco 2901 pour assurer la haute disponibilité de la passerelle. L'architecture garantit un basculement automatique et transparent en moins de 15 secondes en cas de défaillance matérielle.
                 </p>
                 <div class="action-btns">
-                    <a href="fichiers/Fiche_E6_Owen_R1.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
-                    <a href="fichiers/Fiche_E6_Owen_R1.pdf" download class="btn btn-dl">Télécharger (PDF)</a>
+                    <a href="../assets/Fiche_E6_Owen_R1.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
+                    <a href="../assets/Fiche_E6_Owen_R1.pdf" download class="btn btn-dl">Télécharger (PDF)</a>
                 </div>
             </div>
 
@@ -95,16 +95,16 @@
                 <div class="fiche-header">
                     <div>
                         <span class="fiche-num">RÉALISATION N°2</span>
-                        <h2 class="fiche-title">Supervision réseau avec Zabbix</h2>
+                        <h2 class="fiche-title">Supervision d'infrastructure avec Zabbix</h2>
                     </div>
                 </div>
                 <p class="fiche-desc">
                     <strong>Contexte :</strong> TechNet Solutions. <br>
-                    Déploiement d'une solution de supervision active (Zabbix 6.0) sur un serveur Debian 12 hébergé sous Proxmox. L'objectif est de surveiller en temps réel l'état des équipements (Routeur Cisco 2901) et d'identifier rapidement les défaillances.
+                    Déploiement d'une solution de supervision <strong>Zabbix 6.0</strong> installée sur un serveur Debian 12 (VM Proxmox). Configuration de la collecte de métriques via le protocole <strong>SNMP</strong> pour le monitoring en temps réel des équipements réseau Cisco.
                 </p>
                 <div class="action-btns">
-                    <a href="fichiers/Fiche_E6_Owen_R2.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
-                    <a href="fichiers/Fiche_E6_Owen_R2.pdf" download class="btn btn-dl">Télécharger (PDF)</a>
+                    <a href="../assets/Fiche_E6_Owen_R2.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
+                    <a href="../assets/Fiche_E6_Owen_R2.pdf" download class="btn btn-dl">Télécharger (PDF)</a>
                 </div>
             </div>
         </div>
