@@ -3,100 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E6 - Parcours SISR | Jet Set Corporation</title>
+    <title>Épreuve E6 - Parcours Pro | Jet Set Corporation</title>
     <link rel="icon" type="image/png" href="../assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #000000; --primary: #7c3aff; --secondary: #c026d3; --neon: #a855f7;
-            --glass-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-color: #000000; --primary: #7c3aff; --neon: #a855f7; --secondary: #c026d3;
+            --glass-bg: rgba(255, 255, 255, 0.03); --glass-border: rgba(255, 255, 255, 0.08);
             --text-main: #ffffff; --text-muted: #a0a0a0;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); color: var(--text-main); font-family: 'DM Sans', sans-serif; }
+        body { background: var(--bg-color); color: var(--text-main); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
         
         nav {
-            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--glass-border);
+            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--glass-border);
+            position: sticky; top: 0; z-index: 100;
         }
-        .brand { font-family: 'Syne', sans-serif; font-weight: 800; color: #fff; text-decoration: none; font-size: 1.5rem; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 20px; font-weight: 500; }
-        .nav-links a.active { color: var(--neon); }
+        .brand { font-family: 'Syne', sans-serif; font-weight: 800; color: #fff; text-decoration: none; font-size: 1.4rem; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 25px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; }
+        .nav-links a:hover, .nav-links a.active { color: var(--neon); }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 60px 5%; }
+        header { padding: 80px 5% 40px; text-align: center; }
+        header h1 { font-family: 'Syne', sans-serif; font-size: 3rem; color: var(--primary); margin-bottom: 15px; }
+        header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 5% 100px; }
+
+        /* Carte Page de Garde */
+        .cover-card {
+            background: linear-gradient(145deg, rgba(124, 58, 255, 0.1), rgba(0,0,0,0));
+            border: 1px solid var(--primary); border-radius: 16px; padding: 25px;
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;
+        }
+        .cover-card h3 { font-family: 'Syne', sans-serif; color: var(--neon); }
+        .btn-cover { background: var(--primary); color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 0.85rem; transition: 0.3s; }
+        .btn-cover:hover { box-shadow: 0 0 15px var(--primary); }
+
+        /* Grille des Fiches E6 */
+        .fiche-container { display: flex; flex-direction: column; gap: 30px; }
+        .fiche-card {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            border-radius: 20px; padding: 35px; transition: 0.3s;
+        }
+        .fiche-card:hover { border-color: var(--secondary); background: rgba(192, 38, 211, 0.05); }
         
-        .profile-section { display: flex; align-items: center; gap: 30px; margin-bottom: 60px; background: var(--glass-bg); padding: 40px; border-radius: 30px; border: 1px solid var(--glass-border); flex-wrap: wrap; }
-        .profile-pic { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; box-shadow: 0 0 20px var(--primary); }
+        .fiche-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; }
+        .fiche-num { font-family: 'Space Mono', monospace; color: var(--secondary); font-size: 0.9rem; font-weight: bold; }
+        .fiche-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; margin-top: 5px; }
         
-        h2 { font-family: 'Syne', sans-serif; color: var(--neon); margin-bottom: 25px; }
+        .fiche-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; }
+        
+        .action-btns { display: flex; gap: 15px; }
+        .btn { flex: 1; text-align: center; padding: 12px; border-radius: 10px; font-weight: bold; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .btn-view { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid var(--glass-border); }
+        .btn-view:hover { background: #fff; color: #000; }
+        .btn-dl { background: transparent; color: var(--secondary); border: 1px solid var(--secondary); }
+        .btn-dl:hover { background: var(--secondary); color: #fff; }
 
-        /* Tableau stylisé */
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--glass-bg); border-radius: 15px; overflow: hidden; border: 1px solid var(--glass-border); }
-        th { background: rgba(124, 58, 255, 0.2); color: white; text-align: left; padding: 15px; font-family: 'Syne'; }
-        td { padding: 15px; border-bottom: 1px solid var(--glass-border); font-size: 0.9rem; }
-        .status { font-weight: bold; color: #22c55e; } /* Vert pour acquis */
-
-        .veille-box { margin-top: 50px; padding: 30px; border-radius: 20px; border: 1px solid var(--glass-border); background: linear-gradient(145deg, rgba(255,255,255,0.02), rgba(124, 58, 255, 0.05)); }
+        @media (max-width: 600px) {
+            .cover-card { flex-direction: column; text-align: center; gap: 20px; }
+            .action-btns { flex-direction: column; }
+        }
     </style>
 </head>
 <body>
     <nav>
         <a href="../" class="brand">JSC.</a>
         <div class="nav-links">
-            <a href="../">Accueil</a>
             <a href="../portfolio/">Portfolio</a>
-            <a href="#" class="active">Parcours (E6)</a>
+            <a href="../e5/">E5</a>
+            <a href="#" class="active">E6</a>
             <a href="../planning/">Planning</a>
         </div>
     </nav>
 
+    <header>
+        <h1>Épreuve E6</h1>
+        <p>Parcours de professionnalisation : présentation de mes réalisations professionnelles et situations vécues en entreprise (TechNet Solutions).</p>
+    </header>
+
     <div class="container">
-        <div class="profile-section">
-            <img src="../assets/ma-photo.jpg" alt="Owen" class="profile-pic">
+        
+        <div class="cover-card">
             <div>
-                <h1 style="font-family: 'Syne'; font-size: 2.5rem;">Owen [NOM]</h1>
-                <p style="color: var(--neon); font-weight: bold;">Étudiant BTS SIO option SISR</p>
-                <p style="color: var(--text-muted); margin-top: 10px;">Passionné par les infrastructures réseaux et la cybersécurité. Actuellement en [Année] au lycée [Nom].</p>
+                <h3>Page de Présentation Officielle</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">Document d'identification du candidat (Owen LE MOAL).</p>
+            </div>
+            <a href="fichiers/Page_de_garde_E6_Owen.pdf" target="_blank" class="btn-cover">Consulter le document</a>
+        </div>
+
+        <div class="fiche-container">
+            <div class="fiche-card">
+                <div class="fiche-header">
+                    <div>
+                        <span class="fiche-num">RÉALISATION N°1</span>
+                        <h2 class="fiche-title">Haute disponibilité et redondance (HSRP)</h2>
+                    </div>
+                </div>
+                <p class="fiche-desc">
+                    <strong>Contexte :</strong> TechNet Solutions. <br>
+                    Mise en place du protocole HSRP (Hot Standby Router Protocol) entre deux routeurs Cisco 2901 pour garantir la continuité de service. En cas de panne du routeur principal, le basculement s'effectue automatiquement de manière transparente pour les utilisateurs.
+                </p>
+                <div class="action-btns">
+                    <a href="fichiers/Fiche_E6_Owen_R1.pdf" target="_blank" class="btn btn-view">👁️ Consulter la fiche</a>
+                    <a href="fichiers/Fiche_E6_Owen_R1.pdf" download class="btn btn-dl">⬇️ Télécharger (PDF)</a>
+                </div>
+            </div>
+
+            <div class="fiche-card">
+                <div class="fiche-header">
+                    <div>
+                        <span class="fiche-num">RÉALISATION N°2</span>
+                        <h2 class="fiche-title">Supervision réseau avec Zabbix</h2>
+                    </div>
+                </div>
+                <p class="fiche-desc">
+                    <strong>Contexte :</strong> TechNet Solutions. <br>
+                    Déploiement d'une solution de supervision active (Zabbix 6.0) sur un serveur Debian 12 hébergé sous Proxmox. L'objectif est de surveiller en temps réel l'état des équipements (Routeur Cisco 2901) et d'identifier rapidement les défaillances.
+                </p>
+                <div class="action-btns">
+                    <a href="fichiers/Fiche_E6_Owen_R2.pdf" target="_blank" class="btn btn-view">👁️ Consulter la fiche</a>
+                    <a href="fichiers/Fiche_E6_Owen_R2.pdf" download class="btn btn-dl">⬇️ Télécharger (PDF)</a>
+                </div>
             </div>
         </div>
 
-        <h2>Tableau de Compétences (SISR)</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Bloc</th>
-                    <th>Compétence</th>
-                    <th>Contexte</th>
-                    <th>État</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>B1</td>
-                    <td>Support et mise à disposition des services</td>
-                    <td>Gestion tickets GLPI</td>
-                    <td class="status">Acquis</td>
-                </tr>
-                <tr>
-                    <td>B2</td>
-                    <td>Administration systèmes et réseaux</td>
-                    <td>Config. Switches/Routeurs Cisco</td>
-                    <td class="status">Acquis</td>
-                </tr>
-                <tr>
-                    <td>B3</td>
-                    <td>Cybersécurité</td>
-                    <td>Audit de vulnérabilités Nmap</td>
-                    <td class="status">En cours</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="veille-box">
-            <h2>Veille Technologique</h2>
-            <p><strong>Sujet :</strong> La Cybersécurité et le modèle Zero Trust.</p>
-            <p style="margin-top: 10px; color: var(--text-muted);">J'utilise <strong>Feedly</strong> et les alertes de l'<strong>ANSSI</strong> pour suivre l'évolution des menaces et des solutions de micro-segmentation réseau.</p>
-        </div>
     </div>
 </body>
 </html>
