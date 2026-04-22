@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Épreuve E5 | Jet Set Corporation</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #000000; --primary: #7c3aff; --neon: #a855f7;
+            --cisco-blue: #00bceb;
+            --glass-bg: rgba(255, 255, 255, 0.03); --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff; --text-muted: #a0a0a0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg-color); color: var(--text-main); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+        
+        nav {
+            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--glass-border);
+        }
+        .brand { font-family: 'Syne', sans-serif; font-weight: 800; color: #fff; text-decoration: none; font-size: 1.4rem; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 25px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; }
+        .nav-links a:hover, .nav-links a.active { color: var(--neon); }
 
+        header { padding: 80px 5% 40px; text-align: center; }
+        header h1 { font-family: 'Syne', sans-serif; font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5% 100px; }
+        .section-title { font-family: 'Syne', sans-serif; font-size: 1.8rem; margin: 60px 0 30px; border-bottom: 1px solid var(--primary); padding-bottom: 10px; }
+
+        /* Missions E5 */
+        .e5-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        .e5-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: 0.3s; }
+        .e5-card:hover { border-color: var(--primary); }
+        .e5-card h3 { font-family: 'Syne', sans-serif; font-size: 1.5rem; margin-bottom: 15px; }
+
+        /* TP Cisco */
+        .tp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+        .tp-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 18px; padding: 25px; display: flex; flex-direction: column; }
+        .tp-card h3 { font-family: 'Syne', sans-serif; font-size: 1.2rem; margin-bottom: 10px; }
+        
+        .download-btns { display: flex; gap: 10px; margin-top: 15px; }
+        .btn-dl { flex: 1; text-align: center; padding: 8px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; text-decoration: none; border: 1px solid var(--glass-border); color: #fff; }
+        .btn-dl:hover { background: #fff; color: #000; }
+        .btn-pkt { border-color: var(--cisco-blue); color: var(--cisco-blue); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../" class="brand">JSC.</a>
+        <div class="nav-links">
+            <a href="../portfolio/">Portfolio</a>
+            <a href="#" class="active">E5</a>
+            <a href="../e6/">E6</a>
+            <a href="../planning/">Planning</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Épreuve E5</h1>
+        <p style="color: var(--text-muted);">Administration des systèmes et réseaux</p>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Missions d'Administration</h2>
+        <div class="e5-grid">
+            <div class="e5-card">
+                <h3>Administration Windows Server & Sécurité</h3>
+                <p>Contrôleur de domaine, GPO, DHCP HA et scripts PowerShell.</p>
+                <a href="windows-server/index.html" style="color: var(--neon); text-decoration: none; font-weight: bold; margin-top: 15px; display: inline-block;">Voir la documentation complète →</a>
+            </div>
+            </div>
+
+        <h2 class="section-title" style="border-color: var(--cisco-blue);">TP Cisco Packet Tracer</h2>
+        <div class="tp-grid">
+            <div class="tp-card">
+                <h3>TP 1 : Routage Statique</h3>
+                <p style="flex-grow: 1; font-size: 0.9rem; color: var(--text-muted);">Mise en place de routes statiques entre routeurs.</p>
+                <div class="download-btns">
+                    <a href="fichiers/tp1.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="fichiers/scripts_tp1.txt" download class="btn-dl">Scripts CLI</a>
+                </div>
+            </div>
+            <div class="tp-card">
+                <h3>TP 2 : Routage OSPF</h3>
+                <p style="flex-grow: 1; font-size: 0.9rem; color: var(--text-muted);">Configuration du protocole OSPF Single-Area.</p>
+                <div class="download-btns">
+                    <a href="fichiers/tp2.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="fichiers/scripts_tp2.txt" download class="btn-dl">Scripts CLI</a>
+                </div>
+            </div>
+            <div class="tp-card">
+                <h3>TP 3 : VLANs & Trunking</h3>
+                <p style="flex-grow: 1; font-size: 0.9rem; color: var(--text-muted);">Segmentation logique et liens Trunk.</p>
+                <div class="download-btns">
+                    <a href="fichiers/tp3.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                </div>
+            </div>
+            <div class="tp-card">
+                <h3>TP 4 : Routage Inter-VLAN</h3>
+                <p style="flex-grow: 1; font-size: 0.9rem; color: var(--text-muted);">Configuration Router-on-a-stick.</p>
+                <div class="download-btns">
+                    <a href="fichiers/tp4.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="fichiers/scripts_tp4.txt" download class="btn-dl">Scripts CLI</a>
+                </div>
+            </div>
+            <div class="tp-card">
+                <h3>TP 5 : DHCP & Relais IP</h3>
+                <p style="flex-grow: 1; font-size: 0.9rem; color: var(--text-muted);">DHCP sur routeur et IP Helper.</p>
+                <div class="download-btns">
+                    <a href="fichiers/tp5.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                </div>
+            </div>
+            <div class="tp-card">
+                <h3>TP 6 : Sécurisation (ACL)</h3>
+                <p style="flex-grow: 1; font-size: 0.9rem; color: var(--text-muted);">Access Control Lists et accès SSH.</p>
+                <div class="download-btns">
+                    <a href="fichiers/tp6.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="fichiers/scripts_tp6.txt" download class="btn-dl">Scripts CLI</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
