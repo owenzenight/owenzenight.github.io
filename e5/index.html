@@ -3,171 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Épreuve E5 | Jet Set Corporation</title>
+    <title>Portfolio Hub | Owen LE MOAL</title>
     <link rel="icon" type="image/png" href="../assets/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #000000; --primary: #7c3aff; --neon: #a855f7;
-            --cisco-blue: #00bceb;
-            --glass-bg: rgba(255, 255, 255, 0.03); --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1);
             --text-main: #ffffff; --text-muted: #a0a0a0;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); color: var(--text-main); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
-        
-        nav {
-            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--glass-border);
-        }
+        body { background: var(--bg-color); color: var(--text-main); font-family: 'DM Sans', sans-serif; }
+        nav { padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--glass-border); }
         .brand { font-family: 'Syne', sans-serif; font-weight: 800; color: #fff; text-decoration: none; font-size: 1.4rem; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 25px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; }
-        .nav-links a:hover, .nav-links a.active { color: var(--neon); }
-
-        header { padding: 80px 5% 40px; text-align: center; }
-        header h1 { font-family: 'Syne', sans-serif; font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 5% 100px; }
-        .section-title { font-family: 'Syne', sans-serif; font-size: 1.8rem; margin: 60px 0 30px; border-bottom: 1px solid var(--primary); padding-bottom: 10px; }
-
-        .e5-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 60px; }
-        .e5-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: 0.3s; }
-        .e5-card:hover { border-color: var(--primary); }
-
-        .tp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
-        .tp-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 18px; padding: 25px; display: flex; flex-direction: column; transition: 0.3s; }
-        .tp-card:hover { border-color: var(--cisco-blue); background: rgba(0, 188, 235, 0.05); }
-        .tp-card h3 { font-family: 'Syne', sans-serif; font-size: 1.2rem; margin-bottom: 10px; }
-        
-        .tech-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px; }
-        .tag { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; color: #ddd; font-weight: bold; }
-
-        .download-btns { display: flex; gap: 10px; margin-top: auto; }
-        .btn-dl { flex: 1; text-align: center; padding: 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; text-decoration: none; border: 1px solid var(--glass-border); color: #fff; transition: 0.2s;}
-        .btn-dl:hover { background: #fff; color: #000; }
-        .btn-pkt { border-color: var(--cisco-blue); color: var(--cisco-blue); background: rgba(0, 188, 235, 0.1); }
-        .btn-pkt:hover { background: var(--cisco-blue); color: #000; }
+        .container { max-width: 1100px; margin: 80px auto; padding: 0 5%; }
+        h1 { font-family: 'Syne', sans-serif; font-size: 2.5rem; margin-bottom: 40px; text-align: center; }
+        .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .hub-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 40px 25px; text-decoration: none; color: #fff; transition: 0.3s; }
+        .hub-card:hover { transform: translateY(-5px); border-color: var(--primary); background: rgba(124, 58, 255, 0.1); }
+        .hub-card span { color: var(--neon); font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hub-card h2 { font-family: 'Syne', sans-serif; font-size: 1.6rem; margin: 10px 0; }
+        .hub-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="../" class="brand">JSC.</a>
-        <div class="nav-links">
-            <a href="../portfolio/">Portfolio</a>
-            <a href="#" class="active">E5</a>
-            <a href="../e6/">E6</a>
-            <a href="../planning/">Planning</a>
-        </div>
-    </nav>
-
-    <header>
-        <h1>Épreuve E5</h1>
-        <p style="color: var(--text-muted);">Administration des systèmes et réseaux</p>
-    </header>
-
+    <nav><a href="../" class="brand">JSC.</a></nav>
     <div class="container">
-        <h2 class="section-title">Missions d'Administration</h2>
-        <div class="e5-grid">
-            <div class="e5-card">
-                <h3>Administration Windows Server & Sécurité</h3>
-                <p style="color: var(--text-muted); margin-bottom: 15px;">Mise en place d'un domaine Active Directory, gestion des GPO, configuration de services réseaux et sécurisation de l'infrastructure.</p>
-                <div class="tech-tags">
-                    <span class="tag">Active Directory</span>
-                    <span class="tag">GPO</span>
-                    <span class="tag">DHCP</span>
-                    <span class="tag">Haute Disponibilité (HA)</span>
-                </div>
-                <a href="windows-server/index.html" style="color: var(--neon); text-decoration: none; font-weight: bold; margin-top: 10px; display: inline-block;">Consulter la documentation complète →</a>
-            </div>
-        </div>
-
-        <h2 class="section-title" style="border-color: var(--cisco-blue);">Labos Cisco Packet Tracer</h2>
-        <div class="tp-grid">
-            
-            <div class="tp-card">
-                <h3>TP 1 : OSPF & Relais DHCP</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Routage dynamique OSPF et mise en place d'un relais DHCP (ip helper-address) pour distribuer les adresses IP aux différents VLANs.</p>
-                <div class="tech-tags">
-                    <span class="tag">OSPF</span>
-                    <span class="tag">Relais DHCP</span>
-                    <span class="tag">VLAN</span>
-                </div>
-                <div class="download-btns">
-                    <a href="../assets/TP1.pkt" download class="btn-dl btn-pkt">Télécharger .pkt</a>
-                    <a href="../assets/TP1_Tutoré.pdf" target="_blank" class="btn-dl">Consulter PDF</a>
-                </div>
-            </div>
-
-            <div class="tp-card">
-                <h3>TP 2 : Routage Inter-VLAN & OSPF</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Configuration d'une infrastructure avec 3 routeurs et routage entre VLANs via des sous-interfaces physiques (dot1Q).</p>
-                <div class="tech-tags">
-                    <span class="tag">OSPF</span>
-                    <span class="tag">DHCP</span>
-                    <span class="tag">Inter-VLAN</span>
-                </div>
-                <div class="download-btns">
-                    <a href="../assets/TP2.pkt" download class="btn-dl btn-pkt">Télécharger .pkt</a>
-                    <a href="../assets/TP2_Tutoré.pdf" target="_blank" class="btn-dl">Consulter PDF</a>
-                </div>
-            </div>
-
-            <div class="tp-card">
-                <h3>TP 3 : Trunking & Dot1Q</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Mise en place de liens Trunk 802.1Q pour permettre la communication de VLANs identiques à travers plusieurs commutateurs.</p>
-                <div class="tech-tags">
-                    <span class="tag">802.1Q</span>
-                    <span class="tag">Trunk</span>
-                    <span class="tag">OSPF</span>
-                </div>
-                <div class="download-btns">
-                    <a href="../assets/TP3.pkt" download class="btn-dl btn-pkt">Télécharger .pkt</a>
-                    <a href="../assets/TP3_Tutoré.pdf" target="_blank" class="btn-dl">Consulter PDF</a>
-                </div>
-            </div>
-
-            <div class="tp-card">
-                <h3>TP 4 : Propagation de VLANs (Trunk)</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Segmentation réseau avancée et acheminement du trafic tagué entre plusieurs switchs jusqu'au routeur central.</p>
-                <div class="tech-tags">
-                    <span class="tag">VLAN</span>
-                    <span class="tag">Trunk</span>
-                    <span class="tag">Switching</span>
-                </div>
-                <div class="download-btns">
-                    <a href="../assets/TP4.pkt" download class="btn-dl btn-pkt">Télécharger .pkt</a>
-                    <a href="../assets/TP4_Tutoré.pdf" target="_blank" class="btn-dl">Consulter PDF</a>
-                </div>
-            </div>
-
-            <div class="tp-card">
-                <h3>TP 5 : Optimisation des routes OSPF</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Configuration optimisée de l'OSPF utilisant des masques génériques pour simplifier la table de routage globale.</p>
-                <div class="tech-tags">
-                    <span class="tag">Wildcard Mask</span>
-                    <span class="tag">DHCP Relay</span>
-                    <span class="tag">OSPF</span>
-                </div>
-                <div class="download-btns">
-                    <a href="../assets/TP5.pkt" download class="btn-dl btn-pkt">Télécharger .pkt</a>
-                    <a href="../assets/TP5_Tutoré.pdf" target="_blank" class="btn-dl">Consulter PDF</a>
-                </div>
-            </div>
-
-            <div class="tp-card">
-                <h3>TP 6 : Redondance HSRP & DHCP</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Mise en place de la Haute Disponibilité (HA) avec le protocole HSRP et configuration de pools DHCP redondants.</p>
-                <div class="tech-tags">
-                    <span class="tag">Haute Disponibilité (HA)</span>
-                    <span class="tag">HSRP</span>
-                    <span class="tag">DHCP Server</span>
-                </div>
-                <div class="download-btns">
-                    <a href="../assets/TP6.pkt" download class="btn-dl btn-pkt">Télécharger .pkt</a>
-                    <a href="../assets/TP6_Tutoré.pdf" target="_blank" class="btn-dl">Consulter PDF</a>
-                </div>
-            </div>
-
+        <h1>Dossier Professionnel E5 & E6</h1>
+        <div class="hub-grid">
+            <a href="../e5/" class="hub-card">
+                <span>Épreuve E5</span>
+                <h2>Administration & Réseaux</h2>
+                <p>Missions documentées : Infrastructure Windows Server, Services Linux (Samba/FTP) et Labos Cisco.</p>
+            </a>
+            <a href="../e6/" class="hub-card">
+                <span>Épreuve E6</span>
+                <h2>Parcours Professionnel</h2>
+                <p>Analyse de situations professionnelles et veille technologique sur la 6G.</p>
+            </a>
+            <a href="../planning/" class="hub-card">
+                <span>Organisation</span>
+                <h2>Tableau de Synthèse</h2>
+                <p>Planning des interventions et suivi des compétences acquises chez TechNet Solutions.</p>
+            </a>
         </div>
     </div>
 </body>
