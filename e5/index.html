@@ -30,13 +30,11 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 5% 100px; }
         .section-title { font-family: 'Syne', sans-serif; font-size: 1.8rem; margin: 60px 0 30px; border-bottom: 1px solid var(--primary); padding-bottom: 10px; }
 
-        /* Missions E5 */
         .e5-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 60px; }
         .e5-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: 0.3s; }
         .e5-card:hover { border-color: var(--primary); }
         .e5-card h3 { font-family: 'Syne', sans-serif; font-size: 1.5rem; margin-bottom: 15px; }
 
-        /* TP Cisco */
         .tp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
         .tp-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 18px; padding: 25px; display: flex; flex-direction: column; transition: 0.3s; }
         .tp-card:hover { border-color: var(--cisco-blue); background: rgba(0, 188, 235, 0.05); }
@@ -73,15 +71,14 @@
         <div class="e5-grid">
             <div class="e5-card">
                 <h3>Administration Windows Server & Sécurité</h3>
-                <p style="color: var(--text-muted); margin-bottom: 15px;">Mise en place d'un contrôleur de domaine, stratégies de groupe (GPO), configuration d'un service DHCP, mise en place de la Haute Disponibilité (HA), et automatisation via scripts PowerShell.</p>
+                <p style="color: var(--text-muted); margin-bottom: 15px;">Mise en place d'un domaine Active Directory, gestion des GPO, configuration de services réseau et sécurisation de l'infrastructure.</p>
                 <div class="tech-tags">
                     <span class="tag">Active Directory</span>
                     <span class="tag">GPO</span>
                     <span class="tag">DHCP</span>
                     <span class="tag">Haute Disponibilité (HA)</span>
-                    <span class="tag">PowerShell</span>
                 </div>
-                <a href="windows-server/index.html" style="color: var(--neon); text-decoration: none; font-weight: bold; margin-top: 10px; display: inline-block;">Voir la documentation complète →</a>
+                <a href="windows-server/index.html" style="color: var(--neon); text-decoration: none; font-weight: bold; margin-top: 10px; display: inline-block;">Consulter la documentation complète →</a>
             </div>
         </div>
 
@@ -90,85 +87,85 @@
             
             <div class="tp-card">
                 <h3>TP 1 : OSPF & Relais DHCP</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Configuration du routage dynamique OSPF (Area 0) entre routeurs Cisco. Déploiement de VLANs et mise en place d'un relais DHCP (ip helper-address) sur les sous-interfaces.</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Configuration du routage OSPF et mise en place d'un relais DHCP avec la commande ip helper-address.</p>
                 <div class="tech-tags">
-                    <span class="tag">OSPF v2</span>
-                    <span class="tag">802.1Q (Trunk)</span>
+                    <span class="tag">OSPF</span>
                     <span class="tag">Relais DHCP</span>
-                </div>
-                <div class="download-btns">
-                    <a href="../assets/TP1.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
-                    <a href="../assets/TP1_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
-                </div>
-            </div>
-
-            <div class="tp-card">
-                <h3>TP 2 : Routage OSPF Multi-réseaux</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Interconnexion de 3 routeurs avec échange des tables de routage via OSPF. Configuration des VLANs et routage inter-VLAN avec encapsulation dot1Q.</p>
-                <div class="tech-tags">
-                    <span class="tag">OSPF</span>
-                    <span class="tag">VLAN / dot1Q</span>
-                    <span class="tag">IP Helper</span>
-                </div>
-                <div class="download-btns">
-                    <a href="../assets/TP2.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
-                    <a href="../assets/TP2_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
-                </div>
-            </div>
-
-            <div class="tp-card">
-                <h3>TP 3 : Interconnexion de VLANs</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Communication entre deux VLANs identiques situés sur des switchs distants. Utilisation de sous-interfaces routeur et propagation des réseaux via OSPF.</p>
-                <div class="tech-tags">
-                    <span class="tag">802.1Q</span>
-                    <span class="tag">OSPF</span>
-                    <span class="tag">Switch Access</span>
-                </div>
-                <div class="download-btns">
-                    <a href="../assets/TP3.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
-                    <a href="../assets/TP3_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
-                </div>
-            </div>
-
-            <div class="tp-card">
-                <h3>TP 4 : Router-on-a-stick</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Déclaration des VLANs sur plusieurs commutateurs. Configuration des ports en "switchport mode trunk" pour faire transiter les trames taguées vers le routeur principal.</p>
-                <div class="tech-tags">
-                    <span class="tag">Trunk 802.1Q</span>
-                    <span class="tag">Router-on-a-stick</span>
                     <span class="tag">VLAN</span>
                 </div>
                 <div class="download-btns">
-                    <a href="../assets/TP4.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
-                    <a href="../assets/TP4_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
+                    <a href="../assets/TP1.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="../assets/TP1_Tutore.pdf" target="_blank" class="btn-dl">Consulter la fiche</a>
                 </div>
             </div>
 
             <div class="tp-card">
-                <h3>TP 5 : Architecture Globale</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Assemblage des concepts. Optimisation des annonces OSPF avec l'utilisation de masques génériques (wildcard masks 0.255.255.255) pour limiter les routes superflues.</p>
+                <h3>TP 2 : Routage Inter-VLAN & OSPF</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Interconnexion de routeurs et configuration du routage inter-VLAN via des sous-interfaces physiques.</p>
                 <div class="tech-tags">
-                    <span class="tag">OSPF (Wildcard Mask)</span>
-                    <span class="tag">DHCP Relay</span>
-                    <span class="tag">Trunking</span>
+                    <span class="tag">OSPF</span>
+                    <span class="tag">DHCP</span>
+                    <span class="tag">Inter-VLAN</span>
                 </div>
                 <div class="download-btns">
-                    <a href="../assets/TP5.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
-                    <a href="../assets/TP5_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
+                    <a href="../assets/TP2.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="../assets/TP2_Tutore.pdf" target="_blank" class="btn-dl">Consulter la fiche</a>
                 </div>
             </div>
 
             <div class="tp-card">
-                <h3>TP 6 : Haute Disponibilité (HA) & DHCP</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Déploiement de la Haute Disponibilité pour la redondance de passerelle via le protocole HSRP (Standby, priority, preempt). Création de pools DHCP natifs séparés directement sur les routeurs.</p>
+                <h3>TP 3 : Trunking & Dot1Q</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Configuration des liens Trunk et encapsulation 802.1Q pour la communication entre VLANs distants.</p>
                 <div class="tech-tags">
-                    <span class="tag">Haute Disponibilité (HSRP)</span>
-                    <span class="tag">Serveur DHCP</span>
+                    <span class="tag">802.1Q</span>
+                    <span class="tag">Trunk</span>
                     <span class="tag">OSPF</span>
                 </div>
                 <div class="download-btns">
+                    <a href="../assets/TP3.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="../assets/TP3_Tutore.pdf" target="_blank" class="btn-dl">Consulter la fiche</a>
+                </div>
+            </div>
+
+            <div class="tp-card">
+                <h3>TP 4 : Propagation de VLANs</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Déclaration de VLANs sur plusieurs commutateurs et acheminement du trafic via des liens Trunk.</p>
+                <div class="tech-tags">
+                    <span class="tag">VLAN 20</span>
+                    <span class="tag">Trunk</span>
+                    <span class="tag">Switching</span>
+                </div>
+                <div class="download-btns">
+                    <a href="../assets/TP4.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="../assets/TP4_Tutore.pdf" target="_blank" class="btn-dl">Consulter la fiche</a>
+                </div>
+            </div>
+
+            <div class="tp-card">
+                <h3>TP 5 : Optimisation OSPF</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Synthèse des architectures précédentes avec optimisation des routes via des masques génériques.</p>
+                <div class="tech-tags">
+                    <span class="tag">Wildcard Mask</span>
+                    <span class="tag">DHCP Relay</span>
+                    <span class="tag">OSPF</span>
+                </div>
+                <div class="download-btns">
+                    <a href="../assets/TP5.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="../assets/TP5_Tutore.pdf" target="_blank" class="btn-dl">Consulter la fiche</a>
+                </div>
+            </div>
+
+            <div class="tp-card">
+                <h3>TP 6 : Redondance HSRP & DHCP</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Mise en place de la haute disponibilité avec HSRP et configuration de pools DHCP locaux sur routeurs.</p>
+                <div class="tech-tags">
+                    <span class="tag">HSRP (HA)</span>
+                    <span class="tag">DHCP Server</span>
+                    <span class="tag">Preempt</span>
+                </div>
+                <div class="download-btns">
                     <a href="../assets/TP6.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
-                    <a href="../assets/TP6_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
+                    <a href="../assets/TP6_Tutore.pdf" target="_blank" class="btn-dl">Consulter la fiche</a>
                 </div>
             </div>
 
