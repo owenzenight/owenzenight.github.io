@@ -69,15 +69,16 @@
     </header>
 
     <div class="container">
-        <h2 class="section-title">Missions d'Administration (E5)</h2>
+        <h2 class="section-title">Missions d'Administration</h2>
         <div class="e5-grid">
             <div class="e5-card">
                 <h3>Administration Windows Server & Sécurité</h3>
-                <p style="color: var(--text-muted); margin-bottom: 15px;">Mise en place d'un contrôleur de domaine, stratégies de groupe (GPO), configuration d'un DHCP en Haute Disponibilité (Failover), et scripts PowerShell.</p>
+                <p style="color: var(--text-muted); margin-bottom: 15px;">Mise en place d'un contrôleur de domaine, stratégies de groupe (GPO), configuration d'un service DHCP, mise en place de la Haute Disponibilité (HA), et automatisation via scripts PowerShell.</p>
                 <div class="tech-tags">
                     <span class="tag">Active Directory</span>
                     <span class="tag">GPO</span>
-                    <span class="tag">DHCP HA</span>
+                    <span class="tag">DHCP</span>
+                    <span class="tag">Haute Disponibilité (HA)</span>
                     <span class="tag">PowerShell</span>
                 </div>
                 <a href="windows-server/index.html" style="color: var(--neon); text-decoration: none; font-weight: bold; margin-top: 10px; display: inline-block;">Voir la documentation complète →</a>
@@ -89,57 +90,57 @@
             
             <div class="tp-card">
                 <h3>TP 1 : OSPF & Relais DHCP</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Configuration du routage dynamique OSPF (Area 0) entre routeurs Cisco. Déploiement de VLANs (10, 20, 30) et mise en place d'un relais DHCP (ip helper-address) sur les sous-interfaces.</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Configuration du routage dynamique OSPF (Area 0) entre routeurs Cisco. Déploiement de VLANs et mise en place d'un relais DHCP (ip helper-address) sur les sous-interfaces.</p>
                 <div class="tech-tags">
                     <span class="tag">OSPF v2</span>
                     <span class="tag">802.1Q (Trunk)</span>
-                    <span class="tag">DHCP (Port 67/68)</span>
+                    <span class="tag">Relais DHCP</span>
                 </div>
                 <div class="download-btns">
-                    <a href="fichiers/tp1.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
-                    <a href="fichiers/TP_1_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
+                    <a href="../assets/TP1.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="../assets/TP1_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
                 </div>
             </div>
 
             <div class="tp-card">
                 <h3>TP 2 : Routage OSPF Multi-réseaux</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Interconnexion de 3 routeurs (A, B, C) avec échange des tables de routage via OSPF. Configuration des VLANs (50, 60) et routage inter-VLAN avec encapsulation dot1Q.</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Interconnexion de 3 routeurs avec échange des tables de routage via OSPF. Configuration des VLANs et routage inter-VLAN avec encapsulation dot1Q.</p>
                 <div class="tech-tags">
                     <span class="tag">OSPF</span>
                     <span class="tag">VLAN / dot1Q</span>
                     <span class="tag">IP Helper</span>
                 </div>
                 <div class="download-btns">
-                    <a href="fichiers/tp2.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
-                    <a href="fichiers/TP_2_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
+                    <a href="../assets/TP2.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="../assets/TP2_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
                 </div>
             </div>
 
             <div class="tp-card">
-                <h3>TP 3 : Interconnexion de VLANs étendus</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Communication entre deux VLANs identiques (VLAN 10) situés sur des switchs distants. Utilisation de sous-interfaces routeur et propagation des réseaux via OSPF.</p>
+                <h3>TP 3 : Interconnexion de VLANs</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Communication entre deux VLANs identiques situés sur des switchs distants. Utilisation de sous-interfaces routeur et propagation des réseaux via OSPF.</p>
                 <div class="tech-tags">
                     <span class="tag">802.1Q</span>
                     <span class="tag">OSPF</span>
-                    <span class="tag">Switchport Mode Access</span>
+                    <span class="tag">Switch Access</span>
                 </div>
                 <div class="download-btns">
-                    <a href="fichiers/tp3.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
-                    <a href="fichiers/TP_3_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
+                    <a href="../assets/TP3.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="../assets/TP3_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
                 </div>
             </div>
 
             <div class="tp-card">
-                <h3>TP 4 : Liaisons Trunk (Router-on-a-stick)</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Déclaration des VLANs sur plusieurs commutateurs. Configuration des ports en "switchport mode trunk" pour faire transiter les trames taguées (802.1Q) vers le routeur principal.</p>
+                <h3>TP 4 : Router-on-a-stick</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Déclaration des VLANs sur plusieurs commutateurs. Configuration des ports en "switchport mode trunk" pour faire transiter les trames taguées vers le routeur principal.</p>
                 <div class="tech-tags">
                     <span class="tag">Trunk 802.1Q</span>
                     <span class="tag">Router-on-a-stick</span>
                     <span class="tag">VLAN</span>
                 </div>
                 <div class="download-btns">
-                    <a href="fichiers/tp4.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
-                    <a href="fichiers/TP_4_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
+                    <a href="../assets/TP4.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="../assets/TP4_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
                 </div>
             </div>
 
@@ -152,22 +153,22 @@
                     <span class="tag">Trunking</span>
                 </div>
                 <div class="download-btns">
-                    <a href="fichiers/tp5.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
-                    <a href="fichiers/TP_5_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
+                    <a href="../assets/TP5.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="../assets/TP5_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
                 </div>
             </div>
 
             <div class="tp-card">
-                <h3>TP 6 : Haute Disponibilité (HSRP) & DHCP</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Déploiement de la redondance de passerelle avec HSRP (Standby ip, priority 101/102, preempt). Création de pools DHCP natifs (ip dhcp pool) directement sur les routeurs avec exclusions d'IP.</p>
+                <h3>TP 6 : Haute Disponibilité (HA) & DHCP</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Déploiement de la Haute Disponibilité pour la redondance de passerelle via le protocole HSRP (Standby, priority, preempt). Création de pools DHCP natifs séparés directement sur les routeurs.</p>
                 <div class="tech-tags">
-                    <span class="tag">HSRP (Standby)</span>
-                    <span class="tag">Serveur DHCP (Cisco IOS)</span>
+                    <span class="tag">Haute Disponibilité (HSRP)</span>
+                    <span class="tag">Serveur DHCP</span>
                     <span class="tag">OSPF</span>
                 </div>
                 <div class="download-btns">
-                    <a href="fichiers/tp6.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
-                    <a href="fichiers/TP_6_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
+                    <a href="../assets/TP6.pkt" download class="btn-dl btn-pkt">Fichier .pkt</a>
+                    <a href="../assets/TP6_Tutore.pdf" target="_blank" class="btn-dl">PDF & Scripts</a>
                 </div>
             </div>
 
