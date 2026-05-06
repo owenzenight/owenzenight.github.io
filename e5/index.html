@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Épreuve E5 | Owen LE MOAL — BTS SIO SISR</title>
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="bg-orbs"></div>
+
+  <nav>
+    <a href="../" class="brand">JSC.</a>
+    <div class="nav-links">
+      <a href="../portfolio/">Portfolio</a>
+      <a href="./" class="active">E5</a>
+      <a href="../e6/">E6</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <span class="tag-line">Épreuve E5</span>
+    <h1>Administration & Réseaux</h1>
+    <p>Présentation des missions d'administration des systèmes et des réseaux réalisées au sein de l'organisation TechNet Solutions, dans le cadre de la formation BTS SIO option SISR.</p>
+  </header>
+
+  <div class="container">
+
+    <!-- INDEX / SOMMAIRE -->
+    <div class="mission-card" style="background: rgba(124,58,255,0.04);">
+      <span class="mission-num">Sommaire</span>
+      <h2 class="mission-title">Index des missions</h2>
+      <ul style="list-style:none; padding:0; margin-top:10px;">
+        <li style="padding:8px 0; border-bottom:1px solid var(--glass-border);"><a href="#mission-1" style="color:var(--text-muted); text-decoration:none;"><strong style="color:#fff">Mission 1</strong> — Déploiement d'une infrastructure Windows Server (AD DS, GPO)</a></li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--glass-border);"><a href="#mission-2" style="color:var(--text-muted); text-decoration:none;"><strong style="color:#fff">Mission 2</strong> — Mise en place de services Linux (Samba, vsftpd)</a></li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--glass-border);"><a href="#mission-3" style="color:var(--text-muted); text-decoration:none;"><strong style="color:#fff">Mission 3</strong> — Mise en place du DHCP Relay et du routage OSPF</a></li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--glass-border);"><a href="#mission-4" style="color:var(--text-muted); text-decoration:none;"><strong style="color:#fff">Mission 4</strong> — Routage OSPF multi-sauts (architecture A↔B↔C)</a></li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--glass-border);"><a href="#mission-5" style="color:var(--text-muted); text-decoration:none;"><strong style="color:#fff">Mission 5</strong> — Extension d'un VLAN sur deux sites distants</a></li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--glass-border);"><a href="#mission-6" style="color:var(--text-muted); text-decoration:none;"><strong style="color:#fff">Mission 6</strong> — Mise en place de VLAN et liens Trunk 802.1Q</a></li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--glass-border);"><a href="#mission-7" style="color:var(--text-muted); text-decoration:none;"><strong style="color:#fff">Mission 7</strong> — Architecture multi-sites avec OSPF, VLAN et DHCP Relay</a></li>
+        <li style="padding:8px 0;"><a href="#mission-8" style="color:var(--text-muted); text-decoration:none;"><strong style="color:#fff">Mission 8</strong> — HSRP — Haute disponibilité de la passerelle</a></li>
+      </ul>
+    </div>
+
+    <div class="mission-list">
+
+      <!-- MISSION 1 — Windows Server -->
+      <div class="mission-card" id="mission-1">
+        <span class="mission-num">Mission 1</span>
+        <h2 class="mission-title">Déploiement d'une infrastructure Windows Server (AD DS & GPO)</h2>
+
+        <div class="mission-section">
+          <span class="label">Contexte</span>
+          <p>L'entreprise <strong>TechNet Solutions</strong> souhaite centraliser la gestion de ses postes utilisateurs et de ses ressources. L'infrastructure actuelle, en groupe de travail, ne permet pas une administration unifiée. La direction demande la mise en place d'un environnement de domaine sécurisé pour le service technique <code>G_tech</code>.</p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Besoins</span>
+          <p>
+            • Mettre en place un contrôleur de domaine basé sur <strong>Active Directory</strong> (annuaire LDAP — port <code>389</code>, ou LDAPS sécurisé sur port <code>636</code>)<br>
+            • Créer un partage réseau accessible en lecture/écriture pour le groupe <code>G_tech</code><br>
+            • Déployer automatiquement les lecteurs réseau via une <strong>GPO</strong> (règles applicables à un groupe d'utilisateurs)<br>
+            • Sécuriser les postes : blocage des ports USB, du Microsoft Store, de l'accès CMD pour les non-administrateurs<br>
+            • Activer la corbeille Active Directory pour la récupération des objets supprimés
+          </p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Réponse aux besoins</span>
+          <p>Une infrastructure complète a été déployée sous Windows Server avec installation du rôle <strong>AD DS</strong>. Le domaine <code>technet.local</code> a été créé, ainsi que l'unité d'organisation <code>G_tech</code>. Plusieurs <strong>GPO</strong> ont été configurées pour automatiser la distribution des lecteurs réseau, sécuriser les postes clients et déployer une application au format MSI. Un <strong>RAID logiciel niveau 5</strong> a été mis en place pour assurer la tolérance de panne sur le serveur de fichiers.</p>
+        </div>
+
+        <div class="action-row">
+          <a href="../assets/Mission1_E5_Owen.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
+          <a href="../assets/Mission1_E5_Owen.pdf" download class="btn btn-dl">Télécharger PDF</a>
+        </div>
+        <p style="margin-top:12px; font-size:0.8rem;" class="tofill">*PDF de procédure à fournir avec captures d'écran*</p>
+      </div>
+
+      <!-- MISSION 2 — Linux -->
+      <div class="mission-card" id="mission-2">
+        <span class="mission-num">Mission 2</span>
+        <h2 class="mission-title">Mise en place de services Linux (Samba & vsftpd)</h2>
+
+        <div class="mission-section">
+          <span class="label">Contexte</span>
+          <p>Pour diversifier son écosystème, <strong>TechNet Solutions</strong> souhaite intégrer un serveur Linux dédié au partage de fichiers et au transfert FTP. Une machine virtuelle <strong>Debian 13</strong> est déployée sur l'hyperviseur Proxmox, sans interface graphique afin de respecter les bonnes pratiques de sécurité et de performance en environnement serveur.</p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Besoins</span>
+          <p>
+            • Installer et configurer <strong>Samba</strong> pour permettre le partage de fichiers entre Linux et Windows<br>
+            • Mettre en place <strong>vsftpd</strong> (Very Secure FTP Daemon) pour le transfert sécurisé de fichiers<br>
+            • Sécuriser les accès par authentification utilisateur<br>
+            • Documenter chaque commande pour assurer la traçabilité des opérations
+          </p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Réponse aux besoins</span>
+          <p>L'installation a été réalisée intégralement en ligne de commande via SSH. Samba a été configuré dans <code>/etc/samba/smb.conf</code> avec un partage protégé par mot de passe. vsftpd a été déployé puis configuré dans <code>/etc/vsftpd.conf</code> pour autoriser uniquement les utilisateurs locaux et désactiver l'accès anonyme. Les services ont été testés depuis un poste client Windows et un client FTP.</p>
+        </div>
+
+        <div class="action-row">
+          <a href="../assets/Mission2_E5_Owen.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
+          <a href="../assets/Mission2_E5_Owen.pdf" download class="btn btn-dl">Télécharger PDF</a>
+        </div>
+        <p style="margin-top:12px; font-size:0.8rem;" class="tofill">*PDF de procédure à fournir avec sorties de commandes*</p>
+      </div>
+
+      <!-- MISSION 3 — TP1 — OSPF + DHCP Relay -->
+      <div class="mission-card" id="mission-3">
+        <span class="mission-num">Mission 3</span>
+        <h2 class="mission-title">DHCP Relay — Centralisation du serveur DHCP entre VLAN</h2>
+
+        <div class="mission-section">
+          <span class="label">Contexte</span>
+          <p>Le siège de <strong>TechNet Solutions</strong> dispose d'un serveur DHCP unique situé sur le VLAN 10. Les postes situés sur les autres VLAN (20 et 30) ne reçoivent aucune configuration IP automatique, car les requêtes DHCP en broadcast ne franchissent pas les routeurs. La direction demande de centraliser la distribution d'adresses tout en assurant l'interconnexion entre les services. La maquette a été validée en <strong>environnement de test Cisco (Labo Cisco)</strong> avant déploiement.</p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Besoins</span>
+          <p>
+            • Permettre à un serveur DHCP unique de servir plusieurs VLAN<br>
+            • Déployer le protocole de routage dynamique <strong>OSPF</strong> (Open Shortest Path First) pour automatiser la propagation des routes<br>
+            • Configurer le <strong>relais DHCP</strong> (<code>ip helper-address</code>) sur les sous-interfaces des routeurs<br>
+            • Mettre en place du <strong>routage inter-VLAN</strong> (router-on-a-stick) avec encapsulation 802.1Q<br>
+            • Valider la connectivité entre les trois VLAN
+          </p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Réponse aux besoins</span>
+          <p>Deux routeurs Cisco 2911 ont été configurés en routeur-sur-bâton (sous-interfaces <code>g0/0.10</code>, <code>g0/0.20</code>, <code>g0/0.30</code>) avec encapsulation <code>dot1Q</code>. La directive <code>ip helper-address 172.16.10.1</code> a été ajoutée sur les sous-interfaces des VLAN 20 et 30 pour relayer les requêtes DHCP vers le serveur du VLAN 10. Le protocole OSPF a été activé en zone unique (<code>area 0</code>) avec annonce des réseaux <code>10.0.10.0/24</code>, <code>172.16.10.0/24</code>, <code>172.16.20.0/24</code> et <code>172.16.30.0/24</code>. Les liens trunk 802.1Q ont été configurés entre les commutateurs et les routeurs.</p>
+        </div>
+
+        <div class="action-row">
+          <a href="../assets/Mission3_E5_Owen.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
+          <a href="../assets/Mission3_E5_Owen.pdf" download class="btn btn-dl">Télécharger PDF</a>
+        </div>
+      </div>
+
+      <!-- MISSION 4 — TP2 — OSPF 3 routeurs -->
+      <div class="mission-card" id="mission-4">
+        <span class="mission-num">Mission 4</span>
+        <h2 class="mission-title">Routage OSPF multi-sauts (architecture A↔B↔C)</h2>
+
+        <div class="mission-section">
+          <span class="label">Contexte</span>
+          <p>L'infrastructure de <strong>TechNet Solutions</strong> évolue : un nouveau site distant doit être interconnecté au siège via un routeur de transit. Le serveur DHCP central (VLAN 50) doit également servir les postes du nouveau site (VLAN 60), à travers une chaîne de trois routeurs A → B → C. Une maquette est mise en place en Labo Cisco pour valider le bon fonctionnement avant la mise en production.</p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Besoins</span>
+          <p>
+            • Interconnecter trois routeurs en série (A ↔ B ↔ C) pour relier deux sites distants<br>
+            • Permettre la propagation automatique des routes via le protocole <strong>OSPF</strong><br>
+            • Faire en sorte que le serveur DHCP du site principal (VLAN 50) serve également les postes du site distant (VLAN 60)<br>
+            • Valider la cohérence des annonces de réseaux : A connaît B, B connaît A et C, C connaît B
+          </p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Réponse aux besoins</span>
+          <p>Les trois routeurs ont été configurés avec le protocole OSPF en zone unique. Les réseaux d'interconnexion (<code>10.0.10.0/24</code>, <code>10.0.11.0/24</code>) et les VLAN (<code>172.16.50.0/24</code>, <code>172.16.60.0/24</code>) ont été annoncés sur chaque routeur. Le relais DHCP (<code>ip helper-address 172.16.50.1</code>) a été configuré sur la sous-interface du VLAN 60 du routeur distant. Les commutateurs ont été configurés avec les VLAN appropriés et les liens trunk 802.1Q. La connectivité a été testée par <code>ping</code> et obtention d'une adresse IP par DHCP depuis un poste du VLAN 60.</p>
+        </div>
+
+        <div class="action-row">
+          <a href="../assets/Mission4_E5_Owen.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
+          <a href="../assets/Mission4_E5_Owen.pdf" download class="btn btn-dl">Télécharger PDF</a>
+        </div>
+      </div>
+
+      <!-- MISSION 5 — TP3 — Même VLAN sur 2 sites -->
+      <div class="mission-card" id="mission-5">
+        <span class="mission-num">Mission 5</span>
+        <h2 class="mission-title">Inter-VLAN Routing — Extension d'un VLAN entre deux sites</h2>
+
+        <div class="mission-section">
+          <span class="label">Contexte</span>
+          <p><strong>TechNet Solutions</strong> dispose de deux bâtiments séparés géographiquement, mais souhaite que les postes du service technique (VLAN 10) puissent communiquer entre eux comme s'ils étaient sur le même réseau local. La contrainte est que chaque site possède son propre routeur, et que les deux routeurs sont reliés par une liaison de transit en <code>10.0.10.0/24</code>.</p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Besoins</span>
+          <p>
+            • Conserver le même VLAN logique (VLAN 10) sur les deux sites<br>
+            • Permettre la communication entre les postes des deux sites malgré la traversée de routeurs<br>
+            • Configurer correctement les sous-interfaces avec encapsulation <strong>dot1Q 10</strong><br>
+            • Mettre en place le routage OSPF pour la connaissance mutuelle des réseaux
+          </p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Réponse aux besoins</span>
+          <p>Sur chaque routeur, une sous-interface <code>g0/0.10</code> avec encapsulation <code>dot1Q 10</code> a été créée, mais avec des adresses IP de réseaux différents (<code>172.16.10.254/24</code> sur le site 1, <code>172.16.20.254/24</code> sur le site 2). Le protocole OSPF a été activé pour la propagation des routes via le réseau de transit <code>10.0.10.0/24</code>. Les commutateurs ont été configurés en mode <strong>access</strong> sur les ports utilisateurs et en mode <strong>trunk</strong> sur les liens montants vers les routeurs. La communication inter-sites a été validée par <code>ping</code>.</p>
+        </div>
+
+        <div class="action-row">
+          <a href="../assets/Mission5_E5_Owen.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
+          <a href="../assets/Mission5_E5_Owen.pdf" download class="btn btn-dl">Télécharger PDF</a>
+        </div>
+      </div>
+
+      <!-- MISSION 6 — TP4 — VLAN + Trunk -->
+      <div class="mission-card" id="mission-6">
+        <span class="mission-num">Mission 6</span>
+        <h2 class="mission-title">Router-on-a-Stick — Routage inter-VLAN via sous-interfaces 802.1Q</h2>
+
+        <div class="mission-section">
+          <span class="label">Contexte</span>
+          <p>Les services administratif et technique de <strong>TechNet Solutions</strong> partagent le même réseau physique, ce qui pose des problèmes de sécurité et de performance (broadcast non maîtrisé). La direction souhaite une <strong>segmentation logique</strong> du réseau pour isoler les flux de chaque service. Les postes des deux services sont répartis sur deux commutateurs interconnectés.</p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Besoins</span>
+          <p>
+            • Segmenter le réseau en <strong>VLAN</strong> (réseaux virtuels permettant la séparation logique des services et des machines)<br>
+            • Créer le VLAN 10 pour le service technique et le VLAN 20 pour l'administration<br>
+            • Permettre le passage des deux VLAN entre les commutateurs via un <strong>lien trunk 802.1Q</strong><br>
+            • Mettre en place un routage inter-VLAN sur le routeur central (router-on-a-stick)
+          </p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Réponse aux besoins</span>
+          <p>Deux VLAN (<code>10</code> et <code>20</code>) ont été déclarés sur les commutateurs. Les ports utilisateurs ont été configurés en mode <strong>access</strong> avec <code>switchport access vlan</code>, et le lien d'interconnexion entre commutateurs a été basculé en mode <strong>trunk</strong> via <code>switchport mode trunk</code>. Sur le routeur, deux sous-interfaces (<code>g0/0.10</code> et <code>g0/0.20</code>) ont été créées avec encapsulation <code>dot1Q</code>, permettant le routage entre VLAN. Le protocole OSPF a été activé pour assurer la cohérence du plan de routage.</p>
+        </div>
+
+        <div class="action-row">
+          <a href="../assets/Mission6_E5_Owen.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
+          <a href="../assets/Mission6_E5_Owen.pdf" download class="btn btn-dl">Télécharger PDF</a>
+        </div>
+      </div>
+
+      <!-- MISSION 7 — TP5 — Architecture complète -->
+      <div class="mission-card" id="mission-7">
+        <span class="mission-num">Mission 7</span>
+        <h2 class="mission-title">Architecture consolidée — Infrastructure multi-sites complète</h2>
+
+        <div class="mission-section">
+          <span class="label">Contexte</span>
+          <p>Suite à l'agrandissement de <strong>TechNet Solutions</strong>, l'infrastructure réseau doit être consolidée pour intégrer trois sites distants, chacun avec son propre VLAN (technique, comptabilité, RH). L'objectif est de centraliser le serveur DHCP du site principal et d'assurer le routage dynamique entre tous les routeurs de l'entreprise. La maquette consolide les configurations des trois précédentes missions Cisco.</p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Besoins</span>
+          <p>
+            • Mettre en œuvre une architecture à <strong>3 routeurs et 3 VLAN</strong> distants<br>
+            • Centraliser la distribution DHCP depuis le site principal (serveur en VLAN 20)<br>
+            • Optimiser les annonces OSPF en utilisant des masques plus larges (<code>0.255.255.255</code>) pour réduire le nombre de routes annoncées<br>
+            • Assurer la connectivité de bout en bout entre tous les VLAN
+          </p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Réponse aux besoins</span>
+          <p>L'architecture déployée comprend trois routeurs Cisco 2911 reliés par deux liaisons de transit (<code>10.0.10.0/24</code> et <code>10.0.11.0/24</code>). Chaque site distant possède son propre commutateur configuré en VLAN local (10, 20, 30). Le routage OSPF a été activé sur tous les routeurs avec des masques généralisés <code>0.255.255.255</code> pour limiter le volume d'annonces. La directive <code>ip helper-address 172.16.20.1</code> a été configurée sur les sous-interfaces des VLAN 10 et 30 pour relayer les requêtes DHCP vers le serveur central. La connectivité a été validée par <code>ping</code> et obtention d'IP par DHCP depuis chaque site.</p>
+        </div>
+
+        <div class="action-row">
+          <a href="../assets/Mission7_E5_Owen.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
+          <a href="../assets/Mission7_E5_Owen.pdf" download class="btn btn-dl">Télécharger PDF</a>
+        </div>
+      </div>
+
+      <!-- MISSION 8 — TP6 — HSRP -->
+      <div class="mission-card" id="mission-8">
+        <span class="mission-num">Mission 8</span>
+        <h2 class="mission-title">HSRP — Haute disponibilité de la passerelle</h2>
+
+        <div class="mission-section">
+          <span class="label">Contexte</span>
+          <p>L'infrastructure réseau de <strong>TechNet Solutions</strong> repose sur des passerelles uniques par site. En cas de défaillance d'un routeur, l'ensemble du site se retrouve isolé du reste du réseau, ce qui interrompt l'activité. La direction souhaite mettre en place une solution de <strong>haute disponibilité</strong> au niveau de la passerelle pour assurer la continuité de service. Cette mission consolide l'ensemble des compétences réseau acquises lors des missions précédentes.</p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Besoins</span>
+          <p>
+            • Garantir la continuité de service en cas de panne d'un routeur<br>
+            • Mettre en place une <strong>redondance de passerelle</strong> avec basculement automatique et transparent<br>
+            • Conserver une seule adresse IP virtuelle pour les postes clients<br>
+            • Le basculement doit être inférieur à 15 secondes<br>
+            • Combiner cette redondance avec le DHCP, l'OSPF et la segmentation VLAN
+          </p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Réponse aux besoins</span>
+          <p>Le protocole <strong>HSRP</strong> (Hot Standby Router Protocol) a été déployé sur deux routeurs Cisco 2911. Deux groupes HSRP ont été créés pour deux interfaces différentes :</p>
+          <p style="margin-top:8px;">
+            • Groupe 1 : IP virtuelle <code>10.0.10.254</code> — Routeur 1 priorité <code>101</code>, Routeur 2 priorité <code>102</code><br>
+            • Groupe 2 : IP virtuelle <code>10.0.11.254</code> — Routeur 1 priorité <code>101</code>, Routeur 2 priorité <code>102</code>
+          </p>
+          <p style="margin-top:8px;">La fonctionnalité <code>standby preempt</code> a été activée pour permettre la reprise automatique du routeur principal après une panne. En parallèle, le serveur DHCP a été configuré directement sur le routeur (<code>ip dhcp pool</code>) avec exclusion des passerelles, et le protocole OSPF a été activé pour le routage dynamique entre les VLAN 10, 20 et le réseau de management. Le basculement a été testé en éteignant le routeur principal : la bascule s'est effectuée en moins de 15 secondes, sans perte de session côté client.</p>
+        </div>
+
+        <div class="action-row">
+          <a href="../assets/Mission8_E5_Owen.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
+          <a href="../assets/Mission8_E5_Owen.pdf" download class="btn btn-dl">Télécharger PDF</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 — Owen LE MOAL — Jet Set Corporation — BTS SIO SISR</p>
+  </footer>
+</body>
+</html>
