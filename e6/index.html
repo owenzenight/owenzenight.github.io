@@ -1,114 +1,172 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Épreuve E6 - Parcours Pro | Jet Set Corporation</title>
-    <link rel="icon" type="image/png" href="../assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #000000; --primary: #7c3aff; --neon: #a855f7; --secondary: #c026d3;
-            --glass-bg: rgba(255, 255, 255, 0.03); --glass-border: rgba(255, 255, 255, 0.08);
-            --text-main: #ffffff; --text-muted: #a0a0a0;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); color: var(--text-main); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
-        
-        nav {
-            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--glass-border);
-            position: sticky; top: 0; z-index: 100;
-        }
-        .brand { font-family: 'Syne', sans-serif; font-weight: 800; color: #fff; text-decoration: none; font-size: 1.4rem; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 25px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; }
-        .nav-links a:hover, .nav-links a.active { color: var(--neon); }
-
-        header { padding: 80px 5% 40px; text-align: center; }
-        header h1 { font-family: 'Syne', sans-serif; font-size: 3rem; color: var(--primary); margin-bottom: 15px; }
-        header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; }
-
-        .container { max-width: 900px; margin: 0 auto; padding: 0 5% 100px; }
-
-        .fiche-container { display: flex; flex-direction: column; gap: 30px; margin-top: 20px; }
-        .fiche-card {
-            background: var(--glass-bg); border: 1px solid var(--glass-border);
-            border-radius: 20px; padding: 35px; transition: 0.3s;
-        }
-        .fiche-card:hover { border-color: var(--secondary); background: rgba(192, 38, 211, 0.05); }
-        
-        .fiche-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; }
-        .fiche-num { font-family: 'Space Mono', monospace; color: var(--secondary); font-size: 0.9rem; font-weight: bold; }
-        .fiche-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; margin-top: 5px; }
-        
-        .fiche-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; }
-        .fiche-desc strong { color: var(--neon); }
-        
-        .action-btns { display: flex; gap: 15px; }
-        .btn { flex: 1; text-align: center; padding: 12px; border-radius: 10px; font-weight: bold; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
-        .btn-view { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid var(--glass-border); }
-        .btn-view:hover { background: #fff; color: #000; }
-        .btn-dl { background: transparent; color: var(--secondary); border: 1px solid var(--secondary); }
-        .btn-dl:hover { background: var(--secondary); color: #fff; }
-
-        @media (max-width: 600px) {
-            .action-btns { flex-direction: column; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Épreuve E6 | Owen LE MOAL — BTS SIO SISR</title>
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-    <nav>
-        <a href="../" class="brand">JSC.</a>
-        <div class="nav-links">
-            <a href="../portfolio/">Portfolio</a>
-            <a href="../e5/">E5</a>
-            <a href="#" class="active">E6</a>
-            <a href="../planning/">Planning</a>
+  <div class="bg-orbs"></div>
+
+  <nav>
+    <a href="../" class="brand">JSC.</a>
+    <div class="nav-links">
+      <a href="../portfolio/">Portfolio</a>
+      <a href="../e5/">E5</a>
+      <a href="./" class="active">E6</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <span class="tag-line">Épreuve E6</span>
+    <h1>Parcours de Professionnalisation</h1>
+    <p>Présentation des situations professionnelles réalisées chez TechNet Solutions et de ma veille technologique sur la 6G.</p>
+  </header>
+
+  <div class="container">
+
+    <!-- INDEX / SOMMAIRE -->
+    <div class="mission-card" style="background: rgba(124,58,255,0.04);">
+      <span class="mission-num">Sommaire</span>
+      <h2 class="mission-title">Index</h2>
+      <ul style="list-style:none; padding:0; margin-top:10px;">
+        <li style="padding:8px 0; border-bottom:1px solid var(--glass-border);"><a href="#mission-1" style="color:var(--text-muted); text-decoration:none;"><strong style="color:#fff">Mission 1</strong> — Haute disponibilité et redondance réseau (HSRP)</a></li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--glass-border);"><a href="#mission-2" style="color:var(--text-muted); text-decoration:none;"><strong style="color:#fff">Mission 2</strong> — Supervision d'infrastructure avec Zabbix</a></li>
+        <li style="padding:8px 0;"><a href="#veille" style="color:var(--text-muted); text-decoration:none;"><strong style="color:#fff">Veille technologique</strong> — La 6G</a></li>
+      </ul>
+    </div>
+
+    <div class="mission-list">
+
+      <!-- MISSION 1 — HSRP -->
+      <div class="mission-card" id="mission-1">
+        <span class="mission-num">Mission 1</span>
+        <h2 class="mission-title">Haute disponibilité et redondance réseau (HSRP)</h2>
+
+        <div class="mission-section">
+          <span class="label">Contexte</span>
+          <p>L'infrastructure réseau de <strong>TechNet Solutions</strong> repose sur une passerelle unique. En cas de défaillance de ce routeur, l'ensemble du site se retrouve isolé du réseau, ce qui interrompt l'activité de l'entreprise. La direction demande la mise en place d'une solution de continuité de service au niveau de la passerelle.</p>
         </div>
-    </nav>
 
-    <header>
-        <h1>Épreuve E6</h1>
-        <p>Présentation des situations professionnelles réalisées au sein de l'organisation TechNet Solutions.</p>
-    </header>
-
-    <div class="container">
-        <div class="fiche-container">
-            <div class="fiche-card">
-                <div class="fiche-header">
-                    <div>
-                        <span class="fiche-num">RÉALISATION N°1</span>
-                        <h2 class="fiche-title">Haute disponibilité et redondance réseau</h2>
-                    </div>
-                </div>
-                <p class="fiche-desc">
-                    <strong>Contexte :</strong> TechNet Solutions. <br>
-                    Mise en œuvre du protocole <strong>HSRP (Hot Standby Router Protocol)</strong> sur des routeurs Cisco 2901 pour assurer la haute disponibilité de la passerelle. L'architecture garantit un basculement automatique et transparent en moins de 15 secondes en cas de défaillance matérielle.
-                </p>
-                <div class="action-btns">
-                    <a href="../assets/Fiche_E6_Owen_R1.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
-                    <a href="../assets/Fiche_E6_Owen_R1.pdf" download class="btn btn-dl">Télécharger (PDF)</a>
-                </div>
-            </div>
-
-            <div class="fiche-card">
-                <div class="fiche-header">
-                    <div>
-                        <span class="fiche-num">RÉALISATION N°2</span>
-                        <h2 class="fiche-title">Supervision d'infrastructure avec Zabbix</h2>
-                    </div>
-                </div>
-                <p class="fiche-desc">
-                    <strong>Contexte :</strong> TechNet Solutions. <br>
-                    Déploiement d'une solution de supervision <strong>Zabbix 6.0</strong> installée sur un serveur Debian 12 (VM Proxmox). Configuration de la collecte de métriques via le protocole <strong>SNMP</strong> pour le monitoring en temps réel des équipements réseau Cisco.
-                </p>
-                <div class="action-btns">
-                    <a href="../assets/Fiche_E6_Owen_R2.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
-                    <a href="../assets/Fiche_E6_Owen_R2.pdf" download class="btn btn-dl">Télécharger (PDF)</a>
-                </div>
-            </div>
+        <div class="mission-section">
+          <span class="label">Besoins</span>
+          <p>
+            • Garantir la continuité de service en cas de panne d'un routeur<br>
+            • Mettre en place une <strong>redondance de passerelle</strong> avec basculement automatique<br>
+            • Le basculement doit être transparent pour les postes utilisateurs<br>
+            • Le temps de bascule doit être inférieur à 15 secondes<br>
+            • À ne pas confondre avec le DHCP HA (qui concerne uniquement la distribution d'adresses IP)
+          </p>
         </div>
+
+        <div class="mission-section">
+          <span class="label">Réponse aux besoins</span>
+          <p>Le protocole <strong>HSRP</strong> (Hot Standby Router Protocol) a été déployé sur deux routeurs <strong>Cisco 2901</strong>. Une adresse IP virtuelle commune a été configurée pour servir de passerelle aux postes clients. Le routeur principal (priorité 110) gère le trafic en temps normal ; le routeur de secours (priorité 100) prend le relais automatiquement en moins de 15 secondes en cas de défaillance détectée. La fonctionnalité <code>preempt</code> a été activée pour permettre au routeur principal de reprendre le contrôle dès son retour en service.</p>
+        </div>
+
+        <div class="action-row">
+          <a href="../assets/Mission1_E6_Owen_HSRP.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
+          <a href="../assets/Mission1_E6_Owen_HSRP.pdf" download class="btn btn-dl">Télécharger PDF</a>
+        </div>
+        <p style="margin-top:12px; font-size:0.8rem;" class="tofill">*PDF avec topologie et configurations à fournir*</p>
+      </div>
+
+      <!-- MISSION 2 — Zabbix -->
+      <div class="mission-card" id="mission-2">
+        <span class="mission-num">Mission 2</span>
+        <h2 class="mission-title">Supervision d'infrastructure avec Zabbix</h2>
+
+        <div class="mission-section">
+          <span class="label">Contexte</span>
+          <p>L'équipe technique de <strong>TechNet Solutions</strong> n'a aucune visibilité sur l'état de santé de ses équipements réseau. Lorsqu'un routeur tombe ou subit une surcharge, la panne n'est détectée que par les utilisateurs finaux, ce qui retarde considérablement les interventions. Une solution de supervision proactive est nécessaire.</p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Besoins</span>
+          <p>
+            • Déployer une solution de supervision réseau open-source<br>
+            • Surveiller en temps réel le routeur Cisco 2901 de l'infrastructure<br>
+            • Collecter les métriques système : CPU, mémoire, état des interfaces, trafic<br>
+            • Recevoir les alertes système via le protocole <strong>Syslog</strong><br>
+            • Mettre en place une remontée d'alertes en cas de seuil critique
+          </p>
+        </div>
+
+        <div class="mission-section">
+          <span class="label">Réponse aux besoins</span>
+          <p>Une machine virtuelle <strong>Debian 12</strong> a été déployée sur l'hyperviseur Proxmox (nommée <code>SRV-MONITORING</code>, IP <code>192.168.3.13/24</code>). <strong>Zabbix 6</strong> a été installé en ligne de commande, sans interface graphique sur le serveur. Le routeur Cisco 2901 a été configuré pour exposer ses métriques via <strong>SNMPv2c</strong> et envoyer ses logs au serveur Zabbix via <strong>Syslog</strong>. Un template Cisco a été appliqué pour automatiser la collecte. Les graphiques de supervision permettent désormais une vision en temps réel de l'état du réseau.</p>
+        </div>
+
+        <div class="action-row">
+          <a href="../assets/Mission2_E6_Owen_Zabbix.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
+          <a href="../assets/Mission2_E6_Owen_Zabbix.pdf" download class="btn btn-dl">Télécharger PDF</a>
+        </div>
+        <p style="margin-top:12px; font-size:0.8rem;" class="tofill">*PDF avec captures d'écran Zabbix à fournir*</p>
+      </div>
 
     </div>
+
+    <!-- ===== VEILLE TECHNO 6G ===== -->
+    <div id="veille" style="margin-top: 80px;">
+      <div style="text-align:center; margin-bottom: 20px;">
+        <span class="tag-line">Veille Technologique</span>
+        <h2 style="font-family:'Syne',sans-serif; font-size:2.2rem; font-weight:800; margin-bottom:14px;">La 6G — Sixième Génération Mobile</h2>
+        <p style="color:var(--text-muted); max-width:700px; margin:0 auto;">Un sujet pertinent qui impacte tous les utilisateurs de réseaux et qui ouvrira de nouvelles opportunités professionnelles.</p>
+      </div>
+
+      <div class="veille-grid">
+
+        <div class="bulle">
+          <div class="bulle-num">1</div>
+          <h3>Pourquoi cette veille ?</h3>
+          <ul>
+            <li>Sujet d'<strong style="color:#fff">impact général</strong> qui concerne tous les utilisateurs de réseaux</li>
+            <li>Fréquences exploitées d'environ <strong style="color:var(--neon)">1 térahertz (1 THz)</strong></li>
+            <li>Débit maximal théorique : <strong style="color:var(--neon)">1 térabit par seconde (1 Tbps)</strong></li>
+            <li><strong style="color:#fff">Intelligence artificielle native</strong> intégrée au protocole pour automatiser les tâches et améliorer l'efficacité</li>
+            <li>Applications concrètes : <strong style="color:#fff">domotique avancée</strong> (serrures électroniques, objets connectés)</li>
+          </ul>
+        </div>
+
+        <div class="bulle">
+          <div class="bulle-num">2</div>
+          <h3>Impact sur la carrière</h3>
+          <ul>
+            <li>Ouvre de <strong style="color:#fff">nouvelles opportunités</strong> dans la gestion et l'exploitation des réseaux</li>
+            <li>Possibilité de mettre en place des <strong style="color:var(--neon)">PCA</strong> (Plans de Continuité d'Activité)</li>
+            <li>Bascule de secours possible : si la fibre est coupée, basculement temporaire sur la 6G</li>
+            <li>Influence sur le déploiement futur des <strong style="color:#fff">outils et architectures</strong> réseau</li>
+            <li>Compétences à anticiper pour rester compétitif sur le marché de l'emploi</li>
+          </ul>
+        </div>
+
+        <div class="bulle">
+          <div class="bulle-num">3</div>
+          <h3>Comment l'organiser ?</h3>
+          <ul>
+            <li><strong style="color:#fff">Google Alertes</strong> configurées sur les mots-clés "6G", "1 THz", "réseaux 6G"</li>
+            <li>Possibilité d'optimiser avec une <strong style="color:var(--neon)">application Cloud</strong> permettant de filtrer et prioriser les informations</li>
+            <li>Suivi des publications de l'<strong style="color:#fff">UIT</strong> (Union Internationale des Télécommunications) et de la <strong style="color:#fff">3GPP</strong></li>
+            <li>Flux RSS d'IT-Connect, ZDNet, Ericsson</li>
+            <li><strong style="color:#fff">Automatisation</strong> de la collecte pour ne retenir que l'essentiel</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div style="text-align:center; margin-top:40px;">
+        <a href="../assets/Veille_6G_Owen.pdf" target="_blank" class="btn btn-view" style="display:inline-block; flex:none; padding:14px 32px; min-width:240px;">Consulter la veille en PDF</a>
+        <p style="margin-top:12px; font-size:0.8rem;" class="tofill">*PDF de la veille à fournir*</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 — Owen LE MOAL — Jet Set Corporation — BTS SIO SISR</p>
+  </footer>
 </body>
 </html>
