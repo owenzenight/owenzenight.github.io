@@ -1,68 +1,109 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Hub | Jet Set Corporation</title>
-    <link rel="icon" type="image/png" href="../assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #000000; --primary: #7c3aff; --neon: #a855f7;
-            --glass-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1);
-            --text-main: #ffffff; --text-muted: #a0a0a0;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); color: var(--text-main); font-family: 'DM Sans', sans-serif; }
-        
-        nav {
-            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--glass-border);
-        }
-        .brand { font-family: 'Syne', sans-serif; font-weight: 800; color: #fff; text-decoration: none; font-size: 1.4rem; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 25px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; }
-        .nav-links a:hover, .nav-links a.active { color: var(--neon); }
-
-        .container { max-width: 1000px; margin: 100px auto; padding: 0 5%; text-align: center; }
-        h1 { font-family: 'Syne', sans-serif; font-size: 3rem; margin-bottom: 50px; }
-
-        .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .hub-card { 
-            background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; 
-            padding: 40px 20px; text-decoration: none; color: #fff; transition: 0.3s; display: block;
-        }
-        .hub-card:hover { transform: translateY(-10px); border-color: var(--primary); background: rgba(124, 58, 255, 0.1); }
-        .hub-card h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; margin-bottom: 15px; color: var(--neon); }
-        .hub-card p { color: var(--text-muted); font-size: 1rem; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Owen LE MOAL — BTS SIO SISR</title>
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-    <nav>
-        <a href="../" class="brand">JSC.</a>
-        <div class="nav-links">
-            <a href="#" class="active">Portfolio</a>
-            <a href="../e5/">E5</a>
-            <a href="../e6/">E6</a>
-            <a href="../planning/">Planning</a>
-        </div>
-    </nav>
+  <div class="bg-orbs"></div>
 
-    <div class="container">
-        <h1>Mon Portfolio SISR</h1>
-        <div class="hub-grid">
-            <a href="../e5/" class="hub-card">
-                <h2>Épreuve E5</h2>
-                <p>Missions d'administration systèmes et réseau, et laboratoires Cisco Packet Tracer.</p>
-            </a>
-            <a href="../e6/" class="hub-card">
-                <h2>Épreuve E6</h2>
-                <p>Parcours de professionnalisation, tableau de compétences et veille technologique.</p>
-            </a>
-            <a href="../planning/" class="hub-card">
-                <h2>Planning</h2>
-                <p>Organisation et suivi de mes interventions techniques.</p>
-            </a>
-        </div>
+  <nav>
+    <a href="../" class="brand">JSC.</a>
+    <div class="nav-links">
+      <a href="./" class="active">Portfolio</a>
+      <a href="../e5/">E5</a>
+      <a href="../e6/">E6</a>
     </div>
+  </nav>
+
+  <header class="page-header">
+    <span class="tag-line">Jet Set Corporation</span>
+    <h1>Portfolio Professionnel</h1>
+    <p>Dossier de pratiques professionnelles — BTS SIO option SISR (Solutions d'Infrastructure, Systèmes et Réseaux). Réalisé dans le cadre des épreuves E5 et E6.</p>
+  </header>
+
+  <div class="container">
+
+    <!-- IDENTITÉ -->
+    <div class="identity-card">
+      <div class="identity-photo">
+        <span class="tofill">*Photo à fournir*</span>
+      </div>
+      <div class="identity-info">
+        <h2>Owen LE MOAL</h2>
+        <div class="role">Étudiant BTS SIO — Option SISR</div>
+        <p><strong>Formation :</strong> 2ème année — *École à fournir*</p>
+        <p><strong>Entreprise de stage :</strong> TechNet Solutions</p>
+        <p><strong>Spécialité :</strong> Administration des systèmes et réseaux</p>
+        <p><strong>Contact :</strong> <span class="tofill">*Email à fournir*</span></p>
+      </div>
+    </div>
+
+    <!-- HUB DES ÉPREUVES -->
+    <h2 style="font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; margin-bottom:24px; letter-spacing:-0.01em;">Mes épreuves</h2>
+
+    <div class="hub-grid">
+      <a href="../e5/" class="hub-card">
+        <span class="tag">Épreuve E5</span>
+        <h2>Administration & Réseaux</h2>
+        <p>Missions d'administration des systèmes (Windows Server, Linux), des réseaux et travaux en Labo Cisco réalisées chez TechNet Solutions.</p>
+      </a>
+
+      <a href="../e6/" class="hub-card">
+        <span class="tag">Épreuve E6</span>
+        <h2>Parcours de Professionnalisation</h2>
+        <p>Situations professionnelles en cybersécurité (Haute Disponibilité, Supervision) et veille technologique sur la 6G.</p>
+      </a>
+
+      <a href="../planning/" class="hub-card">
+        <span class="tag">Privé</span>
+        <h2>Planning Personnel</h2>
+        <p>Espace privé d'organisation pour le suivi des deadlines et la préparation aux épreuves du BTS.</p>
+      </a>
+    </div>
+
+    <!-- COMPÉTENCES -->
+    <h2 style="font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; margin: 60px 0 0; letter-spacing:-0.01em;">Compétences techniques</h2>
+
+    <table class="skills-table">
+      <thead>
+        <tr>
+          <th>Domaine</th>
+          <th>Compétences</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:#fff">Systèmes</strong></td>
+          <td>Windows Server (AD DS, GPO, IIS, WSUS, DFS), Linux Debian (CLI, services réseau), Proxmox VE (virtualisation)</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#fff">Réseaux</strong></td>
+          <td>Cisco IOS, HSRP, OSPF, VLAN, Trunking, DHCP Relay, pfSense (pare-feu)</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#fff">Supervision</strong></td>
+          <td>Zabbix 6, SNMP, Syslog, monitoring temps réel</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#fff">Scripting</strong></td>
+          <td>PowerShell (automatisation Windows), Bash (Linux)</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#fff">Cybersécurité</strong></td>
+          <td>Haute disponibilité, redondance, plans de continuité (PCA)</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <footer>
+    <p>© 2026 — Owen LE MOAL — Jet Set Corporation — BTS SIO SISR</p>
+  </footer>
 </body>
 </html>
