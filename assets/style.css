@@ -1,26 +1,25 @@
 /* ============================================
-   JET SET CORPORATION — EDITORIAL PREMIUM TECH
-   Direction artistique : magazine luxe / Bleu Klein
+   JET SET CORPORATION — EDITORIAL PREMIUM
+   v3 — fond plus chaud, marges plus larges
    ============================================ */
 
 :root {
-  /* Palette */
-  --bg: #F8F6F1;          /* Blanc cassé chaud subtil */
-  --bg-alt: #F0EDE5;      /* Zone alternée */
-  --bg-card: #FCFAF6;     /* Cards */
-  --ink: #0F0F0F;         /* Noir profond (texte) */
-  --ink-muted: #555555;   /* Gris pour body secondaire */
-  --ink-dim: #999999;     /* Gris clair pour métadonnées */
-  --line: #0F0F0F;        /* Filets noirs */
-  --line-soft: rgba(15,15,15,0.12);
+  /* Palette — fond beige plus chaud, plus distinctif */
+  --bg: #EFE7D2;          /* Beige chaud (plus présent que blanc cassé) */
+  --bg-alt: #E5DCC2;      /* Zone alternée */
+  --bg-card: #F5EFE0;     /* Cards plus claires */
+  --ink: #1A1714;         /* Noir chaud */
+  --ink-muted: #5A5147;   /* Gris chaud secondaire */
+  --ink-dim: #8E8676;     /* Gris clair pour métadonnées */
+  --line: #1A1714;
+  --line-soft: rgba(26,23,20,0.14);
 
-  /* Couleur d'accent : BLEU KLEIN — couleur d'art moderne */
+  /* Couleur d'accent : BLEU KLEIN */
   --klein: #0030AB;
   --klein-soft: rgba(0,48,171,0.08);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -34,7 +33,6 @@ body {
   min-height: 100vh;
 }
 
-/* Sélection */
 ::selection { background: var(--klein); color: var(--bg); }
 
 /* ============= NAVIGATION ============= */
@@ -44,7 +42,7 @@ nav.topnav {
   z-index: 100;
   background: var(--bg);
   border-bottom: 1px solid var(--line);
-  padding: 18px 40px;
+  padding: 22px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -53,7 +51,7 @@ nav.topnav {
 .brand {
   font-family: 'Fraunces', serif;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--ink);
   text-decoration: none;
   letter-spacing: -0.02em;
@@ -86,10 +84,7 @@ nav.topnav {
 }
 
 .nav-links a:hover { color: var(--klein); }
-
-.nav-links a.active {
-  color: var(--klein);
-}
+.nav-links a.active { color: var(--klein); }
 .nav-links a.active::before {
   content: '●';
   margin-right: 6px;
@@ -98,7 +93,7 @@ nav.topnav {
 
 /* ============= HEADER PAGE ============= */
 header.page-header {
-  padding: 100px 40px 60px;
+  padding: 100px 60px 60px;
   border-bottom: 1px solid var(--line);
   position: relative;
 }
@@ -149,7 +144,7 @@ header.page-header h1 em {
 }
 
 header.page-header p.lead {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: var(--ink-muted);
   max-width: 680px;
   line-height: 1.55;
@@ -160,13 +155,11 @@ header.page-header p.lead {
 .container {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 60px 40px 120px;
+  padding: 60px 60px 120px;
 }
 
 /* ============= SECTION ============= */
-.section {
-  margin-bottom: 80px;
-}
+.section { margin-bottom: 80px; }
 
 .section-label {
   font-family: 'JetBrains Mono', monospace;
@@ -188,10 +181,7 @@ header.page-header p.lead {
   max-width: 780px;
 }
 
-.section-title em {
-  font-style: italic;
-  color: var(--klein);
-}
+.section-title em { font-style: italic; color: var(--klein); }
 
 /* ============= MISSIONS ============= */
 .mission-list {
@@ -210,9 +200,7 @@ header.page-header p.lead {
   transition: padding 0.3s;
 }
 
-.mission:hover {
-  padding-left: 12px;
-}
+.mission:hover { padding-left: 12px; }
 
 .mission-num {
   font-family: 'JetBrains Mono', monospace;
@@ -296,10 +284,7 @@ header.page-header p.lead {
   cursor: pointer;
 }
 
-.btn:hover {
-  background: var(--ink);
-  color: var(--bg);
-}
+.btn:hover { background: var(--ink); color: var(--bg); }
 
 .btn-primary {
   background: var(--klein);
@@ -384,10 +369,7 @@ header.page-header p.lead {
   font-weight: 500;
 }
 
-.toc-name {
-  font-size: 0.95rem;
-  font-weight: 500;
-}
+.toc-name { font-size: 0.95rem; font-weight: 500; }
 
 .toc-arrow {
   font-family: 'Fraunces', serif;
@@ -404,7 +386,7 @@ header.page-header p.lead {
 /* ============= HUB CARDS (portfolio) ============= */
 .hub-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 0;
   border-top: 1px solid var(--line);
   border-left: 1px solid var(--line);
@@ -414,18 +396,15 @@ header.page-header p.lead {
   display: block;
   text-decoration: none;
   color: var(--ink);
-  padding: 48px 36px;
+  padding: 44px 32px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   transition: background 0.3s;
   position: relative;
-  min-height: 280px;
+  min-height: 260px;
 }
 
-.hub-card:hover {
-  background: var(--ink);
-  color: var(--bg);
-}
+.hub-card:hover { background: var(--ink); color: var(--bg); }
 .hub-card:hover .hub-tag { color: var(--klein); border-color: var(--klein); }
 .hub-card:hover .hub-arrow { color: var(--klein); transform: translate(4px, -4px); }
 
@@ -446,7 +425,7 @@ header.page-header p.lead {
 .hub-card h2 {
   font-family: 'Fraunces', serif;
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.85rem;
   line-height: 1.05;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
@@ -456,8 +435,8 @@ header.page-header p.lead {
 .hub-card:hover h2 em { color: var(--klein); }
 
 .hub-card p {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.92rem;
+  line-height: 1.55;
   color: var(--ink-muted);
   max-width: 320px;
 }
@@ -465,51 +444,34 @@ header.page-header p.lead {
 
 .hub-arrow {
   position: absolute;
-  top: 36px;
-  right: 36px;
+  top: 32px;
+  right: 32px;
   font-family: 'Fraunces', serif;
   font-style: italic;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: var(--ink-dim);
   transition: all 0.3s;
 }
 
-/* ============= IDENTITÉ ============= */
+/* ============= IDENTITÉ (sans photo, plus simple) ============= */
 .identity-block {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 60px;
-  padding: 40px 0;
+  padding: 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   margin-bottom: 60px;
-  align-items: start;
 }
 
-.identity-photo {
-  aspect-ratio: 3/4;
-  background: var(--bg-alt);
-  border: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ink-dim);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  overflow: hidden;
-}
-.identity-photo img { width: 100%; height: 100%; object-fit: cover; }
+.identity-info { padding: 50px 0; max-width: 900px; }
 
 .identity-info h2 {
   font-family: 'Fraunces', serif;
   font-weight: 400;
-  font-size: 3rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1;
   letter-spacing: -0.03em;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
-.identity-info h2 em { font-style: italic; }
+.identity-info h2 em { font-style: italic; color: var(--klein); }
 
 .identity-role {
   font-family: 'JetBrains Mono', monospace;
@@ -517,15 +479,17 @@ header.page-header p.lead {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--klein);
-  margin-bottom: 32px;
+  margin-bottom: 36px;
   font-weight: 500;
 }
 
 .identity-info dl {
   display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 14px 24px;
+  grid-template-columns: 200px 1fr;
+  gap: 16px 32px;
   font-size: 0.95rem;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 24px;
 }
 
 .identity-info dt {
@@ -541,7 +505,11 @@ header.page-header p.lead {
 .identity-info dd {
   color: var(--ink);
   font-weight: 500;
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
 }
+
+.identity-info dd a { color: var(--klein); text-decoration: none; }
 
 /* ============= SKILLS TABLE ============= */
 .skills-table {
@@ -573,13 +541,14 @@ header.page-header p.lead {
 .skills-table td:first-child {
   font-family: 'Fraunces', serif;
   font-weight: 500;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   width: 22%;
   font-style: italic;
 }
 
 .skills-table td:last-child {
   color: var(--ink-muted);
+  line-height: 1.6;
 }
 
 /* ============= SYNTHÈSE TABLE ============= */
@@ -607,10 +576,7 @@ header.page-header p.lead {
   vertical-align: middle;
 }
 
-.synthese-table th.col-mission {
-  text-align: left;
-  width: 32%;
-}
+.synthese-table th.col-mission { text-align: left; width: 32%; }
 
 .synthese-table td {
   padding: 14px 12px;
@@ -773,7 +739,7 @@ header.page-header p.lead {
 /* ============= FOOTER ============= */
 footer {
   border-top: 1px solid var(--line);
-  padding: 40px;
+  padding: 40px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -795,21 +761,20 @@ footer .footer-name {
 
 /* ============= RESPONSIVE ============= */
 @media (max-width: 768px) {
-  nav.topnav { padding: 14px 20px; }
+  nav.topnav { padding: 16px 24px; }
   .nav-links { gap: 16px; }
   .nav-links a { font-size: 0.7rem; }
-  header.page-header { padding: 60px 20px 40px; }
-  .container { padding: 40px 20px 80px; }
+  header.page-header { padding: 60px 24px 40px; }
+  .container { padding: 40px 24px 80px; }
+  footer { padding: 24px; flex-direction: column; align-items: flex-start; }
   .toc { padding: 24px; }
   .mission { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
   .mission-num { padding-top: 0; }
   .veille-grid { grid-template-columns: 1fr; }
-  .identity-block { grid-template-columns: 1fr; gap: 32px; }
   .identity-info dl { grid-template-columns: 1fr; gap: 4px 0; }
   .identity-info dt { padding-top: 12px; }
   .skills-table { font-size: 0.8rem; }
   .skills-table td, .skills-table th { padding: 12px 14px; }
   .synthese-table { font-size: 0.7rem; }
   .synthese-table th, .synthese-table td { padding: 10px 6px; }
-  footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
 }
