@@ -30,68 +30,29 @@
 
   <div class="container">
 
-    <!-- TOC -->
-    <div class="toc">
-      <div class="toc-label">Sommaire</div>
-      <h2 class="toc-title">Index du parcours</h2>
-      <ul>
-        <li><a href="#m1"><span class="toc-num">M.01</span><span class="toc-name">HSRP — Haute disponibilité réseau</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m2"><span class="toc-num">M.02</span><span class="toc-name">Zabbix — Supervision SNMP</span><span class="toc-arrow">→</span></a></li>
-      </ul>
-    </div>
+    <div class="hub-grid">
 
-    <!-- MISSIONS -->
-    <div class="mission-list">
+      <a href="../assets/Fiche_E6_Owen_R1.pdf" target="_blank" class="hub-card">
+        <span class="hub-tag">Mission 01</span>
+        <h2><em>HSRP</em><br>Haute disponibilité</h2>
+        <p>Mise en place du protocole HSRP sur deux routeurs Cisco pour assurer la redondance de la passerelle réseau.</p>
+        <span class="hub-arrow">→</span>
+      </a>
 
-      <article class="mission" id="m1">
-        <div class="mission-num">M.01</div>
-        <div>
-          <h3 class="mission-title"><em>HSRP</em> — Haute disponibilité et redondance réseau</h3>
-          <div class="mission-section">
-            <span class="mission-section-label">Contexte</span>
-            <p>L'infrastructure réseau de <strong>Nomios</strong> repose sur une passerelle unique. En cas de défaillance de ce routeur, l'ensemble du site se retrouve isolé du réseau, ce qui interrompt l'activité.</p>
-          </div>
-          <div class="mission-section">
-            <span class="mission-section-label">Besoins</span>
-            <p>Garantir la continuité de service en cas de panne. Mettre en place une <strong>redondance de passerelle</strong> avec basculement automatique transparent. Bascule en moins de 15 secondes.</p>
-          </div>
-          <div class="mission-section">
-            <span class="mission-section-label">Réponse aux besoins</span>
-            <p>Le protocole <strong>HSRP</strong> a été déployé sur deux routeurs <strong>Cisco 2901</strong>. Une adresse IP virtuelle commune sert de passerelle aux postes. Le routeur principal (priorité <code>110</code>) gère le trafic ; le secours (priorité <code>100</code>) prend le relais en moins de 15 secondes. La fonctionnalité <code>preempt</code> permet au principal de reprendre la main automatiquement.</p>
-          </div>
-          <div class="mission-actions">
-            <a href="../assets/Mission1_E6_Owen_HSRP.pdf" class="btn">Consulter la fiche</a>
-            <a href="../assets/Mission1_E6_Owen_HSRP.pdf" download class="btn btn-primary">Télécharger</a>
-          </div>
-          <span class="tofill">PDF avec topologie et configurations à fournir</span>
-        </div>
-      </article>
-
-      <article class="mission" id="m2">
-        <div class="mission-num">M.02</div>
-        <div>
-          <h3 class="mission-title"><em>Zabbix</em> — Supervision d'infrastructure SNMP</h3>
-          <div class="mission-section">
-            <span class="mission-section-label">Contexte</span>
-            <p>L'équipe technique de <strong>Nomios</strong> n'a aucune visibilité sur l'état de santé de ses équipements réseau. Les pannes ne sont détectées que par les utilisateurs finaux. Une solution de supervision proactive est nécessaire.</p>
-          </div>
-          <div class="mission-section">
-            <span class="mission-section-label">Besoins</span>
-            <p>Déployer une solution de supervision open-source. Surveiller en temps réel le routeur Cisco 2901. Collecter les métriques système via <strong>SNMP</strong>. Recevoir les alertes via <strong>Syslog</strong>.</p>
-          </div>
-          <div class="mission-section">
-            <span class="mission-section-label">Réponse aux besoins</span>
-            <p>Une machine virtuelle <strong>Debian 12</strong> a été déployée sur Proxmox (<code>SRV-MONITORING</code>, IP <code>192.168.3.13/24</code>). <strong>Zabbix 6</strong> a été installé en ligne de commande. Le routeur Cisco 2901 a été configuré pour exposer ses métriques via <strong>SNMPv2c</strong> et envoyer ses logs au serveur via <strong>Syslog</strong>. Un template Cisco a été appliqué pour automatiser la collecte.</p>
-          </div>
-          <div class="mission-actions">
-            <a href="../assets/Mission2_E6_Owen_Zabbix.pdf" class="btn">Consulter la fiche</a>
-            <a href="../assets/Mission2_E6_Owen_Zabbix.pdf" download class="btn btn-primary">Télécharger</a>
-          </div>
-          <span class="tofill">PDF avec captures d'écran Zabbix à fournir</span>
-        </div>
-      </article>
+      <a href="../assets/Fiche_E6_Owen_R2.pdf" target="_blank" class="hub-card">
+        <span class="hub-tag">Mission 02</span>
+        <h2><em>Zabbix</em><br>Supervision SNMP</h2>
+        <p>Déploiement d'une solution de supervision réseau via SNMP et Syslog sur une machine Debian dédiée.</p>
+        <span class="hub-arrow">→</span>
+      </a>
 
     </div>
+
+    <p style="margin-top: 40px; font-size: 0.9rem; color: var(--ink-muted);">
+      Cliquez sur une mission pour consulter la fiche détaillée au format PDF.
+    </p>
+    <span class="tofill" style="margin-top: 12px;">PDFs des missions à fournir</span>
+
   </div>
 
   <footer>
