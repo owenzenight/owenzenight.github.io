@@ -3,218 +3,191 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Jet Set Corporation</title>
+  <title>Welcome</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #ffffff; font-family: Arial, sans-serif; }
 
-    #splash { position: fixed; inset: 0; z-index: 9999; background: #000; }
-    #splash video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    #splash.hidden { display: none; }
-
-    #main { display: none; position: fixed; inset: 0; background: #000; flex-direction: column; align-items: center; justify-content: center; }
-    #main.visible { display: flex; }
-
-    #snake-canvas { position: fixed; inset: 0; z-index: 0; }
-
-    .title-block { position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 15px; }
-    .welcome-link { text-decoration: none; display: inline-block; }
-
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 300;
-      font-size: clamp(1.8rem, 7vw, 7rem);
-      color: #ffffff;
-      letter-spacing: 0.35em;
-      margin-right: -0.35em;
-      text-transform: uppercase;
+    #snake-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
     }
 
-    #enter-link {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 300;
-      font-size: clamp(0.8rem, 2.5vw, 2rem);
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 0.5em;
-      margin-right: -0.5em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding-bottom: 6px;
-      position: relative;
-      transition: color 0.3s;
-      display: inline-block;
+    .welcome-link {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 10;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      color: #0000EE;
+      text-decoration: underline;
+      cursor: pointer;
     }
-    #enter-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 100%; height: 1px;
-      background: rgba(255,255,255,0);
-      transition: background 0.3s;
-    }
-    #enter-link:hover { color: rgba(255,255,255,0.9); }
-    #enter-link:hover::after { background: rgba(255,255,255,0.9); }
+    .welcome-link:visited { color: #551A8B; }
+    .welcome-link:hover { color: #FF0000; }
 
-    #score {
-      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-      font-family: 'Orbitron', sans-serif; font-size: 0.55rem; letter-spacing: 0.3em;
-      color: rgba(255,255,255,0.2); z-index: 2; text-transform: uppercase; white-space: nowrap;
+    .meta-info {
+      position: fixed;
+      bottom: 12px;
+      left: 12px;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      color: #888;
+      z-index: 10;
     }
+
+    .visitor-counter {
+      position: fixed;
+      bottom: 12px;
+      right: 12px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 11px;
+      color: #444;
+      background: #FFFF99;
+      padding: 4px 8px;
+      border: 1px solid #999;
+      z-index: 10;
+    }
+
     #hint {
-      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-      font-family: 'Orbitron', sans-serif; font-size: 0.45rem; letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.12); z-index: 2; text-transform: uppercase; white-space: nowrap;
+      position: fixed;
+      top: 60px;
+      left: 24px;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      color: #aaa;
+      z-index: 10;
+      transition: opacity 0.5s;
     }
-    #location-btn {
-      position: fixed; bottom: 24px; right: 24px;
-      color: rgba(255,255,255,0.4); font-size: 0.6rem; letter-spacing: 0.25em;
-      text-decoration: none; text-transform: uppercase;
-      font-family: 'Orbitron', sans-serif; font-weight: 300;
-      z-index: 100; padding-bottom: 3px; border-bottom: 1px solid transparent;
-      transition: color 0.3s, border-color 0.3s;
-    }
-    #location-btn:hover { color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(255,255,255,0.9); }
   </style>
 </head>
 <body>
-  <div id="splash">
-    <video id="intro-video" autoplay muted playsinline webkit-playsinline>
-      <source src="assets/intro.mp4" type="video/mp4">
-    </video>
+  <canvas id="snake-canvas"></canvas>
+
+  <a href="portfolio/" class="welcome-link">Welcome</a>
+  <div id="hint">click "Welcome" to enter — or play with the snake (arrow keys)</div>
+
+  <div class="meta-info">
+    Best viewed in Internet Explorer 6 — © 2026 Owen LE MOAL
   </div>
 
-  <div id="main">
-    <canvas id="snake-canvas"></canvas>
-    <div id="score">score : 0</div>
-    <div class="title-block">
-      <a href="portfolio/" class="welcome-link"><h1>Welcome</h1></a>
-      <a id="enter-link" href="portfolio/">— enter —</a>
-    </div>
-    <div id="hint">↑ ↓ ← → / z q s d — appuie pour jouer</div>
+  <div class="visitor-counter">
+    visitors: 000847
   </div>
-
-  <a id="location-btn" href="#" target="_blank">Choisy-le-Roi</a>
 
   <script>
-    const ua = navigator.userAgent;
-    const isIOS = /iPhone|iPad|iPod/i.test(ua);
-    const isAndroid = /Android/i.test(ua);
-    const isMobile = isIOS || isAndroid;
-
-    const locBtn = document.getElementById('location-btn');
-    if (isIOS) locBtn.href = "https://maps.apple.com/frame?center=48.754479,2.413426&distance=157.346162&map=hybrid&pitch=30.000000&span=0.000818,0.001283";
-    else if (isAndroid) locBtn.href = "https://www.google.com/maps/search/?api=1&query=5.345317,-4.024429";
-    else locBtn.href = "https://earth.google.com/web/@48.75453851,2.41349318,47.51504992a,174.46396721d,35y,26.03891465h,72.74998411t,360r/data=CgRCAggBOgMKATBCAggASg0I____________ARAA";
-
-    const video = document.getElementById('intro-video');
-    const splash = document.getElementById('splash');
-    const main = document.getElementById('main');
-
-    function showMain() {
-      splash.classList.add('hidden');
-      main.classList.add('visible');
-      if (!isMobile) initSnake();
-      else {
-        document.getElementById('snake-canvas').style.display = 'none';
-        document.getElementById('score').style.display = 'none';
-        document.getElementById('hint').style.display = 'none';
-      }
-    }
-
-    function tryPlay() {
-      const p = video.play();
-      if (p !== undefined) {
-        p.catch(() => { document.addEventListener('touchstart', () => video.play(), { once: true }); });
-      }
-    }
-    tryPlay();
-    video.addEventListener('ended', showMain);
-    setTimeout(showMain, 6000);
-    video.addEventListener('error', showMain);
-
-    function initSnake() {
+    (function() {
       const canvas = document.getElementById('snake-canvas');
       const ctx = canvas.getContext('2d');
-      const scoreEl = document.getElementById('score');
       const hintEl = document.getElementById('hint');
-      const CELL = 24, GREEN = '#2a8c2a', RED = '#ff2222', SPEED = 160;
-      function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-      resize(); window.addEventListener('resize', resize);
+
+      const CELL = 22;
+      const GREEN = '#2a8c2a';
+      const RED = '#ff2222';
+      const SPEED = 160;
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
       const cols = () => Math.floor(canvas.width / CELL);
       const rows = () => Math.floor(canvas.height / CELL);
+
       const STATE = { WAITING: 'waiting', PLAYING: 'playing', DYING: 'dying' };
-      let state = STATE.WAITING, snake = null, dir = {x:1,y:0}, nextDir = {x:1,y:0}, food = null, score = 0, particles = [];
+      let state = STATE.WAITING;
+
+      let snake = null, dir = {x:1,y:0}, nextDir = {x:1,y:0}, food = null, particles = [];
+
       function startSnake() {
         const cx = Math.floor(cols()/2), cy = Math.floor(rows()/2);
         snake = [{x:cx,y:cy},{x:cx-1,y:cy},{x:cx-2,y:cy}];
-        dir = {x:1,y:0}; nextDir = {x:1,y:0}; food = spawnFood(); score = 0;
-        scoreEl.textContent = 'score : 0'; particles = []; state = STATE.PLAYING;
+        dir = {x:1,y:0}; nextDir = {x:1,y:0}; food = spawnFood();
+        particles = []; state = STATE.PLAYING;
         hintEl.style.opacity = '0';
       }
+
       function spawnFood() {
         let f;
-        do { f = {x: Math.floor(Math.random()*(cols()-2))+1, y: Math.floor(Math.random()*(rows()-2))+1}; }
-        while (snake && snake.some(s => s.x===f.x && s.y===f.y));
+        do {
+          f = {x: Math.floor(Math.random()*(cols()-2))+1, y: Math.floor(Math.random()*(rows()-2))+1};
+        } while (snake && snake.some(s => s.x===f.x && s.y===f.y));
         return f;
       }
-      function drawHead(x,y) {
-        ctx.fillStyle = GREEN; ctx.fillRect(x*CELL,y*CELL,CELL-1,CELL-1);
-        ctx.fillStyle = '#000';
+
+      function drawHead(x, y) {
+        ctx.fillStyle = GREEN;
+        ctx.fillRect(x*CELL, y*CELL, CELL-1, CELL-1);
+        ctx.fillStyle = '#fff';
         const es = Math.max(2, Math.floor(CELL/5)), off = Math.floor(CELL/4);
-        if (dir.x===1) { ctx.fillRect(x*CELL+CELL-off-es,y*CELL+off,es,es); ctx.fillRect(x*CELL+CELL-off-es,y*CELL+CELL-off-es-1,es,es); }
-        else if (dir.x===-1) { ctx.fillRect(x*CELL+off,y*CELL+off,es,es); ctx.fillRect(x*CELL+off,y*CELL+CELL-off-es-1,es,es); }
-        else if (dir.y===-1) { ctx.fillRect(x*CELL+off,y*CELL+off,es,es); ctx.fillRect(x*CELL+CELL-off-es-1,y*CELL+off,es,es); }
-        else { ctx.fillRect(x*CELL+off,y*CELL+CELL-off-es-1,es,es); ctx.fillRect(x*CELL+CELL-off-es-1,y*CELL+CELL-off-es-1,es,es); }
+        if (dir.x===1) { ctx.fillRect(x*CELL+CELL-off-es, y*CELL+off, es, es); ctx.fillRect(x*CELL+CELL-off-es, y*CELL+CELL-off-es-1, es, es); }
+        else if (dir.x===-1) { ctx.fillRect(x*CELL+off, y*CELL+off, es, es); ctx.fillRect(x*CELL+off, y*CELL+CELL-off-es-1, es, es); }
+        else if (dir.y===-1) { ctx.fillRect(x*CELL+off, y*CELL+off, es, es); ctx.fillRect(x*CELL+CELL-off-es-1, y*CELL+off, es, es); }
+        else { ctx.fillRect(x*CELL+off, y*CELL+CELL-off-es-1, es, es); ctx.fillRect(x*CELL+CELL-off-es-1, y*CELL+CELL-off-es-1, es, es); }
         ctx.fillStyle = RED;
-        const ls = Math.max(2,Math.floor(CELL/7)), mx = x*CELL+Math.floor((CELL-1)/2), my = y*CELL+Math.floor((CELL-1)/2);
-        if (dir.x===1) ctx.fillRect(x*CELL+CELL-1,my-ls,ls*2,ls);
-        if (dir.x===-1) ctx.fillRect(x*CELL-ls*2,my-ls,ls*2,ls);
-        if (dir.y===-1) ctx.fillRect(mx-ls,y*CELL-ls*2,ls,ls*2);
-        if (dir.y===1) ctx.fillRect(mx-ls,y*CELL+CELL-1,ls,ls*2);
+        const ls = Math.max(2, Math.floor(CELL/7)), mx = x*CELL+Math.floor((CELL-1)/2), my = y*CELL+Math.floor((CELL-1)/2);
+        if (dir.x===1) ctx.fillRect(x*CELL+CELL-1, my-ls, ls*2, ls);
+        if (dir.x===-1) ctx.fillRect(x*CELL-ls*2, my-ls, ls*2, ls);
+        if (dir.y===-1) ctx.fillRect(mx-ls, y*CELL-ls*2, ls, ls*2);
+        if (dir.y===1) ctx.fillRect(mx-ls, y*CELL+CELL-1, ls, ls*2);
       }
+
       function triggerDeath() {
         state = STATE.DYING;
-        particles = snake.map(seg => ({ x:seg.x*CELL+Math.random()*CELL, y:seg.y*CELL+Math.random()*CELL, vy:1+Math.random()*3, vx:(Math.random()-0.5)*2, size:CELL-1, alpha:1 }));
+        particles = snake.map(seg => ({
+          x: seg.x*CELL+Math.random()*CELL, y: seg.y*CELL+Math.random()*CELL,
+          vy: 1+Math.random()*3, vx: (Math.random()-0.5)*2, size: CELL-1, alpha: 1
+        }));
         snake = null; food = null;
       }
+
       function updateParticles() {
         particles.forEach(p => {
           p.vy += 0.4; p.y += p.vy; p.x += p.vx;
           const floor = canvas.height - p.size;
-          if (p.y >= floor) { p.y = floor; p.vy = -p.vy*0.45; p.vx *= 0.8; if (Math.abs(p.vy)<0.8) { p.vy=0; p.vx*=0.9; } p.alpha -= 0.025; }
-          if (p.y < floor-1) p.alpha = Math.max(p.alpha, 0.9);
+          if (p.y >= floor) { p.y = floor; p.vy = -p.vy*0.45; p.vx *= 0.8; if (Math.abs(p.vy)<0.8) { p.vy = 0; p.vx *= 0.9; } p.alpha -= 0.025; }
         });
         particles = particles.filter(p => p.alpha > 0);
         if (particles.length === 0) { state = STATE.WAITING; hintEl.style.opacity = '1'; }
       }
-      function drawParticles() { particles.forEach(p => { ctx.fillStyle = `rgba(42,140,42,${p.alpha})`; ctx.fillRect(p.x,p.y,p.size,p.size); }); }
+
+      function drawParticles() {
+        particles.forEach(p => { ctx.fillStyle = `rgba(42,140,42,${p.alpha})`; ctx.fillRect(p.x, p.y, p.size, p.size); });
+      }
+
       let lastTick = 0;
       function update(ts) {
         if (state === STATE.PLAYING && ts-lastTick > SPEED) {
           lastTick = ts; dir = {...nextDir};
           const head = { x:(snake[0].x+dir.x+cols())%cols(), y:(snake[0].y+dir.y+rows())%rows() };
-          if (head.x === food.x && head.y === food.y) { score++; scoreEl.textContent = `score : ${score}`; food = spawnFood(); }
+          if (head.x === food.x && head.y === food.y) { food = spawnFood(); }
           else snake.pop();
           if (snake.some(s => s.x===head.x && s.y===head.y)) { snake.unshift(head); triggerDeath(); return; }
           snake.unshift(head);
         }
         if (state === STATE.DYING) updateParticles();
       }
+
       function draw() {
-        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         if (state === STATE.PLAYING && snake) {
-          for (let i=1; i<snake.length; i++) { ctx.fillStyle = GREEN; ctx.fillRect(snake[i].x*CELL,snake[i].y*CELL,CELL-1,CELL-1); }
+          for (let i=1; i<snake.length; i++) { ctx.fillStyle = GREEN; ctx.fillRect(snake[i].x*CELL, snake[i].y*CELL, CELL-1, CELL-1); }
           drawHead(snake[0].x, snake[0].y);
           const pulse = 0.5 + 0.5 * Math.sin(Date.now()/200);
-          ctx.fillStyle = `rgba(42,200,42,${pulse})`;
+          ctx.fillStyle = `rgba(255,34,34,${pulse})`;
           ctx.fillRect(food.x*CELL, food.y*CELL, CELL-1, CELL-1);
         }
         if (state === STATE.DYING) drawParticles();
       }
+
       function loop(ts) { update(ts); draw(); requestAnimationFrame(loop); }
       requestAnimationFrame(loop);
+
       const KEYS = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','z','q','s','d'];
       document.addEventListener('keydown', e => {
         if (!KEYS.includes(e.key)) return;
@@ -226,7 +199,7 @@
         if ((e.key==='ArrowLeft'||e.key==='q') && dir.x!==1) nextDir = {x:-1,y:0};
         if ((e.key==='ArrowRight'||e.key==='d') && dir.x!==-1) nextDir = {x:1,y:0};
       });
-    }
+    })();
   </script>
 </body>
 </html>
