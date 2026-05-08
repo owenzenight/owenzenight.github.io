@@ -3,170 +3,156 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Épreuve E6 | Owen LE MOAL — BTS SIO SISR</title>
+  <title>Épreuve E6 — Parcours professionnel · Owen LE MOAL</title>
   <link rel="icon" type="image/png" href="../assets/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,30..100,0..1;1,9..144,300..700,30..100,0..1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-  <div class="bg-orbs"></div>
-
-  <nav>
-    <a href="../" class="brand">JSC.</a>
+  <nav class="topnav">
+    <a href="../" class="brand">Owen LE MOAL<sup>2026</sup></a>
     <div class="nav-links">
       <a href="../portfolio/">Portfolio</a>
       <a href="../e5/">E5</a>
       <a href="./" class="active">E6</a>
+      <a href="../synthese/">Synthèse</a>
     </div>
   </nav>
 
   <header class="page-header">
-    <span class="tag-line">Épreuve E6</span>
-    <h1>Parcours de Professionnalisation</h1>
-    <p>Présentation des situations professionnelles réalisées chez TechNet Solutions et de ma veille technologique sur la 6G.</p>
+    <div class="page-meta">
+      Épreuve E6 <span class="accent-dot"></span> Bloc 3 <span class="accent-dot"></span> 2 missions + veille
+    </div>
+    <h1>Parcours<br><em>professionnel.</em></h1>
+    <p class="lead">Présentation des situations professionnelles réalisées chez TechNet Solutions, accompagnées de ma veille technologique sur la sixième génération mobile.</p>
   </header>
 
   <div class="container">
 
-    <!-- INDEX / SOMMAIRE -->
-    <div class="mission-card" style="background: rgba(124,58,255,0.04);">
-      <span class="mission-num">Sommaire</span>
-      <h2 class="mission-title">Index</h2>
-      <ul style="list-style:none; padding:0; margin-top:10px;">
-        <li style="padding:8px 0; border-bottom:1px solid var(--glass-border);"><a href="#mission-1" style="color:var(--text-muted); text-decoration:none;"><strong style="color:#fff">Mission 1</strong> — Haute disponibilité et redondance réseau (HSRP)</a></li>
-        <li style="padding:8px 0; border-bottom:1px solid var(--glass-border);"><a href="#mission-2" style="color:var(--text-muted); text-decoration:none;"><strong style="color:#fff">Mission 2</strong> — Supervision d'infrastructure avec Zabbix</a></li>
-        <li style="padding:8px 0;"><a href="#veille" style="color:var(--text-muted); text-decoration:none;"><strong style="color:#fff">Veille technologique</strong> — La 6G</a></li>
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-label">Sommaire</div>
+      <h2 class="toc-title">Index du parcours</h2>
+      <ul>
+        <li><a href="#m1"><span class="toc-num">M.01</span><span class="toc-name">HSRP — Haute disponibilité réseau</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m2"><span class="toc-num">M.02</span><span class="toc-name">Zabbix — Supervision SNMP</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#veille"><span class="toc-num">V.01</span><span class="toc-name">Veille technologique — La 6G</span><span class="toc-arrow">→</span></a></li>
       </ul>
     </div>
 
+    <!-- MISSIONS -->
     <div class="mission-list">
 
-      <!-- MISSION 1 — HSRP -->
-      <div class="mission-card" id="mission-1">
-        <span class="mission-num">Mission 1</span>
-        <h2 class="mission-title">Haute disponibilité et redondance réseau (HSRP)</h2>
-
-        <div class="mission-section">
-          <span class="label">Contexte</span>
-          <p>L'infrastructure réseau de <strong>TechNet Solutions</strong> repose sur une passerelle unique. En cas de défaillance de ce routeur, l'ensemble du site se retrouve isolé du réseau, ce qui interrompt l'activité de l'entreprise. La direction demande la mise en place d'une solution de continuité de service au niveau de la passerelle.</p>
+      <!-- HSRP -->
+      <article class="mission" id="m1">
+        <div class="mission-num">M.01</div>
+        <div>
+          <h3 class="mission-title"><em>HSRP</em> — Haute disponibilité et redondance réseau</h3>
+          <div class="mission-section">
+            <span class="mission-section-label">Contexte</span>
+            <p>L'infrastructure réseau de <strong>TechNet Solutions</strong> repose sur une passerelle unique. En cas de défaillance de ce routeur, l'ensemble du site se retrouve isolé du réseau, ce qui interrompt l'activité de l'entreprise. La direction demande la mise en place d'une solution de continuité de service au niveau de la passerelle.</p>
+          </div>
+          <div class="mission-section">
+            <span class="mission-section-label">Besoins</span>
+            <p>Garantir la continuité de service en cas de panne d'un routeur. Mettre en place une <strong>redondance de passerelle</strong> avec basculement automatique. Le basculement doit être transparent pour les postes utilisateurs. Le temps de bascule doit être inférieur à 15 secondes. À ne pas confondre avec le DHCP HA (qui concerne uniquement la distribution d'adresses IP).</p>
+          </div>
+          <div class="mission-section">
+            <span class="mission-section-label">Réponse aux besoins</span>
+            <p>Le protocole <strong>HSRP</strong> (Hot Standby Router Protocol) a été déployé sur deux routeurs <strong>Cisco 2901</strong>. Une adresse IP virtuelle commune sert de passerelle aux postes clients. Le routeur principal (priorité <code>110</code>) gère le trafic en temps normal ; le routeur de secours (priorité <code>100</code>) prend le relais automatiquement en moins de 15 secondes en cas de défaillance détectée. La fonctionnalité <code>preempt</code> a été activée pour permettre au routeur principal de reprendre le contrôle dès son retour en service.</p>
+          </div>
+          <div class="mission-actions">
+            <a href="../assets/Mission1_E6_Owen_HSRP.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/Mission1_E6_Owen_HSRP.pdf" download class="btn btn-primary">Télécharger</a>
+          </div>
+          <span class="tofill">PDF avec topologie et configurations à fournir</span>
         </div>
+      </article>
 
-        <div class="mission-section">
-          <span class="label">Besoins</span>
-          <p>
-            • Garantir la continuité de service en cas de panne d'un routeur<br>
-            • Mettre en place une <strong>redondance de passerelle</strong> avec basculement automatique<br>
-            • Le basculement doit être transparent pour les postes utilisateurs<br>
-            • Le temps de bascule doit être inférieur à 15 secondes<br>
-            • À ne pas confondre avec le DHCP HA (qui concerne uniquement la distribution d'adresses IP)
-          </p>
+      <!-- ZABBIX -->
+      <article class="mission" id="m2">
+        <div class="mission-num">M.02</div>
+        <div>
+          <h3 class="mission-title"><em>Zabbix</em> — Supervision d'infrastructure SNMP</h3>
+          <div class="mission-section">
+            <span class="mission-section-label">Contexte</span>
+            <p>L'équipe technique de <strong>TechNet Solutions</strong> n'a aucune visibilité sur l'état de santé de ses équipements réseau. Lorsqu'un routeur tombe ou subit une surcharge, la panne n'est détectée que par les utilisateurs finaux, ce qui retarde considérablement les interventions. Une solution de supervision proactive est nécessaire.</p>
+          </div>
+          <div class="mission-section">
+            <span class="mission-section-label">Besoins</span>
+            <p>Déployer une solution de supervision réseau open-source. Surveiller en temps réel le routeur Cisco 2901 de l'infrastructure. Collecter les métriques système : CPU, mémoire, état des interfaces, trafic. Recevoir les alertes système via le protocole <strong>Syslog</strong>. Mettre en place une remontée d'alertes en cas de seuil critique.</p>
+          </div>
+          <div class="mission-section">
+            <span class="mission-section-label">Réponse aux besoins</span>
+            <p>Une machine virtuelle <strong>Debian 12</strong> a été déployée sur l'hyperviseur Proxmox (nommée <code>SRV-MONITORING</code>, IP <code>192.168.3.13/24</code>). <strong>Zabbix 6</strong> a été installé en ligne de commande, sans interface graphique sur le serveur. Le routeur Cisco 2901 a été configuré pour exposer ses métriques via <strong>SNMPv2c</strong> et envoyer ses logs au serveur Zabbix via <strong>Syslog</strong>. Un template Cisco a été appliqué pour automatiser la collecte. Les graphiques permettent désormais une vision en temps réel.</p>
+          </div>
+          <div class="mission-actions">
+            <a href="../assets/Mission2_E6_Owen_Zabbix.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/Mission2_E6_Owen_Zabbix.pdf" download class="btn btn-primary">Télécharger</a>
+          </div>
+          <span class="tofill">PDF avec captures d'écran Zabbix à fournir</span>
         </div>
-
-        <div class="mission-section">
-          <span class="label">Réponse aux besoins</span>
-          <p>Le protocole <strong>HSRP</strong> (Hot Standby Router Protocol) a été déployé sur deux routeurs <strong>Cisco 2901</strong>. Une adresse IP virtuelle commune a été configurée pour servir de passerelle aux postes clients. Le routeur principal (priorité 110) gère le trafic en temps normal ; le routeur de secours (priorité 100) prend le relais automatiquement en moins de 15 secondes en cas de défaillance détectée. La fonctionnalité <code>preempt</code> a été activée pour permettre au routeur principal de reprendre le contrôle dès son retour en service.</p>
-        </div>
-
-        <div class="action-row">
-          <a href="../assets/Mission1_E6_Owen_HSRP.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
-          <a href="../assets/Mission1_E6_Owen_HSRP.pdf" download class="btn btn-dl">Télécharger PDF</a>
-        </div>
-        <p style="margin-top:12px; font-size:0.8rem;" class="tofill">*PDF avec topologie et configurations à fournir*</p>
-      </div>
-
-      <!-- MISSION 2 — Zabbix -->
-      <div class="mission-card" id="mission-2">
-        <span class="mission-num">Mission 2</span>
-        <h2 class="mission-title">Supervision d'infrastructure avec Zabbix</h2>
-
-        <div class="mission-section">
-          <span class="label">Contexte</span>
-          <p>L'équipe technique de <strong>TechNet Solutions</strong> n'a aucune visibilité sur l'état de santé de ses équipements réseau. Lorsqu'un routeur tombe ou subit une surcharge, la panne n'est détectée que par les utilisateurs finaux, ce qui retarde considérablement les interventions. Une solution de supervision proactive est nécessaire.</p>
-        </div>
-
-        <div class="mission-section">
-          <span class="label">Besoins</span>
-          <p>
-            • Déployer une solution de supervision réseau open-source<br>
-            • Surveiller en temps réel le routeur Cisco 2901 de l'infrastructure<br>
-            • Collecter les métriques système : CPU, mémoire, état des interfaces, trafic<br>
-            • Recevoir les alertes système via le protocole <strong>Syslog</strong><br>
-            • Mettre en place une remontée d'alertes en cas de seuil critique
-          </p>
-        </div>
-
-        <div class="mission-section">
-          <span class="label">Réponse aux besoins</span>
-          <p>Une machine virtuelle <strong>Debian 12</strong> a été déployée sur l'hyperviseur Proxmox (nommée <code>SRV-MONITORING</code>, IP <code>192.168.3.13/24</code>). <strong>Zabbix 6</strong> a été installé en ligne de commande, sans interface graphique sur le serveur. Le routeur Cisco 2901 a été configuré pour exposer ses métriques via <strong>SNMPv2c</strong> et envoyer ses logs au serveur Zabbix via <strong>Syslog</strong>. Un template Cisco a été appliqué pour automatiser la collecte. Les graphiques de supervision permettent désormais une vision en temps réel de l'état du réseau.</p>
-        </div>
-
-        <div class="action-row">
-          <a href="../assets/Mission2_E6_Owen_Zabbix.pdf" target="_blank" class="btn btn-view">Consulter la fiche</a>
-          <a href="../assets/Mission2_E6_Owen_Zabbix.pdf" download class="btn btn-dl">Télécharger PDF</a>
-        </div>
-        <p style="margin-top:12px; font-size:0.8rem;" class="tofill">*PDF avec captures d'écran Zabbix à fournir*</p>
-      </div>
+      </article>
 
     </div>
 
-    <!-- ===== VEILLE TECHNO 6G ===== -->
-    <div id="veille" style="margin-top: 80px;">
-      <div style="text-align:center; margin-bottom: 20px;">
-        <span class="tag-line">Veille Technologique</span>
-        <h2 style="font-family:'Syne',sans-serif; font-size:2.2rem; font-weight:800; margin-bottom:14px;">La 6G — Sixième Génération Mobile</h2>
-        <p style="color:var(--text-muted); max-width:700px; margin:0 auto;">Un sujet pertinent qui impacte tous les utilisateurs de réseaux et qui ouvrira de nouvelles opportunités professionnelles.</p>
-      </div>
+    <!-- VEILLE 6G -->
+    <section id="veille" class="section" style="margin-top: 100px;">
+      <div class="section-label">Veille technologique · V.01</div>
+      <h2 class="section-title">La <em>6G</em> — Sixième génération mobile</h2>
+      <p style="color: var(--ink-muted); font-size: 1.05rem; max-width: 720px; margin-bottom: 20px;">Un sujet pertinent qui impacte l'avenir des réseaux et qui ouvre de nouvelles opportunités professionnelles. Veille structurée en trois axes.</p>
 
       <div class="veille-grid">
 
         <div class="bulle">
-          <div class="bulle-num">1</div>
+          <span class="bulle-num">01</span>
           <h3>Pourquoi cette veille ?</h3>
           <ul>
-            <li>Sujet d'<strong style="color:#fff">impact général</strong> qui concerne tous les utilisateurs de réseaux</li>
-            <li>Fréquences exploitées d'environ <strong style="color:var(--neon)">1 térahertz (1 THz)</strong></li>
-            <li>Débit maximal théorique : <strong style="color:var(--neon)">1 térabit par seconde (1 Tbps)</strong></li>
-            <li><strong style="color:#fff">Intelligence artificielle native</strong> intégrée au protocole pour automatiser les tâches et améliorer l'efficacité</li>
-            <li>Applications concrètes : <strong style="color:#fff">domotique avancée</strong> (serrures électroniques, objets connectés)</li>
+            <li>Sujet d'<strong>impact général</strong> qui concerne tous les utilisateurs de réseaux</li>
+            <li>Fréquences exploitées d'environ <strong>1 térahertz (1 THz)</strong></li>
+            <li>Débit maximal théorique : <strong>1 térabit par seconde (1 Tbps)</strong></li>
+            <li><strong>Intelligence artificielle native</strong> intégrée au protocole pour automatiser les tâches</li>
+            <li>Applications concrètes : <strong>domotique avancée</strong> (serrures électroniques, objets connectés)</li>
           </ul>
         </div>
 
         <div class="bulle">
-          <div class="bulle-num">2</div>
+          <span class="bulle-num">02</span>
           <h3>Impact sur la carrière</h3>
           <ul>
-            <li>Ouvre de <strong style="color:#fff">nouvelles opportunités</strong> dans la gestion et l'exploitation des réseaux</li>
-            <li>Possibilité de mettre en place des <strong style="color:var(--neon)">PCA</strong> (Plans de Continuité d'Activité)</li>
+            <li><strong>Nouvelles opportunités</strong> dans la gestion et l'exploitation des réseaux</li>
+            <li>Possibilité de mettre en place des <strong>PCA</strong> (Plans de Continuité d'Activité)</li>
             <li>Bascule de secours possible : si la fibre est coupée, basculement temporaire sur la 6G</li>
-            <li>Influence sur le déploiement futur des <strong style="color:#fff">outils et architectures</strong> réseau</li>
-            <li>Compétences à anticiper pour rester compétitif sur le marché de l'emploi</li>
+            <li>Influence sur le déploiement futur des <strong>outils et architectures</strong> réseau</li>
+            <li>Compétences à anticiper pour rester compétitif sur le marché</li>
           </ul>
         </div>
 
         <div class="bulle">
-          <div class="bulle-num">3</div>
+          <span class="bulle-num">03</span>
           <h3>Comment l'organiser ?</h3>
           <ul>
-            <li><strong style="color:#fff">Google Alertes</strong> configurées sur les mots-clés "6G", "1 THz", "réseaux 6G"</li>
-            <li>Possibilité d'optimiser avec une <strong style="color:var(--neon)">application Cloud</strong> permettant de filtrer et prioriser les informations</li>
-            <li>Suivi des publications de l'<strong style="color:#fff">UIT</strong> (Union Internationale des Télécommunications) et de la <strong style="color:#fff">3GPP</strong></li>
+            <li><strong>Google Alertes</strong> sur les mots-clés "6G", "1 THz", "réseaux 6G"</li>
+            <li>Optimisation possible avec une <strong>application Cloud</strong> de filtrage et de priorisation</li>
+            <li>Suivi des publications de l'<strong>UIT</strong> et de la <strong>3GPP</strong></li>
             <li>Flux RSS d'IT-Connect, ZDNet, Ericsson</li>
-            <li><strong style="color:#fff">Automatisation</strong> de la collecte pour ne retenir que l'essentiel</li>
+            <li><strong>Automatisation</strong> de la collecte pour ne retenir que l'essentiel</li>
           </ul>
         </div>
 
       </div>
 
-      <div style="text-align:center; margin-top:40px;">
-        <a href="../assets/Veille_6G_Owen.pdf" target="_blank" class="btn btn-view" style="display:inline-block; flex:none; padding:14px 32px; min-width:240px;">Consulter la veille en PDF</a>
-        <p style="margin-top:12px; font-size:0.8rem;" class="tofill">*PDF de la veille à fournir*</p>
+      <div style="margin-top: 50px; display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="../assets/Veille_6G_Owen.pdf" target="_blank" class="btn">Consulter la veille en PDF</a>
+        <a href="../assets/Veille_6G_Owen_LEMOAL.pptx" download class="btn btn-primary">Télécharger PowerPoint</a>
       </div>
-    </div>
+      <span class="tofill" style="margin-top: 12px;">PDF de la veille à fournir</span>
+    </section>
 
   </div>
 
   <footer>
-    <p>© 2026 — Owen LE MOAL — Jet Set Corporation — BTS SIO SISR</p>
+    <div class="footer-meta">© 2026 — JET SET CORPORATION</div>
+    <div class="footer-name">Owen LE MOAL · BTS SIO SISR</div>
   </footer>
 </body>
 </html>
