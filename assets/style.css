@@ -1,131 +1,815 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio — Owen LE MOAL · BTS SIO SISR</title>
-  <link rel="icon" type="image/png" href="../assets/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,30..100,0..1;1,9..144,300..700,30..100,0..1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-  <nav class="topnav">
-    <a href="../" class="brand">Owen LE MOAL<sup>2026</sup></a>
-    <div class="nav-links">
-      <a href="./" class="active">Portfolio</a>
-      <a href="../e5/">E5</a>
-      <a href="../e6/">E6</a>
-      <a href="../synthese/">Synthèse</a>
-    </div>
-  </nav>
+/* ============================================
+   JET SET CORPORATION — EDITORIAL PREMIUM TECH
+   Direction artistique : magazine luxe / Bleu Klein
+   ============================================ */
 
-  <header class="page-header">
-    <div class="page-meta">
-      Index <span class="accent-dot"></span> BTS SIO · Option SISR <span class="accent-dot"></span> Session 2026
-    </div>
-    <h1>Portfolio<br><em>professionnel.</em></h1>
-    <p class="lead">Dossier de pratiques professionnelles — BTS Services Informatiques aux Organisations, option Solutions d'Infrastructure, Systèmes et Réseaux. Présenté dans le cadre des épreuves orales E5 et E6.</p>
-  </header>
+:root {
+  /* Palette */
+  --bg: #F8F6F1;          /* Blanc cassé chaud subtil */
+  --bg-alt: #F0EDE5;      /* Zone alternée */
+  --bg-card: #FCFAF6;     /* Cards */
+  --ink: #0F0F0F;         /* Noir profond (texte) */
+  --ink-muted: #555555;   /* Gris pour body secondaire */
+  --ink-dim: #999999;     /* Gris clair pour métadonnées */
+  --line: #0F0F0F;        /* Filets noirs */
+  --line-soft: rgba(15,15,15,0.12);
 
-  <div class="container">
+  /* Couleur d'accent : BLEU KLEIN — couleur d'art moderne */
+  --klein: #0030AB;
+  --klein-soft: rgba(0,48,171,0.08);
+}
 
-    <!-- IDENTITÉ -->
-    <section class="section">
-      <div class="section-label">§01 — Identité</div>
-      <div class="identity-block">
-        <div class="identity-photo">
-          <span>*Photo à fournir*</span>
-        </div>
-        <div class="identity-info">
-          <h2>Owen <em>LE MOAL</em></h2>
-          <div class="identity-role">Étudiant SISR · 2ème année</div>
-          <dl>
-            <dt>Formation</dt>
-            <dd><span class="tofill">*École à fournir*</span></dd>
-            <dt>Stage</dt>
-            <dd>TechNet Solutions</dd>
-            <dt>Spécialité</dt>
-            <dd>Administration des systèmes et réseaux</dd>
-            <dt>Email</dt>
-            <dd><span class="tofill">*Email à fournir*</span></dd>
-            <dt>Site</dt>
-            <dd><a href="../" style="color: var(--klein); text-decoration: none;">jetsetcorporation.com</a></dd>
-          </dl>
-        </div>
-      </div>
-    </section>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-    <!-- ÉPREUVES -->
-    <section class="section">
-      <div class="section-label">§02 — Mes épreuves</div>
-      <h2 class="section-title">Trois sections,<br><em>une seule expertise.</em></h2>
+html { scroll-behavior: smooth; }
 
-      <div class="hub-grid">
-        <a href="../e5/" class="hub-card">
-          <span class="hub-tag">Épreuve E5</span>
-          <h2>Administration<br><em>& Réseaux</em></h2>
-          <p>Huit missions d'administration des systèmes (Windows Server, Linux Debian) et des réseaux (Cisco, OSPF, HSRP) réalisées chez TechNet Solutions.</p>
-          <span class="hub-arrow">→</span>
-        </a>
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  font-feature-settings: 'ss01', 'ss02', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
 
-        <a href="../e6/" class="hub-card">
-          <span class="hub-tag">Épreuve E6</span>
-          <h2>Parcours <em>professionnel</em></h2>
-          <p>Situations professionnelles en haute disponibilité (HSRP) et supervision (Zabbix), accompagnées d'une veille technologique sur la 6G.</p>
-          <span class="hub-arrow">→</span>
-        </a>
+/* Sélection */
+::selection { background: var(--klein); color: var(--bg); }
 
-        <a href="../synthese/" class="hub-card">
-          <span class="hub-tag">Annexe VI-1</span>
-          <h2>Tableau de <em>synthèse</em></h2>
-          <p>Tableau officiel BTS SIO 2026 avec mes réalisations, compétences validées et tous les documents (Excel, Word, PowerPoint).</p>
-          <span class="hub-arrow">→</span>
-        </a>
-      </div>
-    </section>
+/* ============= NAVIGATION ============= */
+nav.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    <!-- COMPÉTENCES -->
-    <section class="section">
-      <div class="section-label">§03 — Compétences</div>
-      <h2 class="section-title">Cinq domaines,<br><em>maîtrisés en pratique.</em></h2>
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  font-style: italic;
+}
 
-      <table class="skills-table">
-        <thead>
-          <tr>
-            <th>Domaine</th>
-            <th>Technologies maîtrisées</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Systèmes</td>
-            <td>Windows Server (AD DS, GPO, IIS, WSUS, DFS) · Linux Debian (CLI, services réseau) · Proxmox VE (virtualisation)</td>
-          </tr>
-          <tr>
-            <td>Réseaux</td>
-            <td>Cisco IOS · HSRP · OSPF · VLAN 802.1Q · Trunking · DHCP Relay · pfSense (pare-feu)</td>
-          </tr>
-          <tr>
-            <td>Supervision</td>
-            <td>Zabbix 6 · SNMP v2c · Syslog · Monitoring temps réel · Templates Cisco</td>
-          </tr>
-          <tr>
-            <td>Scripting</td>
-            <td>PowerShell (automatisation Windows) · Bash (shell Linux) · Configuration Cisco</td>
-          </tr>
-          <tr>
-            <td>Cybersécurité</td>
-            <td>Haute disponibilité · Redondance · Plans de Continuité d'Activité (PCA) · Sécurisation des accès</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+.brand sup {
+  font-size: 0.55em;
+  font-weight: 400;
+  color: var(--klein);
+  margin-left: 4px;
+  vertical-align: super;
+}
 
-  </div>
+.nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
 
-  <footer>
-    <div class="footer-meta">© 2026 — JET SET CORPORATION</div>
-    <div class="footer-name">Owen LE MOAL · BTS SIO SISR</div>
-  </footer>
-</body>
-</html>
+.nav-links a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--klein); }
+
+.nav-links a.active {
+  color: var(--klein);
+}
+.nav-links a.active::before {
+  content: '●';
+  margin-right: 6px;
+  font-size: 0.7em;
+}
+
+/* ============= HEADER PAGE ============= */
+header.page-header {
+  padding: 100px 40px 60px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+
+.page-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.page-meta::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--ink);
+}
+
+.page-meta .accent-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--klein);
+  border-radius: 50%;
+  margin: 0 4px;
+}
+
+header.page-header h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 32px;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 0;
+}
+
+header.page-header h1 em {
+  font-style: italic;
+  color: var(--klein);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+}
+
+header.page-header p.lead {
+  font-size: 1.15rem;
+  color: var(--ink-muted);
+  max-width: 680px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+/* ============= CONTENEUR ============= */
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 60px 40px 120px;
+}
+
+/* ============= SECTION ============= */
+.section {
+  margin-bottom: 80px;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--klein);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 40px;
+  max-width: 780px;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--klein);
+}
+
+/* ============= MISSIONS ============= */
+.mission-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+.mission {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--line-soft);
+  align-items: start;
+  transition: padding 0.3s;
+}
+
+.mission:hover {
+  padding-left: 12px;
+}
+
+.mission-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--klein);
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  padding-top: 6px;
+}
+
+.mission-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+
+.mission-section {
+  margin-bottom: 22px;
+  max-width: 760px;
+}
+
+.mission-section-label {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--klein);
+  margin-bottom: 8px;
+  font-weight: 500;
+  border-bottom: 1px solid var(--klein);
+  padding-bottom: 2px;
+}
+
+.mission-section p {
+  color: var(--ink-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.mission-section strong { color: var(--ink); font-weight: 600; }
+
+.mission-section code {
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--klein-soft);
+  color: var(--klein);
+  padding: 1px 6px;
+  font-size: 0.85em;
+  font-weight: 500;
+  border-radius: 2px;
+}
+
+/* Boutons mission */
+.mission-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.btn-primary {
+  background: var(--klein);
+  border-color: var(--klein);
+  color: var(--bg);
+}
+
+.btn-primary:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.btn::after {
+  content: '→';
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 1.1em;
+}
+
+.tofill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--klein);
+  font-style: italic;
+  background: var(--klein-soft);
+  padding: 2px 8px;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+/* ============= INDEX/SOMMAIRE ============= */
+.toc {
+  border: 1px solid var(--line);
+  padding: 40px;
+  background: var(--bg-card);
+  margin-bottom: 80px;
+}
+
+.toc-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--klein);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.toc-title {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+}
+
+.toc ul { list-style: none; }
+.toc li {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line-soft);
+  align-items: center;
+}
+.toc li:first-child { border-top: 1px solid var(--line); }
+
+.toc li a {
+  display: contents;
+  text-decoration: none;
+  color: var(--ink);
+  transition: color 0.2s;
+}
+.toc li a:hover { color: var(--klein); }
+
+.toc-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--klein);
+  font-weight: 500;
+}
+
+.toc-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.toc-arrow {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--ink-dim);
+  transition: transform 0.2s;
+}
+.toc li a:hover .toc-arrow {
+  transform: translateX(4px);
+  color: var(--klein);
+}
+
+/* ============= HUB CARDS (portfolio) ============= */
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.hub-card {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 48px 36px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: background 0.3s;
+  position: relative;
+  min-height: 280px;
+}
+
+.hub-card:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+.hub-card:hover .hub-tag { color: var(--klein); border-color: var(--klein); }
+.hub-card:hover .hub-arrow { color: var(--klein); transform: translate(4px, -4px); }
+
+.hub-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--klein);
+  border: 1px solid var(--klein);
+  padding: 4px 10px;
+  display: inline-block;
+  margin-bottom: 28px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.hub-card h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.hub-card h2 em { font-style: italic; color: var(--klein); }
+.hub-card:hover h2 em { color: var(--klein); }
+
+.hub-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  max-width: 320px;
+}
+.hub-card:hover p { color: rgba(255,255,255,0.7); }
+
+.hub-arrow {
+  position: absolute;
+  top: 36px;
+  right: 36px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--ink-dim);
+  transition: all 0.3s;
+}
+
+/* ============= IDENTITÉ ============= */
+.identity-block {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 60px;
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 60px;
+  align-items: start;
+}
+
+.identity-photo {
+  aspect-ratio: 3/4;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-dim);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  overflow: hidden;
+}
+.identity-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.identity-info h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+}
+.identity-info h2 em { font-style: italic; }
+
+.identity-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--klein);
+  margin-bottom: 32px;
+  font-weight: 500;
+}
+
+.identity-info dl {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 14px 24px;
+  font-size: 0.95rem;
+}
+
+.identity-info dt {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 500;
+  padding-top: 2px;
+}
+
+.identity-info dd {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ============= SKILLS TABLE ============= */
+.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.skills-table th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--klein);
+  padding: 18px 24px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  font-weight: 500;
+}
+
+.skills-table td {
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--line-soft);
+  vertical-align: top;
+  font-size: 0.95rem;
+}
+
+.skills-table td:first-child {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.05rem;
+  width: 22%;
+  font-style: italic;
+}
+
+.skills-table td:last-child {
+  color: var(--ink-muted);
+}
+
+/* ============= SYNTHÈSE TABLE ============= */
+.synthese-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  margin-top: 40px;
+  font-size: 0.85rem;
+}
+
+.synthese-table th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--klein);
+  padding: 14px 12px;
+  text-align: center;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-card);
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.synthese-table th.col-mission {
+  text-align: left;
+  width: 32%;
+}
+
+.synthese-table td {
+  padding: 14px 12px;
+  border-right: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.synthese-table td.mission-cell {
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.92rem;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+}
+
+.synthese-table td.periode {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  width: 14%;
+}
+
+.synthese-table .check {
+  color: var(--klein);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.synthese-table .uncheck { color: var(--ink-dim); font-size: 1rem; }
+
+.synthese-table .stats-row td {
+  background: var(--klein-soft);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: var(--klein);
+  font-size: 0.95rem;
+  border-top: 1px solid var(--line);
+}
+
+/* ============= VEILLE 6G — 3 BULLES ============= */
+.veille-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  margin-top: 40px;
+}
+
+.bulle {
+  padding: 36px 32px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-card);
+  position: relative;
+  min-height: 380px;
+}
+
+.bulle-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--klein);
+  margin-bottom: 18px;
+  display: block;
+}
+
+.bulle h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.bulle ul { list-style: none; }
+.bulle li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 12px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ink-muted);
+}
+.bulle li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--klein);
+  font-weight: 700;
+}
+
+.bulle li strong { color: var(--ink); font-weight: 600; }
+
+/* ============= DOWNLOAD CARDS ============= */
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  margin-top: 40px;
+}
+
+.download-card {
+  padding: 36px 28px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: background 0.2s;
+}
+
+.download-card:hover { background: var(--ink); color: var(--bg); }
+.download-card:hover .download-ext { color: var(--klein); }
+.download-card:hover .download-icon { color: var(--klein); }
+
+.download-ext {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--klein);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.download-card h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.download-card p {
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+  line-height: 1.55;
+}
+
+.download-card:hover p { color: rgba(255,255,255,0.65); }
+
+.download-icon {
+  align-self: flex-end;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--ink-dim);
+}
+
+/* ============= FOOTER ============= */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+footer .footer-meta {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+footer .footer-name {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+}
+
+/* ============= RESPONSIVE ============= */
+@media (max-width: 768px) {
+  nav.topnav { padding: 14px 20px; }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 0.7rem; }
+  header.page-header { padding: 60px 20px 40px; }
+  .container { padding: 40px 20px 80px; }
+  .toc { padding: 24px; }
+  .mission { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
+  .mission-num { padding-top: 0; }
+  .veille-grid { grid-template-columns: 1fr; }
+  .identity-block { grid-template-columns: 1fr; gap: 32px; }
+  .identity-info dl { grid-template-columns: 1fr; gap: 4px 0; }
+  .identity-info dt { padding-top: 12px; }
+  .skills-table { font-size: 0.8rem; }
+  .skills-table td, .skills-table th { padding: 12px 14px; }
+  .synthese-table { font-size: 0.7rem; }
+  .synthese-table th, .synthese-table td { padding: 10px 6px; }
+  footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+}
