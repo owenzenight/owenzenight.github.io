@@ -37,12 +37,12 @@
       <ul>
         <li><a href="#m1"><span class="toc-num">M.01</span><span class="toc-name">Déploiement Windows Server (AD DS, GPO)</span><span class="toc-arrow">→</span></a></li>
         <li><a href="#m2"><span class="toc-num">M.02</span><span class="toc-name">Mise en place de services Linux (Samba, vsftpd)</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m3"><span class="toc-num">M.03</span><span class="toc-name">DHCP Relay & routage OSPF</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m3"><span class="toc-num">M.03</span><span class="toc-name">DHCP Relay & OSPF</span><span class="toc-arrow">→</span></a></li>
         <li><a href="#m4"><span class="toc-num">M.04</span><span class="toc-name">Routage OSPF multi-sauts</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m5"><span class="toc-num">M.05</span><span class="toc-name">Inter-VLAN Routing entre VLAN</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m6"><span class="toc-num">M.06</span><span class="toc-name">Router-on-a-Stick (802.1Q)</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m7"><span class="toc-num">M.07</span><span class="toc-name">Architecture consolidée multi-sites</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m8"><span class="toc-num">M.08</span><span class="toc-name">HSRP — haute disponibilité</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m5"><span class="toc-num">M.05</span><span class="toc-name">Inter-VLAN Routing</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m6"><span class="toc-num">M.06</span><span class="toc-name">Routage inter-VLAN (802.1Q)</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m7"><span class="toc-num">M.07</span><span class="toc-name">Architecture multi-sites + SSID</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m8"><span class="toc-num">M.08</span><span class="toc-name">HSRP</span><span class="toc-arrow">→</span></a></li>
       </ul>
     </div>
 
@@ -103,7 +103,7 @@
       <article class="mission" id="m3">
         <div class="mission-num">M.03</div>
         <div>
-          <h3 class="mission-title"><em>DHCP Relay</em> — Centralisation du serveur DHCP entre VLAN</h3>
+          <h3 class="mission-title"><em>DHCP Relay</em> & OSPF</h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
             <p>Le siège de <strong>Nomios</strong> dispose d'un serveur DHCP unique dans le VLAN 10. Les postes des autres VLAN ne reçoivent aucune configuration IP automatique car le broadcast DHCP ne traverse pas les routeurs.</p>
@@ -127,7 +127,7 @@
       <article class="mission" id="m4">
         <div class="mission-num">M.04</div>
         <div>
-          <h3 class="mission-title">Routage OSPF <em>multi-sauts</em> (chaîne A↔B↔C)</h3>
+          <h3 class="mission-title">Routage OSPF <em>multi-sauts</em></h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
             <p>L'infrastructure de <strong>Nomios</strong> évolue : un nouveau site doit être interconnecté via un routeur de transit. Le serveur DHCP du site principal (VLAN 50) doit servir les postes du site distant (VLAN 60), à travers une chaîne de trois routeurs A → B → C.</p>
@@ -175,7 +175,7 @@
       <article class="mission" id="m6">
         <div class="mission-num">M.06</div>
         <div>
-          <h3 class="mission-title"><em>Router-on-a-Stick</em> — Routage inter-VLAN via 802.1Q</h3>
+          <h3 class="mission-title"><em>Routage inter-VLAN</em> via 802.1Q</h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
             <p>Les services administratif et technique de <strong>Nomios</strong> partagent le même réseau physique. La direction souhaite une <strong>segmentation logique</strong> du réseau pour isoler les flux.</p>
@@ -199,14 +199,14 @@
       <article class="mission" id="m7">
         <div class="mission-num">M.07</div>
         <div>
-          <h3 class="mission-title">Architecture <em>consolidée</em> multi-sites</h3>
+          <h3 class="mission-title">Architecture <em>multi-sites</em> et ajout de SSID</h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
-            <p>Suite à l'agrandissement de <strong>Nomios</strong>, l'infrastructure réseau intègre trois sites distants, chacun avec son propre VLAN.</p>
+            <p>L'infrastructure de <strong>Nomios</strong> doit intégrer une architecture simple avec plusieurs VLAN et l'ajout d'un point d'accès Wi-Fi diffusant un nouveau SSID pour les utilisateurs.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Besoins</span>
-            <p>Mettre en œuvre une architecture à <strong>3 routeurs et 3 VLAN</strong>. Centraliser le DHCP depuis le site principal. Optimiser les annonces OSPF.</p>
+            <p>Mettre en œuvre une architecture multi-VLAN. Centraliser le DHCP. Ajouter un <strong>SSID Wi-Fi</strong> sur le réseau pour les utilisateurs.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
@@ -223,7 +223,7 @@
       <article class="mission" id="m8">
         <div class="mission-num">M.08</div>
         <div>
-          <h3 class="mission-title"><em>HSRP</em> — Haute disponibilité de la passerelle</h3>
+          <h3 class="mission-title"><em>HSRP</em> — Haute disponibilité</h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
             <p>L'infrastructure de <strong>Nomios</strong> repose sur des passerelles uniques. En cas de panne d'un routeur, le site est isolé. La direction souhaite une solution de <strong>haute disponibilité</strong>.</p>
