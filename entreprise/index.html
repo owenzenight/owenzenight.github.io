@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travail en entreprise — Owen LE MOAL</title>
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,30..100,0..1;1,9..144,300..700,30..100,0..1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    /* Styles spécifiques à la page Entreprise */
+    .prose { max-width: 760px; margin: 0 0 40px; }
+    .prose p { font-size: 17px; line-height: 1.7; color: var(--ink); margin-bottom: 18px; }
+    .prose strong { color: var(--ink); font-weight: 600; }
+
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line-soft);
+      padding: 32px 40px;
+      margin: 40px 0 0;
+      max-width: 600px;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--line-soft);
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-key {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+    }
+    .info-val {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      text-align: right;
+    }
+
+    .org-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    @media (max-width: 900px) { .org-grid { grid-template-columns: 1fr; } }
+
+    .org-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line-soft);
+      padding: 32px 28px;
+      position: relative;
+    }
+    .org-card .org-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--klein);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .org-card h3 {
+      font-family: 'Fraunces', serif;
+      font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 0;
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .org-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--ink-muted);
+    }
+
+    .pull-quote {
+      font-family: 'Fraunces', serif;
+      font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 1.5;
+      color: var(--ink);
+      border-left: 3px solid var(--klein);
+      padding-left: 28px;
+      margin: 40px 0;
+      max-width: 720px;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 40px 0;
+    }
+    @media (max-width: 900px) { .stat-row { grid-template-columns: 1fr; } }
+    .stat-block {
+      padding: 24px;
+      background: var(--bg-card);
+      border-top: 2px solid var(--klein);
+    }
+    .stat-num {
+      font-family: 'Fraunces', serif;
+      font-variation-settings: 'opsz' 144, 'SOFT' 0, 'WONK' 0;
+      font-size: 48px;
+      font-weight: 400;
+      color: var(--klein);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .stat-desc {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    .timeline-list {
+      list-style: none;
+      padding: 0;
+      margin: 32px 0;
+    }
+    .timeline-list li {
+      display: flex;
+      align-items: baseline;
+      padding: 16px 0;
+      border-bottom: 1px dashed var(--line-soft);
+      font-size: 15px;
+    }
+    .timeline-list .time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--klein);
+      min-width: 110px;
+      letter-spacing: 0.05em;
+    }
+    .timeline-list .activity { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <nav class="topnav">
+    <a href="../" class="brand">Owen LE MOAL<sup>2026</sup></a>
+    <div class="nav-links">
+      <a href="../portfolio/">Portfolio</a>
+      <a href="../entreprise/" class="active">Entreprise</a>
+      <a href="../e5/">E5</a>
+      <a href="../e6/">E6</a>
+      <a href="../synthese/">Synthèse</a>
+      <a href="../veille/">Veille</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="page-meta">
+      Travail en entreprise — Alternance 2024–2026
+    </div>
+    <h1>Mon alternance<br>chez <em>Nomios.</em></h1>
+    <p class="lead">Deux ans au sein du support d'un intégrateur cybersécurité européen — entre qualification de tickets, surveillance d'alertes et relation client.</p>
+    <div style="margin-top: 36px;">
+      <a href="../assets/Rapport_Alternance_Owen_LEMOAL.pdf" class="btn btn-primary" download>Télécharger le rapport (PDF)</a>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- §01 — L'ENTREPRISE -->
+    <section class="section">
+      <div class="section-label">§01 — L'entreprise</div>
+      <h2 class="section-title">Nomios, un acteur européen<br><em>de la cybersécurité.</em></h2>
+
+      <div class="prose">
+        <p>Nomios a été fondée en 2004 par Sébastien Kher. Au départ, l'entreprise répondait à un besoin simple : sécuriser les infrastructures informatiques des organisations, à un moment où la cybersécurité commençait à devenir un sujet stratégique pour les entreprises.</p>
+        <p>Vingt ans plus tard, le groupe compte plus de <strong>600 collaborateurs en Europe</strong>, avec des agences en France, aux Pays-Bas, au Royaume-Uni, en Belgique, en Allemagne et en Pologne. Nomios accompagne ses clients sur tout le cycle de vie de la cybersécurité : conseil, intégration de solutions, supervision et gestion des incidents.</p>
+        <p>Les clients viennent de secteurs très variés — énergie, santé, BTP, gestion du patrimoine, secteur public — ce qui montre à quel point la sécurité des systèmes d'information est devenue un enjeu transversal.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-row"><span class="info-key">Fondée en</span><span class="info-val">2004</span></div>
+        <div class="info-row"><span class="info-key">Fondateur</span><span class="info-val">Sébastien Kher</span></div>
+        <div class="info-row"><span class="info-key">Effectif</span><span class="info-val">600+ collaborateurs en Europe</span></div>
+        <div class="info-row"><span class="info-key">Mon site</span><span class="info-val">Boulogne-Billancourt</span></div>
+        <div class="info-row"><span class="info-key">Mon équipe</span><span class="info-val">Support</span></div>
+        <div class="info-row"><span class="info-key">Période</span><span class="info-val">Novembre 2024 — Avril 2026</span></div>
+      </div>
+    </section>
+
+    <!-- §02 — LE SUPPORT -->
+    <section class="section">
+      <div class="section-label">§02 — Le rôle du support</div>
+      <h2 class="section-title">Le support, point central<br><em>de la gestion des incidents.</em></h2>
+
+      <div class="prose">
+        <p>Le rôle principal du support est de prendre en charge et de résoudre les tickets ouverts par les clients. Un ticket peut être créé de deux manières : directement par le client via la plateforme dédiée, ou par téléphone, quand il appelle pour signaler un incident.</p>
+        <p>En complément, le support gère une activité qu'on appelle <strong>l'alerting</strong> : on surveille en continu les équipements des clients, et dès qu'une anomalie est détectée et confirmée, un ticket s'ouvre automatiquement. Ça permet de réagir avant même que le client ne s'en rende compte.</p>
+      </div>
+
+      <div class="org-grid">
+        <div class="org-card">
+          <div class="org-tag">L1</div>
+          <h3>Support niveau 1</h3>
+          <p>Qualification des tickets et résolution des incidents simples. Premier point de contact technique : on cadre la demande, on vérifie les informations, on évalue la priorité.</p>
+        </div>
+        <div class="org-card">
+          <div class="org-tag">L2</div>
+          <h3>Support niveau 2</h3>
+          <p>Ingénieurs spécialisés par technologie. Prennent le relais sur les incidents complexes nécessitant des investigations plus approfondies.</p>
+        </div>
+        <div class="org-card">
+          <div class="org-tag">EMT</div>
+          <h3>Exclusive Management Team</h3>
+          <p>Équipe dédiée à l'alerting : surveillance des équipements, qualification des alertes, suivi avec le client et gestion des appels entrants.</p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top: 32px;">
+        <p>Le support travaille aussi en étroite collaboration avec les <strong>services managés</strong>, qui administrent les outils de supervision et font le lien lors des changements de configuration. Ils peuvent suspendre temporairement la supervision pour éviter la remontée d'alertes inutiles pendant une maintenance planifiée.</p>
+      </div>
+    </section>
+
+    <!-- §03 — INTÉGRATION -->
+    <section class="section">
+      <div class="section-label">§03 — Mon intégration</div>
+      <h2 class="section-title">Une prise de poste<br><em>progressive.</em></h2>
+
+      <div class="prose">
+        <p>Quand je suis arrivé chez Nomios en novembre 2024, je découvrais un environnement où plusieurs équipes — support, services managés, SOC — cohabitaient dans le même open space. Cette proximité physique facilite énormément l'entraide au quotidien : quand on a une question technique, on peut se tourner vers un ingénieur expérimenté en deux pas.</p>
+        <p>Mes premières semaines ont été consacrées à la prise en main des outils essentiels (Salesforce, Shinken) et à la compréhension des processus propres à chaque client. J'ai d'abord observé mes collègues pour identifier les bons réflexes, puis j'ai progressivement traité mes premières alertes en autonomie.</p>
+        <p>Au début, je manquais de repères pour identifier rapidement les bonnes informations ou savoir où les chercher. Mais l'équipe est restée disponible et bienveillante, avec des retours constructifs sur mes erreurs. C'est ce qui m'a permis de gagner en confiance et en autonomie au fil des mois.</p>
+      </div>
+    </section>
+
+    <!-- §04 — OUTILS -->
+    <section class="section">
+      <div class="section-label">§04 — Les outils</div>
+      <h2 class="section-title">Mon environnement<br><em>de travail.</em></h2>
+
+      <div class="prose">
+        <p>Le travail au support repose sur un ensemble d'outils interconnectés qui couvrent toute la chaîne : centralisation des demandes, supervision des équipements, accès sécurisé et consoles techniques pour investiguer.</p>
+      </div>
+
+      <table class="skills-table">
+        <thead>
+          <tr>
+            <th>Outil</th>
+            <th>Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Salesforce</strong></td>
+            <td>Plateforme de centralisation des tickets et des alertes. Trace tous les échanges avec le client, lie les tickets entre eux, et garde l'historique des contacts. Interconnecté avec Shinken pour la remontée automatique des alertes.</td>
+          </tr>
+          <tr>
+            <td><strong>Shinken</strong></td>
+            <td>Outil de supervision (administré par les services managés). Génère les alertes et donne un historique daté du comportement des équipements, ce qui permet de savoir si une anomalie est récurrente ou inhabituelle.</td>
+          </tr>
+          <tr>
+            <td><strong>LockPass</strong></td>
+            <td>Coffre-fort de mots de passe. Permet d'accéder de façon sécurisée aux équipements clients et aux comptes utilisés pour ouvrir des tickets auprès d'opérateurs externes.</td>
+          </tr>
+          <tr>
+            <td><strong>Panorama</strong></td>
+            <td>Console de gestion centralisée pour les pare-feux Palo Alto.</td>
+          </tr>
+          <tr>
+            <td><strong>Cisco Meraki</strong></td>
+            <td>Plateforme cloud pour gérer les équipements réseau et le Wi-Fi de plusieurs clients.</td>
+          </tr>
+          <tr>
+            <td><strong>FortiManager</strong></td>
+            <td>Console centralisée pour administrer les solutions Fortinet.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- §05 — TICKETS -->
+    <section class="section">
+      <div class="section-label">§05 — Le traitement des tickets</div>
+      <h2 class="section-title">Qualifier, prioriser,<br><em>investiguer.</em></h2>
+
+      <div class="stat-row">
+        <div class="stat-block">
+          <div class="stat-num">P1<span style="color: var(--ink-muted); font-size: 24px;">→</span>P3</div>
+          <div class="stat-label">Tickets incidents</div>
+          <div class="stat-desc">Du plus critique au moins urgent. Évaluation systématique pour ne pas mobiliser un ingénieur L2 sans raison.</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">P4</div>
+          <div class="stat-label">Tickets requêtes</div>
+          <div class="stat-desc">Demandes ou questions sans incident impactant en cours. Traitement standard.</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">15 min</div>
+          <div class="stat-label">SLA première communication</div>
+          <div class="stat-desc">Délai contractuel avant la première réponse au client. Des pénalités sont appliquées en cas de dépassement.</div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>Quand un ticket arrive, la première étape c'est de <strong>relire la demande</strong> et vérifier que les informations sont complètes : technologies concernées, équipements, gravité réelle de l'incident. Les clients ont parfois tendance à mettre une priorité élevée pour accélérer le traitement, donc on doit réévaluer objectivement.</p>
+        <p>Une info clé à récupérer rapidement, c'est le <strong>numéro de série</strong> de l'équipement. Ça permet de vérifier auprès du service avant-vente si le client est éligible à notre support, ou s'il doit se tourner vers le constructeur. Disposer de cette information dès le début évite de mobiliser des ressources inutilement.</p>
+        <p>Vient ensuite l'investigation : comprendre la portée de l'incident, depuis quand il dure, combien de personnes sont touchées, si le client peut continuer son activité. Pour les tickets critiques (P1/P2), on appelle souvent directement le client par téléphone pour gagner du temps et évaluer l'impact réel.</p>
+      </div>
+
+      <table class="skills-table">
+        <thead>
+          <tr>
+            <th>Statut</th>
+            <th>Signification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>New</strong></td><td>Ticket vient d'être créé sur le portail.</td></tr>
+          <tr><td><strong>Work in progress</strong></td><td>Le support travaille dessus.</td></tr>
+          <tr><td><strong>Waiting Customer</strong></td><td>En attente d'une action du client.</td></tr>
+          <tr><td><strong>Waiting Vendor</strong></td><td>En attente d'une action du fabricant.</td></tr>
+          <tr><td><strong>Maintenance window</strong></td><td>Fenêtre de maintenance planifiée.</td></tr>
+          <tr><td><strong>Frozen</strong></td><td>Ticket gelé temporairement (par exemple, en attente de reproduction d'un problème).</td></tr>
+          <tr><td><strong>Solved</strong></td><td>Solution proposée, en attente de validation client.</td></tr>
+          <tr><td><strong>Closed</strong></td><td>Ticket clos après confirmation client.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- §06 — ALERTING -->
+    <section class="section">
+      <div class="section-label">§06 — L'alerting</div>
+      <h2 class="section-title">Une surveillance continue<br><em>au service de la réactivité.</em></h2>
+
+      <div class="prose">
+        <p>L'alerting, c'est une offre complémentaire au support classique. Un client qui souscrit à ce service bénéficie d'une <strong>supervision continue</strong> de ses équipements : sur des plages horaires classiques (8h–19h) ou en continu 24h/24 et 7j/7 grâce à un système d'astreinte.</p>
+        <p>Quand une anomalie est détectée, le client est automatiquement informé et un ticket incident est ouvert <strong>de manière proactive</strong>, accompagné d'une première analyse du support. Ce service est particulièrement utilisé par les entreprises de secteurs sensibles, comme la santé ou le BTP, où une indisponibilité réseau peut avoir un impact direct sur l'activité.</p>
+      </div>
+
+      <div class="pull-quote">
+        L'alerting ne se limite pas à la simple remontée d'alertes — c'est un véritable outil d'anticipation, qui permet d'identifier des incidents critiques avant qu'ils ne deviennent bloquants.
+      </div>
+
+      <div class="prose">
+        <p>Le traitement d'une alerte suit une méthodologie précise. <strong>Délai de 15 minutes</strong> pour les alertes critiques (P1), <strong>30 minutes</strong> pour les P3. Première étape : assigner l'alerte pour éviter les doublons. Ensuite, vérification dans Shinken pour confirmer que l'alerte est toujours active. Si elle persiste, on la confirme auprès du client via Salesforce.</p>
+        <p>L'investigation commence par une tentative de connexion à l'équipement concerné via LockPass. Pour les clients sensibles, l'accès est restreint et nécessite des habilitations renouvelées régulièrement. Selon la technologie, on bascule sur Panorama (Palo Alto), Cisco Meraki ou FortiManager pour analyser les logs, vérifier les redémarrages, identifier l'origine du problème.</p>
+        <p>Toutes les alertes ne correspondent pas à un vrai incident. Certaines sont liées à des maintenances non signalées, des coupures électriques ou des arrêts planifiés. C'est pour ça qu'avant de remonter quelque chose au client, on prend toujours le temps de vérifier le contexte.</p>
+      </div>
+    </section>
+
+    <!-- §07 — COMMUNICATION CLIENT -->
+    <section class="section">
+      <div class="section-label">§07 — La relation client</div>
+      <h2 class="section-title">La communication,<br><em>au cœur du métier.</em></h2>
+
+      <div class="prose">
+        <p>Avant de commencer cette alternance, je n'avais pas pleinement conscience de l'importance de la communication dans la gestion des incidents. Pourtant, c'est un élément central du travail au support.</p>
+        <p>Il faut être <strong>clair, précis et structuré</strong> dans les échanges avec le client, surtout dans le premier message. Celui-ci doit contenir toutes les informations nécessaires pour que le client identifie rapidement l'équipement concerné. Pour les alertes critiques, on appelle directement le site, et là, la qualité de la communication compte autant que la technique : se présenter clairement, expliquer pourquoi on appelle, rassurer un interlocuteur parfois méfiant.</p>
+        <p>Les personnes sur site n'ont pas toujours de compétences techniques. Il faut donc <strong>adapter son discours</strong>, reformuler, guider précisément quand on demande une vérification physique. Cette capacité d'adaptation est essentielle pour maintenir la confiance, et elle se développe avec la pratique.</p>
+      </div>
+    </section>
+
+    <!-- §08 — JOURNÉE TYPE -->
+    <section class="section">
+      <div class="section-label">§08 — Une journée type</div>
+      <h2 class="section-title">Roulement d'équipe<br><em>et continuité de service.</em></h2>
+
+      <div class="prose">
+        <p>Le support a pour mission d'assurer une continuité de service auprès des clients, donc je ne suis pas sur des horaires classiques 9h–17h. Une fois autonome, j'ai été intégré au <strong>roulement d'équipe</strong> : mes horaires varient entre 8h–16h, 10h–18h ou 11h–19h, avec une pause généralement entre 13h30 et 15h.</p>
+      </div>
+
+      <ul class="timeline-list">
+        <li><span class="time">Début de poste</span><span class="activity">Consultation des maintenances planifiées par les clients pour anticiper les remontées d'alertes</span></li>
+        <li><span class="time">Toute la journée</span><span class="activity">Traitement des alertes et tickets au fil de l'eau, en respectant les SLA</span></li>
+        <li><span class="time">Périodes calmes</span><span class="activity">Relances sur les tickets en cours, suivi des retours clients</span></li>
+        <li><span class="time">À tout moment</span><span class="activity">Gestion des appels entrants, contacts directs avec les sites pour les incidents critiques</span></li>
+        <li><span class="time">En continu</span><span class="activity">Coordination avec les collègues : prévenir l'équipe quand on est mobilisé sur un appel long ou une investigation complexe</span></li>
+      </ul>
+
+      <div class="prose">
+        <p>L'organisation du travail repose fortement sur la coordination. Plusieurs membres doivent être présents simultanément sur la vue pour respecter les délais de traitement. Cette entraide est essentielle : quand un collègue est bloqué sur un appel client, les autres prennent le relais sur les alertes en attente.</p>
+      </div>
+    </section>
+
+    <!-- §09 — COMPÉTENCES -->
+    <section class="section">
+      <div class="section-label">§09 — Compétences développées</div>
+      <h2 class="section-title">Ce que cette alternance<br><em>m'a apporté.</em></h2>
+
+      <table class="skills-table">
+        <thead>
+          <tr>
+            <th>Domaine</th>
+            <th>Compétences acquises</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Organisation</strong></td>
+            <td>Gestion de plusieurs tâches simultanément, priorisation sous contrainte de SLA, autonomie dans la recherche d'informations.</td>
+          </tr>
+          <tr>
+            <td><strong>Technique</strong></td>
+            <td>Maîtrise des outils de supervision (Shinken), des plateformes de gestion (Panorama, Meraki, FortiManager), analyse de logs, diagnostic d'incidents réseau.</td>
+          </tr>
+          <tr>
+            <td><strong>Relationnel</strong></td>
+            <td>Communication écrite et orale avec les clients, gestion d'appels entrants, adaptation du discours selon l'interlocuteur, coordination avec les ingénieurs L2.</td>
+          </tr>
+          <tr>
+            <td><strong>Méthode</strong></td>
+            <td>Approche pragmatique de la résolution de problèmes : recherche d'informations, formulation d'hypothèses, tests, persévérance face aux difficultés.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pull-quote">
+        Cette alternance m'a fait comprendre que la résolution d'un incident repose avant tout sur une démarche active — chercher, tester, persévérer — et pas uniquement sur des connaissances théoriques.
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="footer-meta">© 2026 — JET SET CORPORATION</div>
+    <div class="footer-name">Owen LE MOAL · BTS SIO SISR</div>
+  </footer>
+</body>
+</html>
