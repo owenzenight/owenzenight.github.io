@@ -64,6 +64,9 @@
             <span class="mission-section-label">Réponse aux besoins</span>
             <p>Le rôle <strong>AD DS</strong> a été installé sur Windows Server. Le domaine <code>technet.local</code> a été créé, ainsi que l'unité d'organisation <code>G_tech</code>. Une <strong>GPO</strong> a été configurée pour automatiser la distribution des mises à jour Windows aux postes du domaine.</p>
           </div>
+          <div class="mission-actions">
+            <a href="../assets/Mission1_E5_Owen.pdf" class="btn">Consulter la fiche</a>
+          </div>
         </div>
       </article>
 
@@ -82,6 +85,9 @@
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
             <p>Une machine virtuelle Debian a été déployée sans interface graphique. <strong>Samba</strong> a été installé puis configuré dans <code>/etc/samba/smb.conf</code> pour permettre le partage avec les postes Windows. <strong>vsftpd</strong> a été installé et activé pour le transfert FTP.</p>
+          </div>
+          <div class="mission-actions">
+            <a href="../assets/Mission2_E5_Owen.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
@@ -102,6 +108,9 @@
             <span class="mission-section-label">Réponse aux besoins</span>
             <p>Un serveur DHCP a été configuré pour délivrer les adresses du réseau <code>172.16.10.0/24</code>. Sur les routeurs Cisco, la directive <code>ip helper-address 172.16.10.1</code> a été ajoutée sur les sous-interfaces des autres VLAN pour relayer les requêtes DHCP vers le serveur central.</p>
           </div>
+          <div class="mission-actions">
+            <a href="../assets/TP1_Tutoré.pdf" class="btn">Consulter la fiche</a>
+          </div>
         </div>
       </article>
 
@@ -120,6 +129,9 @@
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
             <p>Les routeurs ont été configurés avec <strong>OSPF</strong> en zone unique (<code>area 0</code>). Les réseaux d'interconnexion et les VLAN ont été annoncés sur chaque routeur. La connaissance des routes est désormais propagée automatiquement entre tous les routeurs.</p>
+          </div>
+          <div class="mission-actions">
+            <a href="../assets/TP2_Tutoré.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
@@ -140,6 +152,9 @@
             <span class="mission-section-label">Réponse aux besoins</span>
             <p>Sur les routeurs, des sous-interfaces ont été créées, une par VLAN. Chaque sous-interface joue le rôle de <strong>passerelle</strong> pour son VLAN. Les commutateurs ont été configurés en mode <strong>access</strong> sur les ports utilisateurs et en mode <strong>trunk</strong> sur les liens montants pour transporter tous les VLAN.</p>
           </div>
+          <div class="mission-actions">
+            <a href="../assets/TP4_Tutoré.pdf" class="btn">Consulter la fiche</a>
+          </div>
         </div>
       </article>
 
@@ -158,6 +173,9 @@
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
             <p>Deux VLAN (<code>10</code> et <code>20</code>) ont été déclarés sur les commutateurs. Les ports utilisateurs ont été configurés en mode <strong>access</strong>, le lien d'interconnexion entre commutateurs en mode <strong>trunk</strong>. Sur le routeur, deux sous-interfaces (<code>g0/0.10</code> et <code>g0/0.20</code>) ont été créées pour servir de passerelles aux deux VLAN.</p>
+          </div>
+          <div class="mission-actions">
+            <a href="../assets/TP3_Tutoré.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
@@ -178,6 +196,9 @@
             <span class="mission-section-label">Réponse aux besoins</span>
             <p>L'architecture a été déployée avec plusieurs routeurs Cisco reliés par des liaisons de transit. OSPF a été activé sur tous les routeurs. Le DHCP relais (<code>ip helper-address</code>) a été configuré pour relayer vers le serveur central. Un <strong>point d'accès Wi-Fi</strong> a été ajouté pour diffuser un SSID accessible aux utilisateurs.</p>
           </div>
+          <div class="mission-actions">
+            <a href="../assets/TP5_Tutoré.pdf" class="btn">Consulter la fiche</a>
+          </div>
         </div>
       </article>
 
@@ -197,6 +218,9 @@
             <span class="mission-section-label">Réponse aux besoins</span>
             <p>Le protocole <strong>HSRP</strong> a été déployé sur deux routeurs Cisco 2911. Deux groupes HSRP : Groupe 1 IP virtuelle <code>10.0.10.254</code>, Groupe 2 IP virtuelle <code>10.0.11.254</code>. Priorités configurées (R1 : 101, R2 : 102) avec <code>standby preempt</code>. Bascule testée : moins de 15 secondes sans perte de session.</p>
           </div>
+          <div class="mission-actions">
+            <a href="../assets/TP6_Tutoré.pdf" class="btn">Consulter la fiche</a>
+          </div>
         </div>
       </article>
 
@@ -215,6 +239,9 @@
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
             <p>Quatre <strong>multilayer switches</strong> Cisco 3560 ont été configurés avec la commande <code>ip routing</code> pour activer le routage. Chaque switch porte plusieurs VLAN et des interfaces SVI (Switched Virtual Interface, <code>int vlan X</code>) qui servent de passerelles. <strong>HSRP</strong> a été configuré sur les VLAN 10, 20 et 21 avec des IP virtuelles <code>172.16.X.250</code>. Le relais DHCP a été configuré sur chaque interface VLAN. <strong>OSPF</strong> propage les routes entre tous les switches.</p>
+          </div>
+          <div class="mission-actions">
+            <a href="../assets/Mission9_E5_Owen.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
