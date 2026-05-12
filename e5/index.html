@@ -17,13 +17,12 @@
       <a href="../e6/">E6</a>
       <a href="../synthese/">Synthèse</a>
       <a href="../veille/">Veille</a>
-      <a href="../entreprise/">Entreprise</a>
     </div>
   </nav>
 
   <header class="page-header">
     <div class="page-meta">
-      Épreuve E5 <span class="accent-dot"></span> Bloc 2 <span class="accent-dot"></span> 8 missions
+      Épreuve E5 <span class="accent-dot"></span> Bloc 2 <span class="accent-dot"></span> 9 missions
     </div>
     <h1>Administration<br>& <em>réseaux.</em></h1>
     <p class="lead">Missions d'administration des systèmes (Windows Server, Linux Debian) et des réseaux. Travaux en Labo Cisco.</p>
@@ -31,23 +30,22 @@
 
   <div class="container">
 
-    <!-- TOC / Sommaire -->
     <div class="toc">
       <div class="toc-label">Sommaire</div>
       <h2 class="toc-title">Index des missions</h2>
       <ul>
         <li><a href="#m1"><span class="toc-num">M.01</span><span class="toc-name">Déploiement Windows Server (AD DS, GPO)</span><span class="toc-arrow">→</span></a></li>
         <li><a href="#m2"><span class="toc-num">M.02</span><span class="toc-name">Mise en place de services Linux (Samba, vsftpd)</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m3"><span class="toc-num">M.03</span><span class="toc-name">DHCP Relay & OSPF</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m4"><span class="toc-num">M.04</span><span class="toc-name">Routage OSPF multi-sauts</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m5"><span class="toc-num">M.05</span><span class="toc-name">Inter-VLAN Routing</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m6"><span class="toc-num">M.06</span><span class="toc-name">Routage inter-VLAN (802.1Q)</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m7"><span class="toc-num">M.07</span><span class="toc-name">Architecture multi-sites + SSID</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m8"><span class="toc-num">M.08</span><span class="toc-name">HSRP</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m3"><span class="toc-num">M.03</span><span class="toc-name">Mise en place d'un serveur DHCP</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m4"><span class="toc-num">M.04</span><span class="toc-name">Routage OSPF entre plusieurs routeurs</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m5"><span class="toc-num">M.05</span><span class="toc-name">Communication entre VLAN d'un même site</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m6"><span class="toc-num">M.06</span><span class="toc-name">Routage inter-VLAN</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m7"><span class="toc-num">M.07</span><span class="toc-name">Architecture multi-sites + ajout d'un SSID Wi-Fi</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m8"><span class="toc-num">M.08</span><span class="toc-name">HSRP — Redondance haute disponibilité</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m9"><span class="toc-num">M.09</span><span class="toc-name">Architecture avec switches niveau 3</span><span class="toc-arrow">→</span></a></li>
       </ul>
     </div>
 
-    <!-- MISSIONS -->
     <div class="mission-list">
 
       <!-- MISSION 1 -->
@@ -57,7 +55,7 @@
           <h3 class="mission-title">Déploiement d'une infrastructure <em>Windows Server</em> (AD DS, GPO)</h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
-            <p>L'entreprise <strong>Nomios</strong> souhaite centraliser la gestion de ses postes utilisateurs et de ses ressources via un domaine Active Directory.</p>
+            <p>L'entreprise <strong>TechNet Solutions</strong> souhaite centraliser la gestion de ses postes utilisateurs et de ses ressources via un domaine Active Directory.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Besoins</span>
@@ -69,9 +67,8 @@
           </div>
           <div class="mission-actions">
             <a href="../assets/Mission1_E5_Owen.pdf" class="btn">Consulter la fiche</a>
-            <a href="../assets/Mission1_E5_Owen.pdf" download class="btn btn-primary">Télécharger</a>
           </div>
-          <span class="tofill">PDF avec captures à fournir</span>
+          <span class="tofill">PDF à fournir</span>
         </div>
       </article>
 
@@ -82,7 +79,7 @@
           <h3 class="mission-title">Mise en place de services Linux <em>(Samba & vsftpd)</em></h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
-            <p>L'entreprise <strong>Nomios</strong> souhaite déployer un serveur Linux sous <strong>Debian</strong> dédié au partage de fichiers et au transfert FTP, en complément de son infrastructure Windows.</p>
+            <p>L'entreprise <strong>TechNet Solutions</strong> souhaite déployer un serveur Linux sous <strong>Debian</strong> dédié au partage de fichiers et au transfert FTP, en complément de son infrastructure Windows.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Besoins</span>
@@ -94,9 +91,8 @@
           </div>
           <div class="mission-actions">
             <a href="../assets/Mission2_E5_Owen.pdf" class="btn">Consulter la fiche</a>
-            <a href="../assets/Mission2_E5_Owen.pdf" download class="btn btn-primary">Télécharger</a>
           </div>
-          <span class="tofill">PDF avec sorties de commandes à fournir</span>
+          <span class="tofill">PDF à fournir</span>
         </div>
       </article>
 
@@ -104,22 +100,21 @@
       <article class="mission" id="m3">
         <div class="mission-num">M.03</div>
         <div>
-          <h3 class="mission-title"><em>DHCP Relay</em> & OSPF</h3>
+          <h3 class="mission-title">Mise en place d'un serveur <em>DHCP</em></h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
-            <p>Le siège de <strong>Nomios</strong> dispose d'un serveur DHCP unique dans le VLAN 10. Les postes des autres VLAN ne reçoivent aucune configuration IP automatique car le broadcast DHCP ne traverse pas les routeurs.</p>
+            <p>Chez <strong>TechNet Solutions</strong>, les postes utilisateurs doivent recevoir automatiquement leur configuration IP. Un serveur DHCP unique doit pouvoir servir plusieurs réseaux différents.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Besoins</span>
-            <p>Permettre à un serveur DHCP unique de servir plusieurs VLAN. Mettre en place du <strong>routage inter-VLAN</strong> avec encapsulation 802.1Q. Déployer <strong>OSPF</strong> pour la propagation des routes.</p>
+            <p>Mettre en place un <strong>serveur DHCP</strong> capable de délivrer les adresses IP automatiquement. Permettre à ce serveur DHCP de fonctionner sur plusieurs VLAN, car par défaut les requêtes DHCP ne traversent pas les routeurs.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
-            <p>Sur les routeurs Cisco, des sous-interfaces (<code>g0/0.10</code>, <code>g0/0.20</code>, <code>g0/0.30</code>) ont été créées avec encapsulation <code>dot1Q</code>. La directive <code>ip helper-address 172.16.10.1</code> a été ajoutée sur les VLAN 20 et 30 pour relayer les requêtes DHCP vers le serveur. OSPF a été activé en zone <code>area 0</code>.</p>
+            <p>Un serveur DHCP a été configuré pour délivrer les adresses du réseau <code>172.16.10.0/24</code>. Sur les routeurs Cisco, la directive <code>ip helper-address 172.16.10.1</code> a été ajoutée sur les sous-interfaces des autres VLAN pour relayer les requêtes DHCP vers le serveur central.</p>
           </div>
           <div class="mission-actions">
             <a href="../assets/Mission3_E5_Owen.pdf" class="btn">Consulter la fiche</a>
-            <a href="../assets/Mission3_E5_Owen.pdf" download class="btn btn-primary">Télécharger</a>
           </div>
         </div>
       </article>
@@ -128,22 +123,21 @@
       <article class="mission" id="m4">
         <div class="mission-num">M.04</div>
         <div>
-          <h3 class="mission-title">Routage OSPF <em>multi-sauts</em></h3>
+          <h3 class="mission-title">Routage <em>OSPF</em> entre plusieurs routeurs</h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
-            <p>L'infrastructure de <strong>Nomios</strong> évolue : un nouveau site doit être interconnecté via un routeur de transit. Le serveur DHCP du site principal (VLAN 50) doit servir les postes du site distant (VLAN 60), à travers une chaîne de trois routeurs A → B → C.</p>
+            <p>L'infrastructure de <strong>TechNet Solutions</strong> évolue : plusieurs routeurs doivent communiquer entre eux pour relier les différents sites de l'entreprise.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Besoins</span>
-            <p>Interconnecter trois routeurs en série. Permettre la propagation des routes via <strong>OSPF</strong>. Faire en sorte que le DHCP du site principal serve les postes du site distant.</p>
+            <p>Interconnecter plusieurs routeurs entre eux. Permettre la <strong>propagation automatique des routes</strong> entre les routeurs via le protocole OSPF. Assurer que chaque routeur connaisse l'ensemble des réseaux disponibles.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
-            <p>Les trois routeurs ont été configurés avec OSPF en zone unique. Les réseaux d'interconnexion (<code>10.0.10.0/24</code>, <code>10.0.11.0/24</code>) et les VLAN ont été annoncés. Le relais DHCP (<code>ip helper-address 172.16.50.1</code>) a été configuré sur la sous-interface du VLAN 60.</p>
+            <p>Les routeurs ont été configurés avec <strong>OSPF</strong> en zone unique (<code>area 0</code>). Les réseaux d'interconnexion et les VLAN ont été annoncés sur chaque routeur. La connaissance des routes est désormais propagée automatiquement entre tous les routeurs.</p>
           </div>
           <div class="mission-actions">
             <a href="../assets/Mission4_E5_Owen.pdf" class="btn">Consulter la fiche</a>
-            <a href="../assets/Mission4_E5_Owen.pdf" download class="btn btn-primary">Télécharger</a>
           </div>
         </div>
       </article>
@@ -152,22 +146,21 @@
       <article class="mission" id="m5">
         <div class="mission-num">M.05</div>
         <div>
-          <h3 class="mission-title"><em>Inter-VLAN Routing</em> — Communication entre VLAN d'un même site</h3>
+          <h3 class="mission-title">Communication entre <em>VLAN</em> d'un même site</h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
-            <p>Au sein du même site de <strong>Nomios</strong>, plusieurs services sont segmentés en VLAN différents. Les utilisateurs ont besoin de communiquer entre VLAN tout en gardant l'isolation logique.</p>
+            <p>Au sein du même site de <strong>TechNet Solutions</strong>, plusieurs services sont segmentés en VLAN différents. Les utilisateurs ont besoin que ces VLAN puissent communiquer entre eux tout en gardant l'isolation logique.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Besoins</span>
-            <p>Permettre la communication entre les postes des différents VLAN. Configurer les sous-interfaces avec encapsulation <strong>dot1Q</strong>. Activer OSPF pour la connaissance des réseaux.</p>
+            <p>Faire en sorte que les <strong>VLAN communiquent entre eux</strong>, c'est-à-dire qu'un poste du VLAN 10 puisse joindre un poste du VLAN 20. Configurer les sous-interfaces des routeurs pour permettre ce dialogue.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
-            <p>Sur les routeurs, des sous-interfaces avec encapsulation <code>dot1Q</code> ont été créées pour chaque VLAN. OSPF a été activé pour propager les routes. Les commutateurs ont été configurés en mode <strong>access</strong> sur les ports utilisateurs et <strong>trunk</strong> sur les liens montants.</p>
+            <p>Sur les routeurs, des sous-interfaces ont été créées, une par VLAN. Chaque sous-interface joue le rôle de <strong>passerelle</strong> pour son VLAN. Les commutateurs ont été configurés en mode <strong>access</strong> sur les ports utilisateurs et en mode <strong>trunk</strong> sur les liens montants pour transporter tous les VLAN.</p>
           </div>
           <div class="mission-actions">
             <a href="../assets/Mission5_E5_Owen.pdf" class="btn">Consulter la fiche</a>
-            <a href="../assets/Mission5_E5_Owen.pdf" download class="btn btn-primary">Télécharger</a>
           </div>
         </div>
       </article>
@@ -176,22 +169,21 @@
       <article class="mission" id="m6">
         <div class="mission-num">M.06</div>
         <div>
-          <h3 class="mission-title"><em>Routage inter-VLAN</em> via 802.1Q</h3>
+          <h3 class="mission-title">Routage <em>inter-VLAN</em></h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
-            <p>Les services administratif et technique de <strong>Nomios</strong> partagent le même réseau physique. La direction souhaite une <strong>segmentation logique</strong> du réseau pour isoler les flux.</p>
+            <p>Les services administratif et technique de <strong>TechNet Solutions</strong> sont sur des VLAN différents et doivent pouvoir communiquer entre eux via un routeur central.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Besoins</span>
-            <p>Segmenter le réseau en <strong>VLAN</strong>. Permettre le passage des VLAN entre les commutateurs via un <strong>lien trunk 802.1Q</strong>. Mettre en place un routage inter-VLAN sur le routeur central.</p>
+            <p>Mettre en place un <strong>routage inter-VLAN</strong>, c'est-à-dire que les VLAN communiquent entre eux à travers un seul routeur. Permettre le passage des VLAN entre les commutateurs via un lien trunk.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
-            <p>Deux VLAN (<code>10</code> et <code>20</code>) ont été déclarés. Les ports utilisateurs en mode <strong>access</strong>, le lien d'interconnexion en mode <strong>trunk</strong>. Sur le routeur, deux sous-interfaces (<code>g0/0.10</code>, <code>g0/0.20</code>) avec encapsulation <code>dot1Q</code>.</p>
+            <p>Deux VLAN (<code>10</code> et <code>20</code>) ont été déclarés sur les commutateurs. Les ports utilisateurs ont été configurés en mode <strong>access</strong>, le lien d'interconnexion entre commutateurs en mode <strong>trunk</strong>. Sur le routeur, deux sous-interfaces (<code>g0/0.10</code> et <code>g0/0.20</code>) ont été créées pour servir de passerelles aux deux VLAN.</p>
           </div>
           <div class="mission-actions">
             <a href="../assets/Mission6_E5_Owen.pdf" class="btn">Consulter la fiche</a>
-            <a href="../assets/Mission6_E5_Owen.pdf" download class="btn btn-primary">Télécharger</a>
           </div>
         </div>
       </article>
@@ -200,22 +192,21 @@
       <article class="mission" id="m7">
         <div class="mission-num">M.07</div>
         <div>
-          <h3 class="mission-title">Architecture <em>multi-sites</em> et ajout de SSID</h3>
+          <h3 class="mission-title">Architecture <em>multi-sites</em> + ajout d'un SSID Wi-Fi</h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
-            <p>L'infrastructure de <strong>Nomios</strong> doit intégrer une architecture simple avec plusieurs VLAN et l'ajout d'un point d'accès Wi-Fi diffusant un nouveau SSID pour les utilisateurs.</p>
+            <p>L'infrastructure de <strong>TechNet Solutions</strong> doit intégrer plusieurs sites distants avec leurs propres VLAN, et ajouter un point d'accès Wi-Fi diffusant un nouveau SSID pour les utilisateurs.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Besoins</span>
-            <p>Mettre en œuvre une architecture multi-VLAN. Centraliser le DHCP. Ajouter un <strong>SSID Wi-Fi</strong> sur le réseau pour les utilisateurs.</p>
+            <p>Mettre en œuvre une <strong>architecture multi-sites</strong> avec plusieurs VLAN. Centraliser le DHCP. Ajouter un <strong>SSID Wi-Fi</strong> sur le réseau pour permettre aux utilisateurs de se connecter sans fil.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
-            <p>Trois routeurs Cisco reliés par deux liaisons de transit (<code>10.0.10.0/24</code>, <code>10.0.11.0/24</code>). OSPF activé sur tous les routeurs avec masques <code>0.255.255.255</code>. Relais DHCP <code>ip helper-address</code> configuré pour relayer vers le serveur central.</p>
+            <p>L'architecture a été déployée avec plusieurs routeurs Cisco reliés par des liaisons de transit. OSPF a été activé sur tous les routeurs. Le DHCP relais (<code>ip helper-address</code>) a été configuré pour relayer vers le serveur central. Un <strong>point d'accès Wi-Fi</strong> a été ajouté pour diffuser un SSID accessible aux utilisateurs.</p>
           </div>
           <div class="mission-actions">
             <a href="../assets/Mission7_E5_Owen.pdf" class="btn">Consulter la fiche</a>
-            <a href="../assets/Mission7_E5_Owen.pdf" download class="btn btn-primary">Télécharger</a>
           </div>
         </div>
       </article>
@@ -224,10 +215,10 @@
       <article class="mission" id="m8">
         <div class="mission-num">M.08</div>
         <div>
-          <h3 class="mission-title"><em>HSRP</em> — Haute disponibilité</h3>
+          <h3 class="mission-title"><em>HSRP</em> — Redondance haute disponibilité</h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
-            <p>L'infrastructure de <strong>Nomios</strong> repose sur des passerelles uniques. En cas de panne d'un routeur, le site est isolé. La direction souhaite une solution de <strong>haute disponibilité</strong>.</p>
+            <p>L'infrastructure de <strong>TechNet Solutions</strong> repose sur des passerelles uniques. En cas de panne d'un routeur, le site est isolé. La direction souhaite une solution de <strong>haute disponibilité</strong>.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Besoins</span>
@@ -239,8 +230,31 @@
           </div>
           <div class="mission-actions">
             <a href="../assets/Mission8_E5_Owen.pdf" class="btn">Consulter la fiche</a>
-            <a href="../assets/Mission8_E5_Owen.pdf" download class="btn btn-primary">Télécharger</a>
           </div>
+        </div>
+      </article>
+
+      <!-- MISSION 9 — NOUVEAU TP9 -->
+      <article class="mission" id="m9">
+        <div class="mission-num">M.09</div>
+        <div>
+          <h3 class="mission-title">Architecture avec <em>switches niveau 3</em></h3>
+          <div class="mission-section">
+            <span class="mission-section-label">Contexte</span>
+            <p><strong>TechNet Solutions</strong> souhaite faire évoluer son infrastructure réseau pour qu'elle soit plus performante. À la place de routeurs séparés, on utilise des <strong>switches niveau 3</strong> (multilayer switches) qui font à la fois la commutation (couche 2) et le routage (couche 3).</p>
+          </div>
+          <div class="mission-section">
+            <span class="mission-section-label">Besoins</span>
+            <p>Mettre en place une architecture basée sur 4 <strong>switches niveau 3</strong>. Activer le routage IP sur ces switches. Maintenir le routage OSPF entre les équipements. Garantir la redondance avec HSRP. Centraliser le DHCP avec un relais.</p>
+          </div>
+          <div class="mission-section">
+            <span class="mission-section-label">Réponse aux besoins</span>
+            <p>Quatre <strong>multilayer switches</strong> Cisco 3560 ont été configurés avec la commande <code>ip routing</code> pour activer le routage. Chaque switch porte plusieurs VLAN et des interfaces SVI (Switched Virtual Interface, <code>int vlan X</code>) qui servent de passerelles. <strong>HSRP</strong> a été configuré sur les VLAN 10, 20 et 21 avec des IP virtuelles <code>172.16.X.250</code>. Le relais DHCP a été configuré sur chaque interface VLAN. <strong>OSPF</strong> propage les routes entre tous les switches.</p>
+          </div>
+          <div class="mission-actions">
+            <a href="../assets/Mission9_E5_Owen.pdf" class="btn">Consulter la fiche</a>
+          </div>
+          <span class="tofill">PDF à fournir</span>
         </div>
       </article>
 
