@@ -3,10 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veille technologique — La 6G · Owen LE MOAL</title>
+  <title>Veille technologique — Le ZTNA · Owen LE MOAL</title>
   <link rel="icon" type="image/png" href="../assets/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,30..100,0..1;1,9..144,300..700,30..100,0..1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    .pitch-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      padding: 36px 40px;
+      margin-bottom: 40px;
+    }
+    .pitch-card .quote {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .pitch-card .quote em {
+      color: var(--klein);
+      font-style: italic;
+    }
+    .pitch-card .quote-author {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    .metaphor-block {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      padding: 36px 40px;
+      margin-bottom: 40px;
+    }
+    .metaphor-block h3 {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+    .metaphor-block .subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--klein);
+      margin-bottom: 24px;
+    }
+    .metaphor-block p {
+      color: var(--ink-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .metaphor-block strong { color: var(--ink); }
+  </style>
 </head>
 <body>
   <nav class="topnav">
@@ -17,7 +73,6 @@
       <a href="../e6/">E6</a>
       <a href="../synthese/">Synthèse</a>
       <a href="./" class="active">Veille</a>
-      <a href="../entreprise/">Entreprise</a>
     </div>
   </nav>
 
@@ -25,51 +80,83 @@
     <div class="page-meta">
       Veille technologique
     </div>
-    <h1>La <em>6G.</em></h1>
-    <p class="lead">Veille sur la sixième génération mobile — un sujet qui concerne tous les utilisateurs de réseaux et qui ouvre de nouvelles opportunités professionnelles.</p>
+    <h1>Le <em>ZTNA.</em></h1>
+    <p class="lead">Veille sur le Zero Trust Network Access — la nouvelle manière de penser la sécurité d'accès, qui remplace progressivement les VPN traditionnels en entreprise.</p>
   </header>
 
   <div class="container">
 
+    <!-- PITCH EN 1 LIGNE -->
     <section class="section">
-      <div class="section-label">§00 — Le point clé</div>
-      <h2 class="section-title">Qu'est-ce qui change<br><em>par rapport à la 5G ?</em></h2>
+      <div class="pitch-card">
+        <p class="quote">
+          « Ne jamais faire confiance,<br><em>toujours vérifier.</em> »
+        </p>
+        <p class="quote-author">— Philosophie fondamentale du Zero Trust</p>
+      </div>
+    </section>
+
+    <!-- TABLEAU COMPARATIF VPN vs ZTNA -->
+    <section class="section">
+      <div class="section-label">§01 — Le point clé</div>
+      <h2 class="section-title">Qu'est-ce qui change<br><em>par rapport au VPN ?</em></h2>
 
       <table class="skills-table">
         <thead>
           <tr>
             <th>Critère</th>
-            <th>5G (actuelle)</th>
-            <th>6G (à venir)</th>
+            <th>VPN (ancienne méthode)</th>
+            <th>ZTNA (nouvelle méthode)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Fréquences</td>
-            <td>Jusqu'à 100 GHz</td>
-            <td><strong style="color: var(--klein);">1 THz</strong> (10× plus)</td>
+            <td>Accès</td>
+            <td>On entre dans tout le réseau interne</td>
+            <td><strong style="color: var(--klein);">Accès à une seule application</strong></td>
           </tr>
           <tr>
-            <td>Débit max</td>
-            <td>10 Gbps</td>
-            <td><strong style="color: var(--klein);">1 Tbps</strong> (100× plus)</td>
+            <td>Vérification</td>
+            <td>Une fois à la connexion</td>
+            <td><strong style="color: var(--klein);">En continu</strong>, à chaque action</td>
           </tr>
           <tr>
-            <td>Latence</td>
-            <td>1 milliseconde</td>
-            <td><strong style="color: var(--klein);">0,1 milliseconde</strong></td>
+            <td>Visibilité réseau</td>
+            <td>L'utilisateur voit tout le réseau</td>
+            <td><strong style="color: var(--klein);">Invisible</strong> : il ne voit que son app</td>
           </tr>
           <tr>
-            <td>Intelligence artificielle</td>
-            <td>Optionnelle</td>
-            <td><strong style="color: var(--klein);">Native</strong> dans le réseau</td>
+            <td>Adresse IP</td>
+            <td>IP interne attribuée</td>
+            <td><strong style="color: var(--klein);">Aucune IP interne</strong></td>
+          </tr>
+          <tr>
+            <td>Confiance accordée</td>
+            <td>Implicite après connexion</td>
+            <td><strong style="color: var(--klein);">Aucune confiance par défaut</strong></td>
           </tr>
         </tbody>
       </table>
     </section>
 
+    <!-- MÉTAPHORE DE L'HÔTEL -->
     <section class="section">
-      <div class="section-label">§01 — Les trois axes</div>
+      <div class="metaphor-block">
+        <div class="subtitle">Pour bien comprendre — la métaphore</div>
+        <h3>Le grand <em>hôtel.</em></h3>
+        <p>
+          Imagine que le réseau de l'entreprise est un grand hôtel.
+          <br><br>
+          Avec un <strong>VPN</strong>, on te donne la clé du hall d'entrée. Une fois dedans, tu peux essayer d'ouvrir toutes les portes des chambres. Ta carte est vérifiée une seule fois à l'entrée.
+          <br><br>
+          Avec le <strong>ZTNA</strong>, on ne te donne aucune clé. Un garde du corps t'accompagne devant chaque porte. Pour toi, l'hôtel est plongé dans le noir : tu ne vois que la porte de la chambre où tu as le droit d'aller. Et à chaque porte, on vérifie ton identité, ton badge et si tu es <em>« propre »</em>.
+        </p>
+      </div>
+    </section>
+
+    <!-- 3 BULLES -->
+    <section class="section">
+      <div class="section-label">§02 — Les trois axes</div>
 
       <div class="veille-grid">
 
@@ -77,11 +164,11 @@
           <span class="bulle-num">01</span>
           <h3>Pourquoi cette veille ?</h3>
           <ul>
-            <li>Sujet d'<strong>impact général</strong> qui concerne tous les utilisateurs de réseaux</li>
-            <li>Fréquences exploitées d'environ <strong>1 THz</strong></li>
-            <li>Débit maximal : <strong>1 Tbps</strong></li>
-            <li>Intelligence artificielle <strong>directement intégrée</strong> au réseau</li>
-            <li>Applications concrètes : <strong>domotique</strong> (objets connectés, serrures électroniques)</li>
+            <li><strong>Fin du périmètre</strong> traditionnel — avec le télétravail et le Cloud, le réseau est partout</li>
+            <li>Philosophie <strong>« Never Trust, Always Verify »</strong> : l'utilisateur est toujours considéré comme potentiellement compromis</li>
+            <li><strong>Micro-segmentation</strong> : accès à une seule application, pas à tout le réseau</li>
+            <li>Sécurisation des <strong>accès prestataires</strong> et des données SaaS</li>
+            <li><strong>Remplacement</strong> progressif des VPN obsolètes</li>
           </ul>
         </div>
 
@@ -89,11 +176,11 @@
           <span class="bulle-num">02</span>
           <h3>Impact sur la carrière</h3>
           <ul>
-            <li><strong>Nouvelles opportunités</strong> dans la gestion des réseaux</li>
-            <li>Mise en place de <strong>PCA</strong> (Plans de Continuité d'Activité)</li>
-            <li>Bascule de secours possible : si la fibre est coupée, basculement sur la 6G</li>
-            <li>Nouvelles <strong>architectures réseau</strong> à anticiper</li>
-            <li>Compétences à développer pour rester compétitif</li>
+            <li>Passage d'une logique <strong>Réseau</strong> (IP, VLAN) à une logique <strong>Identité</strong> (utilisateur, rôle, état du poste)</li>
+            <li><strong>Administration simplifiée</strong> : moins de règles de firewall complexes</li>
+            <li>Capacité à <strong>couper un accès instantanément</strong> si l'antivirus du poste n'est pas à jour</li>
+            <li>Déploiement de solutions comme <strong>FortiClient</strong> (Fortinet) ou <strong>GlobalProtect</strong> (Palo Alto)</li>
+            <li>Compétences clés du <strong>SISR de demain</strong></li>
           </ul>
         </div>
 
@@ -101,16 +188,15 @@
           <span class="bulle-num">03</span>
           <h3>Comment l'organiser ?</h3>
           <ul>
-            <li><strong>Google Alertes</strong> sur les mots-clés "6G", "1 THz"</li>
-            <li>Suivi des publications de l'<strong>UIT</strong> et de la <strong>3GPP</strong></li>
-            <li>Flux RSS d'IT-Connect, Ericsson</li>
-            <li>Application Cloud pour <strong>filtrer et prioriser</strong></li>
-            <li><strong>Automatisation</strong> de la collecte</li>
+            <li><strong>Google Alertes</strong> sur les mots-clés "ZTNA", "Zero Trust", "SASE"</li>
+            <li>Suivi des publications de l'<strong>ANSSI</strong> (sécurisation télétravail) et du <strong>Gartner</strong> (SASE)</li>
+            <li>Flux RSS d'éditeurs : <strong>Fortinet</strong>, Palo Alto Networks, Check Point</li>
+            <li><strong>Webinars techniques</strong> : démonstrations de solutions Private Access</li>
+            <li>Veille active sur les <strong>incidents et CVE</strong> liés au télétravail</li>
           </ul>
         </div>
 
       </div>
-
     </section>
 
   </div>
