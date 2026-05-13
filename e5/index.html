@@ -110,7 +110,7 @@
             <p>Un serveur DHCP a été configuré pour le réseau <code>172.16.10.0/24</code> (VLAN 10). Sur les sous-interfaces des autres VLAN (20 et 30), la directive <code>ip helper-address 172.16.10.1</code> relaie les requêtes vers le serveur. <strong>OSPF</strong> a été activé en zone unique (<code>area 0</code>) pour propager toutes les routes entre les deux routeurs Cisco 2911.</p>
           </div>
           <div class="mission-actions">
-            <a href="../assets/TP1_Tutore_.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/TP1_Tutoré.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
@@ -132,7 +132,7 @@
             <p>Les trois routeurs Cisco ont été configurés avec <strong>OSPF</strong> en zone unique. Sur le routeur central, les deux liaisons d'interconnexion (<code>10.0.10.0/24</code> et <code>10.0.11.0/24</code>) ont été annoncées. Le routeur distant utilise <code>ip helper-address 172.16.50.1</code> pour faire suivre les requêtes DHCP du VLAN 60 vers le serveur DHCP du VLAN 50.</p>
           </div>
           <div class="mission-actions">
-            <a href="../assets/TP2_Tutore_.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/TP2_Tutoré.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
@@ -154,7 +154,7 @@
             <p>Sur chaque routeur, une sous-interface <code>gig0/0.10</code> a été créée avec <code>encapsulation dot1Q 10</code> pour porter le VLAN 10. Les commutateurs ont été configurés avec un port <strong>access</strong> sur le VLAN 10 côté client, et un port <strong>trunk</strong> côté routeur. <strong>OSPF</strong> propage les routes entre les deux sites, permettant aux postes des deux côtés de communiquer.</p>
           </div>
           <div class="mission-actions">
-            <a href="../assets/TP3_Tutore_.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/TP3_Tutoré.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
@@ -176,7 +176,7 @@
             <p>Les <strong>VLAN 10 et 20</strong> ont été déclarés sur les deux commutateurs. Les ports utilisateurs sont en mode <strong>access</strong>, le lien d'interconnexion entre les deux switchs en mode <strong>trunk</strong>. Sur le routeur, deux sous-interfaces (<code>gig0/0.10</code> et <code>gig0/0.20</code>) ont été créées pour servir de passerelles aux deux VLAN, avec OSPF activé pour annoncer les routes.</p>
           </div>
           <div class="mission-actions">
-            <a href="../assets/TP4_Tutore_.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/TP4_Tutoré.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
@@ -198,7 +198,7 @@
             <p>L'architecture a été déployée avec trois routeurs Cisco interconnectés par des liaisons de transit (<code>10.0.10.0/24</code> et <code>10.0.11.0/24</code>) et trois VLAN (10, 20, 30). <strong>OSPF</strong> a été configuré avec un masque générique élargi (<code>0.255.255.255</code>) pour réduire le nombre de routes annoncées. Le <strong>DHCP relay</strong> (<code>ip helper-address 172.16.20.1</code>) renvoie les requêtes des VLAN distants vers le serveur DHCP central.</p>
           </div>
           <div class="mission-actions">
-            <a href="../assets/TP5_Tutore_.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/TP5_Tutoré.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
@@ -220,7 +220,7 @@
             <p>Le protocole <strong>HSRP</strong> a été déployé sur deux routeurs Cisco 2911. Deux groupes HSRP : Groupe 1 IP virtuelle <code>10.0.10.254</code>, Groupe 2 IP virtuelle <code>10.0.11.254</code>. Priorités configurées (R1 : 101, R2 : 102) avec <code>standby preempt</code>. Bascule testée : moins de 15 secondes sans perte de session.</p>
           </div>
           <div class="mission-actions">
-            <a href="../assets/TP6_Tutore_.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/TP6_Tutoré.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
@@ -242,7 +242,7 @@
             <p>Quatre <strong>multilayer switches</strong> Cisco 3560 ont été configurés avec la commande <code>ip routing</code> pour activer le routage. Chaque switch porte plusieurs VLAN et des interfaces SVI (Switched Virtual Interface, <code>int vlan X</code>) qui servent de passerelles. <strong>HSRP</strong> a été configuré sur les VLAN 10, 20 et 21 avec des IP virtuelles <code>172.16.X.250</code>. Le relais DHCP a été configuré sur chaque interface VLAN. <strong>OSPF</strong> propage les routes entre tous les switches.</p>
           </div>
           <div class="mission-actions">
-            <a href="../assets/TP9.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/TP9_Tutoré.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
