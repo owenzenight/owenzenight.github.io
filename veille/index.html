@@ -62,6 +62,7 @@
       line-height: 1.7;
     }
     .metaphor-block strong { color: var(--ink); }
+    .metaphor-block em { color: var(--klein); font-style: italic; }
   </style>
 </head>
 <body>
@@ -73,7 +74,6 @@
       <a href="../e6/">E6</a>
       <a href="../synthese/">Synthèse</a>
       <a href="./" class="active">Veille</a>
-      <a href="../entreprise/">Entreprise</a>
     </div>
   </nav>
 
@@ -82,12 +82,12 @@
       Veille technologique
     </div>
     <h1>Le <em>ZTNA.</em></h1>
-    <p class="lead">Veille sur le Zero Trust Network Access — la nouvelle manière de penser la sécurité d'accès, qui remplace progressivement les VPN traditionnels en entreprise.</p>
+    <p class="lead">L'évolution de la sécurité périmétrique vers le modèle Zero Trust Network Access — la nouvelle manière de penser la sécurité d'accès en entreprise.</p>
   </header>
 
   <div class="container">
 
-    <!-- PITCH PHILOSOPHIE -->
+    <!-- CITATION D'OUVERTURE -->
     <section class="section">
       <div class="pitch-card">
         <p class="quote">
@@ -97,9 +97,18 @@
       </div>
     </section>
 
-    <!-- TABLEAU COMPARATIF VPN vs ZTNA -->
+    <!-- POURQUOI CETTE VEILLE -->
     <section class="section">
-      <div class="section-label">§01 — Le point clé</div>
+      <div class="section-label">§01 — Pourquoi cette veille ?</div>
+      <h2 class="section-title">Le VPN classique<br><em>devient une faille.</em></h2>
+      <p style="color: var(--ink-muted); font-size: 1.05rem; max-width: 720px;">
+        Avec l'augmentation du télétravail et l'utilisation du Cloud, le périmètre traditionnel de l'entreprise disparaît. Le VPN classique, qui donne accès à tout le réseau interne une fois connecté, devient un point faible. Le <strong>ZTNA</strong> répond à ce problème en vérifiant chaque connexion individuellement, pour chaque application.
+      </p>
+    </section>
+
+    <!-- TABLEAU VPN vs ZTNA -->
+    <section class="section">
+      <div class="section-label">§02 — Le point clé</div>
       <h2 class="section-title">Qu'est-ce qui change<br><em>par rapport au VPN ?</em></h2>
 
       <table class="skills-table">
@@ -150,47 +159,70 @@
       </div>
     </section>
 
-    <!-- 3 BULLES SIMPLIFIÉES -->
+    <!-- FONCTIONNEMENT SIMPLIFIÉ -->
     <section class="section">
-      <div class="section-label">§02 — Les trois axes</div>
+      <div class="section-label">§03 — Fonctionnement simplifié</div>
+      <h2 class="section-title">Trois principes <em>clés.</em></h2>
 
       <div class="veille-grid">
 
         <div class="bulle">
           <span class="bulle-num">01</span>
-          <h3>Pourquoi cette veille ?</h3>
+          <h3>Vérification d'identité</h3>
           <ul>
-            <li>Le <strong>télétravail</strong> et le <strong>Cloud</strong> rendent les VPN dépassés</li>
-            <li>Avec le ZTNA, on accède à une <strong>seule application</strong>, pas à tout le réseau</li>
-            <li>Chaque accès est <strong>vérifié</strong> à chaque fois (identité, poste, contexte)</li>
-            <li>Sécurisation des <strong>accès des prestataires</strong> et des données SaaS</li>
-            <li><strong>Remplacement</strong> progressif des VPN obsolètes</li>
+            <li>Authentification forte obligatoire (<strong>MFA</strong>)</li>
+            <li>Identité vérifiée avant chaque accès</li>
+            <li>Comptes liés à un annuaire central (Azure AD, Okta)</li>
           </ul>
         </div>
 
         <div class="bulle">
           <span class="bulle-num">02</span>
-          <h3>Impact sur la carrière</h3>
+          <h3>Contrôle du poste</h3>
           <ul>
-            <li>On passe d'une logique <strong>Réseau</strong> à une logique <strong>Identité</strong></li>
-            <li><strong>Moins de règles de pare-feu</strong> à maintenir</li>
-            <li>Capacité à <strong>couper un accès instantanément</strong> si un poste n'est pas conforme</li>
-            <li>Déploiement de solutions comme <strong>FortiClient</strong> (Fortinet) ou <strong>GlobalProtect</strong> (Palo Alto)</li>
-            <li>Compétences clés du <strong>SISR de demain</strong></li>
+            <li>Vérification de la <strong>conformité du PC</strong> (antivirus, mises à jour)</li>
+            <li>Blocage si le poste n'est pas à jour</li>
+            <li>Contrôle du contexte (lieu, heure de connexion)</li>
           </ul>
         </div>
 
         <div class="bulle">
           <span class="bulle-num">03</span>
-          <h3>Comment l'organiser ?</h3>
+          <h3>Accès par application</h3>
           <ul>
-            <li><strong>Google Alertes</strong> sur les mots-clés "ZTNA" et "Zero Trust"</li>
-            <li>Flux <strong>RSS Palo Alto Networks</strong></li>
-            <li>Flux <strong>RSS Fortinet</strong></li>
+            <li>L'utilisateur voit <strong>uniquement les outils dont il a besoin</strong></li>
+            <li>Pas d'accès au reste du réseau</li>
+            <li>Principe de moindre privilège</li>
           </ul>
         </div>
 
       </div>
+    </section>
+
+    <!-- ORGANISATION DE LA VEILLE -->
+    <section class="section">
+      <div class="section-label">§04 — Comment j'organise ma veille</div>
+      <h2 class="section-title">Deux sources <em>principales.</em></h2>
+
+      <table class="skills-table">
+        <tr>
+          <td>Google Alertes</td>
+          <td>Mots-clés suivis : <strong>"ZTNA"</strong>, <strong>"Zero Trust"</strong>, <strong>"SASE"</strong>. Notifications automatiques par email à chaque nouvelle publication.</td>
+        </tr>
+        <tr>
+          <td>Flux RSS éditeurs</td>
+          <td>Suivi des publications de <strong>Palo Alto Networks</strong> et <strong>Fortinet</strong>, les deux leaders du marché ZTNA que Nomios intègre chez ses clients.</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- CONCLUSION -->
+    <section class="section">
+      <div class="section-label">§05 — Conclusion pour l'entreprise</div>
+      <h2 class="section-title">Réduire les <em>risques.</em></h2>
+      <p style="color: var(--ink-muted); font-size: 1.05rem; max-width: 720px;">
+        Le ZTNA réduit drastiquement les risques d'attaques (notamment les <strong>ransomwares</strong>) en isolant chaque accès utilisateur. Si un poste est compromis, le malware ne peut plus se propager au reste du réseau. C'est pour cette raison que de nombreuses entreprises remplacent progressivement leurs VPN par des solutions ZTNA.
+      </p>
     </section>
 
   </div>
