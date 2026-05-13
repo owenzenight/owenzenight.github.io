@@ -17,6 +17,7 @@
       <a href="../e6/">E6</a>
       <a href="../synthese/">Synthèse</a>
       <a href="../veille/">Veille</a>
+      <a href="../entreprise/">Entreprise</a>
     </div>
   </nav>
 
@@ -36,11 +37,11 @@
       <ul>
         <li><a href="#m1"><span class="toc-num">M.01</span><span class="toc-name">Déploiement Windows Server (AD DS, GPO)</span><span class="toc-arrow">→</span></a></li>
         <li><a href="#m2"><span class="toc-num">M.02</span><span class="toc-name">Mise en place de services Linux (Samba, vsftpd)</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m3"><span class="toc-num">M.03</span><span class="toc-name">Mise en place d'un serveur DHCP</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m4"><span class="toc-num">M.04</span><span class="toc-name">Routage OSPF entre plusieurs routeurs</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m5"><span class="toc-num">M.05</span><span class="toc-name">Communication entre VLAN d'un même site</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m6"><span class="toc-num">M.06</span><span class="toc-name">Routage inter-VLAN</span><span class="toc-arrow">→</span></a></li>
-        <li><a href="#m7"><span class="toc-num">M.07</span><span class="toc-name">Architecture multi-sites + ajout d'un SSID Wi-Fi</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m3"><span class="toc-num">M.03</span><span class="toc-name">Serveur DHCP centralisé entre VLAN</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m4"><span class="toc-num">M.04</span><span class="toc-name">Routage OSPF entre trois routeurs</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m5"><span class="toc-num">M.05</span><span class="toc-name">Extension d'un même VLAN entre deux sites</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m6"><span class="toc-num">M.06</span><span class="toc-name">Routage inter-VLAN avec propagation par trunk</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="#m7"><span class="toc-num">M.07</span><span class="toc-name">Architecture réseau combinée multi-VLAN</span><span class="toc-arrow">→</span></a></li>
         <li><a href="#m8"><span class="toc-num">M.08</span><span class="toc-name">HSRP — Redondance haute disponibilité</span><span class="toc-arrow">→</span></a></li>
         <li><a href="#m9"><span class="toc-num">M.09</span><span class="toc-name">Architecture avec switches niveau 3</span><span class="toc-arrow">→</span></a></li>
       </ul>
@@ -95,21 +96,21 @@
       <article class="mission" id="m3">
         <div class="mission-num">M.03</div>
         <div>
-          <h3 class="mission-title">Mise en place d'un serveur <em>DHCP</em></h3>
+          <h3 class="mission-title">Serveur <em>DHCP</em> centralisé entre VLAN</h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
-            <p>Chez <strong>TechNet Solutions</strong>, les postes utilisateurs doivent recevoir automatiquement leur configuration IP. Un serveur DHCP unique doit pouvoir servir plusieurs réseaux différents.</p>
+            <p>Chez <strong>TechNet Solutions</strong>, les postes utilisateurs sont répartis sur plusieurs VLAN. Un serveur DHCP unique doit pouvoir leur distribuer les adresses IP automatiquement, malgré le fait que les requêtes DHCP ne traversent pas les routeurs par défaut.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Besoins</span>
-            <p>Mettre en place un <strong>serveur DHCP</strong> capable de délivrer les adresses IP automatiquement. Permettre à ce serveur DHCP de fonctionner sur plusieurs VLAN, car par défaut les requêtes DHCP ne traversent pas les routeurs.</p>
+            <p>Mettre en place un <strong>serveur DHCP</strong> capable de servir plusieurs VLAN à partir d'un point unique. Configurer les routeurs Cisco pour relayer les requêtes DHCP des VLAN distants vers le serveur central. Faire propager les routes automatiquement entre les routeurs.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
-            <p>Un serveur DHCP a été configuré pour délivrer les adresses du réseau <code>172.16.10.0/24</code>. Sur les routeurs Cisco, la directive <code>ip helper-address 172.16.10.1</code> a été ajoutée sur les sous-interfaces des autres VLAN pour relayer les requêtes DHCP vers le serveur central.</p>
+            <p>Un serveur DHCP a été configuré pour le réseau <code>172.16.10.0/24</code> (VLAN 10). Sur les sous-interfaces des autres VLAN (20 et 30), la directive <code>ip helper-address 172.16.10.1</code> relaie les requêtes vers le serveur. <strong>OSPF</strong> a été activé en zone unique (<code>area 0</code>) pour propager toutes les routes entre les deux routeurs Cisco 2911.</p>
           </div>
           <div class="mission-actions">
-            <a href="../assets/TP1_Tutoré.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/TP1_Tutore_.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
@@ -117,21 +118,21 @@
       <article class="mission" id="m4">
         <div class="mission-num">M.04</div>
         <div>
-          <h3 class="mission-title">Routage <em>OSPF</em> entre plusieurs routeurs</h3>
+          <h3 class="mission-title">Routage <em>OSPF</em> entre trois routeurs</h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
-            <p>L'infrastructure de <strong>TechNet Solutions</strong> évolue : plusieurs routeurs doivent communiquer entre eux pour relier les différents sites de l'entreprise.</p>
+            <p>L'infrastructure de <strong>TechNet Solutions</strong> évolue : trois routeurs en chaîne (A — B — C) doivent communiquer entre eux, avec un site à chaque extrémité. Le routeur central B doit connaître à la fois A et C, alors que A et C ne se voient pas directement.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Besoins</span>
-            <p>Interconnecter plusieurs routeurs entre eux. Permettre la <strong>propagation automatique des routes</strong> entre les routeurs via le protocole OSPF. Assurer que chaque routeur connaisse l'ensemble des réseaux disponibles.</p>
+            <p>Interconnecter trois routeurs en série. Permettre la <strong>propagation automatique des routes</strong> avec OSPF, pour que A et C puissent se joindre via B. Conserver le relais DHCP pour les VLAN éloignés du serveur.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
-            <p>Les routeurs ont été configurés avec <strong>OSPF</strong> en zone unique (<code>area 0</code>). Les réseaux d'interconnexion et les VLAN ont été annoncés sur chaque routeur. La connaissance des routes est désormais propagée automatiquement entre tous les routeurs.</p>
+            <p>Les trois routeurs Cisco ont été configurés avec <strong>OSPF</strong> en zone unique. Sur le routeur central, les deux liaisons d'interconnexion (<code>10.0.10.0/24</code> et <code>10.0.11.0/24</code>) ont été annoncées. Le routeur distant utilise <code>ip helper-address 172.16.50.1</code> pour faire suivre les requêtes DHCP du VLAN 60 vers le serveur DHCP du VLAN 50.</p>
           </div>
           <div class="mission-actions">
-            <a href="../assets/TP2_Tutoré.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/TP2_Tutore_.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
@@ -139,21 +140,21 @@
       <article class="mission" id="m5">
         <div class="mission-num">M.05</div>
         <div>
-          <h3 class="mission-title">Communication entre <em>VLAN</em> d'un même site</h3>
+          <h3 class="mission-title">Extension d'un même <em>VLAN</em> entre deux sites</h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
-            <p>Au sein du même site de <strong>TechNet Solutions</strong>, plusieurs services sont segmentés en VLAN différents. Les utilisateurs ont besoin que ces VLAN puissent communiquer entre eux tout en gardant l'isolation logique.</p>
+            <p>Deux sites de <strong>TechNet Solutions</strong> hébergent chacun un commutateur, et on souhaite que des postes situés dans le même VLAN, mais sur des switchs différents, puissent communiquer comme s'ils étaient sur le même réseau local.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Besoins</span>
-            <p>Faire en sorte que les <strong>VLAN communiquent entre eux</strong>, c'est-à-dire qu'un poste du VLAN 10 puisse joindre un poste du VLAN 20. Configurer les sous-interfaces des routeurs pour permettre ce dialogue.</p>
+            <p>Étendre le <strong>VLAN 10</strong> entre les deux sites, qui sont séparés par deux routeurs Cisco interconnectés. Permettre la communication entre le sous-réseau <code>172.16.10.0/24</code> du site A et <code>172.16.20.0/24</code> du site B, qui appartiennent tous deux logiquement au VLAN 10.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
-            <p>Sur les routeurs, des sous-interfaces ont été créées, une par VLAN. Chaque sous-interface joue le rôle de <strong>passerelle</strong> pour son VLAN. Les commutateurs ont été configurés en mode <strong>access</strong> sur les ports utilisateurs et en mode <strong>trunk</strong> sur les liens montants pour transporter tous les VLAN.</p>
+            <p>Sur chaque routeur, une sous-interface <code>gig0/0.10</code> a été créée avec <code>encapsulation dot1Q 10</code> pour porter le VLAN 10. Les commutateurs ont été configurés avec un port <strong>access</strong> sur le VLAN 10 côté client, et un port <strong>trunk</strong> côté routeur. <strong>OSPF</strong> propage les routes entre les deux sites, permettant aux postes des deux côtés de communiquer.</p>
           </div>
           <div class="mission-actions">
-            <a href="../assets/TP4_Tutoré.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/TP3_Tutore_.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
@@ -161,21 +162,21 @@
       <article class="mission" id="m6">
         <div class="mission-num">M.06</div>
         <div>
-          <h3 class="mission-title">Routage <em>inter-VLAN</em></h3>
+          <h3 class="mission-title">Routage <em>inter-VLAN</em> avec propagation par trunk</h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
-            <p>Les services administratif et technique de <strong>TechNet Solutions</strong> sont sur des VLAN différents et doivent pouvoir communiquer entre eux via un routeur central.</p>
+            <p>Les services administratif et technique de <strong>TechNet Solutions</strong> sont sur des VLAN différents, mais leurs postes peuvent être branchés sur n'importe lequel des commutateurs du site. Un poste du VLAN 20 sur le second switch doit pouvoir atteindre le routeur via le premier switch.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Besoins</span>
-            <p>Mettre en place un <strong>routage inter-VLAN</strong>, c'est-à-dire que les VLAN communiquent entre eux à travers un seul routeur. Permettre le passage des VLAN entre les commutateurs via un lien trunk.</p>
+            <p>Mettre en place un <strong>routage inter-VLAN</strong> via un seul routeur, en faisant transiter les VLAN entre les deux commutateurs via un lien trunk. Le VLAN 20 doit être déclaré sur les deux switchs même s'il ne contient des postes que sur l'un d'entre eux.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
-            <p>Deux VLAN (<code>10</code> et <code>20</code>) ont été déclarés sur les commutateurs. Les ports utilisateurs ont été configurés en mode <strong>access</strong>, le lien d'interconnexion entre commutateurs en mode <strong>trunk</strong>. Sur le routeur, deux sous-interfaces (<code>g0/0.10</code> et <code>g0/0.20</code>) ont été créées pour servir de passerelles aux deux VLAN.</p>
+            <p>Les <strong>VLAN 10 et 20</strong> ont été déclarés sur les deux commutateurs. Les ports utilisateurs sont en mode <strong>access</strong>, le lien d'interconnexion entre les deux switchs en mode <strong>trunk</strong>. Sur le routeur, deux sous-interfaces (<code>gig0/0.10</code> et <code>gig0/0.20</code>) ont été créées pour servir de passerelles aux deux VLAN, avec OSPF activé pour annoncer les routes.</p>
           </div>
           <div class="mission-actions">
-            <a href="../assets/TP3_Tutoré.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/TP4_Tutore_.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
@@ -183,21 +184,21 @@
       <article class="mission" id="m7">
         <div class="mission-num">M.07</div>
         <div>
-          <h3 class="mission-title">Architecture <em>multi-sites</em> + ajout d'un SSID Wi-Fi</h3>
+          <h3 class="mission-title">Architecture réseau combinée <em>multi-VLAN</em></h3>
           <div class="mission-section">
             <span class="mission-section-label">Contexte</span>
-            <p>L'infrastructure de <strong>TechNet Solutions</strong> doit intégrer plusieurs sites distants avec leurs propres VLAN, et ajouter un point d'accès Wi-Fi diffusant un nouveau SSID pour les utilisateurs.</p>
+            <p>L'infrastructure complète de <strong>TechNet Solutions</strong> doit regrouper les acquis des missions précédentes : plusieurs routeurs, plusieurs VLAN répartis entre les sites, un serveur DHCP centralisé et la propagation automatique des routes.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Besoins</span>
-            <p>Mettre en œuvre une <strong>architecture multi-sites</strong> avec plusieurs VLAN. Centraliser le DHCP. Ajouter un <strong>SSID Wi-Fi</strong> sur le réseau pour permettre aux utilisateurs de se connecter sans fil.</p>
+            <p>Mettre en œuvre une architecture qui combine plusieurs <strong>VLAN</strong>, du <strong>routage inter-VLAN</strong>, des <strong>liaisons de transit</strong> entre trois routeurs Cisco, et du <strong>DHCP relay</strong> pour servir tous les sites depuis un point unique.</p>
           </div>
           <div class="mission-section">
             <span class="mission-section-label">Réponse aux besoins</span>
-            <p>L'architecture a été déployée avec plusieurs routeurs Cisco reliés par des liaisons de transit. OSPF a été activé sur tous les routeurs. Le DHCP relais (<code>ip helper-address</code>) a été configuré pour relayer vers le serveur central. Un <strong>point d'accès Wi-Fi</strong> a été ajouté pour diffuser un SSID accessible aux utilisateurs.</p>
+            <p>L'architecture a été déployée avec trois routeurs Cisco interconnectés par des liaisons de transit (<code>10.0.10.0/24</code> et <code>10.0.11.0/24</code>) et trois VLAN (10, 20, 30). <strong>OSPF</strong> a été configuré avec un masque générique élargi (<code>0.255.255.255</code>) pour réduire le nombre de routes annoncées. Le <strong>DHCP relay</strong> (<code>ip helper-address 172.16.20.1</code>) renvoie les requêtes des VLAN distants vers le serveur DHCP central.</p>
           </div>
           <div class="mission-actions">
-            <a href="../assets/TP5_Tutoré.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/TP5_Tutore_.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
@@ -219,7 +220,7 @@
             <p>Le protocole <strong>HSRP</strong> a été déployé sur deux routeurs Cisco 2911. Deux groupes HSRP : Groupe 1 IP virtuelle <code>10.0.10.254</code>, Groupe 2 IP virtuelle <code>10.0.11.254</code>. Priorités configurées (R1 : 101, R2 : 102) avec <code>standby preempt</code>. Bascule testée : moins de 15 secondes sans perte de session.</p>
           </div>
           <div class="mission-actions">
-            <a href="../assets/TP6_Tutoré.pdf" class="btn">Consulter la fiche</a>
+            <a href="../assets/TP6_Tutore_.pdf" class="btn">Consulter la fiche</a>
           </div>
         </div>
       </article>
