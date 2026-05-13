@@ -1,30 +1,203 @@
-<article class="mission">
-  <div class="mission-num">Veille</div>
-  <div>
-    <h3 class="mission-title">La Sécurité <em>Zero Trust</em> (ZTNA)</h3>
-    
-    <div class="mission-section">
-      <span class="mission-section-label">Sujet de veille</span>
-      <p>L'évolution de la sécurité périmétrique vers le modèle <strong>Zero Trust Network Access (ZTNA)</strong>.</p>
-    </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veille technologique — Le ZTNA · Owen LE MOAL</title>
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,30..100,0..1;1,9..144,300..700,30..100,0..1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    .pitch-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      padding: 36px 40px;
+      margin-bottom: 40px;
+    }
+    .pitch-card .quote {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .pitch-card .quote em {
+      color: var(--klein);
+      font-style: italic;
+    }
+    .pitch-card .quote-author {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
 
-    <div class="mission-section">
-      <span class="mission-section-label">Pourquoi cette veille ?</span>
-      <p>Avec l'augmentation du télétravail et l'utilisation du Cloud, le VPN classique devient une faille de sécurité. Le ZTNA répond à ce problème en vérifiant chaque connexion individuellement.</p>
+    .metaphor-block {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      padding: 36px 40px;
+      margin-bottom: 40px;
+    }
+    .metaphor-block h3 {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+    .metaphor-block .subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--klein);
+      margin-bottom: 24px;
+    }
+    .metaphor-block p {
+      color: var(--ink-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .metaphor-block strong { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <nav class="topnav">
+    <a href="../" class="brand">Owen LE MOAL<sup>2026</sup></a>
+    <div class="nav-links">
+      <a href="../portfolio/">Portfolio</a>
+      <a href="../e5/">E5</a>
+      <a href="../e6/">E6</a>
+      <a href="../synthese/">Synthèse</a>
+      <a href="./" class="active">Veille</a>
+      <a href="../entreprise/">Entreprise</a>
     </div>
+  </nav>
 
-    <div class="mission-section">
-      <span class="mission-section-label">Fonctionnement simplifié</span>
-      <ul>
-        <li><strong>Vérification d'identité :</strong> Authentification forte obligatoire (MFA).</li>
-        <li><strong>Contrôle du poste :</strong> Vérification de la conformité (Antivirus, mises à jour) avant l'accès.</li>
-        <li><strong>Accès par application :</strong> L'utilisateur voit uniquement les outils dont il a besoin, pas tout le réseau.</li>
-      </ul>
+  <header class="page-header">
+    <div class="page-meta">
+      Veille technologique
     </div>
+    <h1>Le <em>ZTNA.</em></h1>
+    <p class="lead">Veille sur le Zero Trust Network Access — la nouvelle manière de penser la sécurité d'accès, qui remplace progressivement les VPN traditionnels en entreprise.</p>
+  </header>
 
-    <div class="mission-section">
-      <span class="mission-section-label">Conclusion pour l'entreprise</span>
-      <p>Le ZTNA réduit drastiquement les risques d'attaques (Ransomwares) en isolant chaque accès utilisateur.</p>
-    </div>
+  <div class="container">
+
+    <!-- PITCH PHILOSOPHIE -->
+    <section class="section">
+      <div class="pitch-card">
+        <p class="quote">
+          « Ne jamais faire confiance,<br><em>toujours vérifier.</em> »
+        </p>
+        <p class="quote-author">— Philosophie fondamentale du Zero Trust</p>
+      </div>
+    </section>
+
+    <!-- TABLEAU COMPARATIF VPN vs ZTNA -->
+    <section class="section">
+      <div class="section-label">§01 — Le point clé</div>
+      <h2 class="section-title">Qu'est-ce qui change<br><em>par rapport au VPN ?</em></h2>
+
+      <table class="skills-table">
+        <thead>
+          <tr>
+            <th>Critère</th>
+            <th>VPN (ancienne méthode)</th>
+            <th>ZTNA (nouvelle méthode)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Accès</td>
+            <td>On entre dans tout le réseau interne</td>
+            <td><strong style="color: var(--klein);">Accès à une seule application</strong></td>
+          </tr>
+          <tr>
+            <td>Vérification</td>
+            <td>Une fois à la connexion</td>
+            <td><strong style="color: var(--klein);">En continu</strong>, à chaque action</td>
+          </tr>
+          <tr>
+            <td>Visibilité réseau</td>
+            <td>L'utilisateur voit tout le réseau</td>
+            <td><strong style="color: var(--klein);">Invisible</strong> : il ne voit que son app</td>
+          </tr>
+          <tr>
+            <td>Confiance accordée</td>
+            <td>Implicite après connexion</td>
+            <td><strong style="color: var(--klein);">Aucune confiance par défaut</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- MÉTAPHORE DE L'HÔTEL -->
+    <section class="section">
+      <div class="metaphor-block">
+        <div class="subtitle">Pour bien comprendre — la métaphore</div>
+        <h3>Le grand <em>hôtel.</em></h3>
+        <p>
+          Imagine que le réseau de l'entreprise est un grand hôtel.
+          <br><br>
+          Avec un <strong>VPN</strong>, on te donne la clé du hall d'entrée. Une fois dedans, tu peux essayer d'ouvrir toutes les portes des chambres. Ta carte est vérifiée une seule fois à l'entrée.
+          <br><br>
+          Avec le <strong>ZTNA</strong>, on ne te donne aucune clé. Un garde du corps t'accompagne devant chaque porte. Pour toi, l'hôtel est plongé dans le noir : tu ne vois que la porte de la chambre où tu as le droit d'aller. Et à chaque porte, on vérifie ton identité, ton badge et si tu es <em>« propre »</em>.
+        </p>
+      </div>
+    </section>
+
+    <!-- 3 BULLES SIMPLIFIÉES -->
+    <section class="section">
+      <div class="section-label">§02 — Les trois axes</div>
+
+      <div class="veille-grid">
+
+        <div class="bulle">
+          <span class="bulle-num">01</span>
+          <h3>Pourquoi cette veille ?</h3>
+          <ul>
+            <li>Le <strong>télétravail</strong> et le <strong>Cloud</strong> rendent les VPN dépassés</li>
+            <li>Avec le ZTNA, on accède à une <strong>seule application</strong>, pas à tout le réseau</li>
+            <li>Chaque accès est <strong>vérifié</strong> à chaque fois (identité, poste, contexte)</li>
+            <li>Sécurisation des <strong>accès des prestataires</strong> et des données SaaS</li>
+            <li><strong>Remplacement</strong> progressif des VPN obsolètes</li>
+          </ul>
+        </div>
+
+        <div class="bulle">
+          <span class="bulle-num">02</span>
+          <h3>Impact sur la carrière</h3>
+          <ul>
+            <li>On passe d'une logique <strong>Réseau</strong> à une logique <strong>Identité</strong></li>
+            <li><strong>Moins de règles de pare-feu</strong> à maintenir</li>
+            <li>Capacité à <strong>couper un accès instantanément</strong> si un poste n'est pas conforme</li>
+            <li>Déploiement de solutions comme <strong>FortiClient</strong> (Fortinet) ou <strong>GlobalProtect</strong> (Palo Alto)</li>
+            <li>Compétences clés du <strong>SISR de demain</strong></li>
+          </ul>
+        </div>
+
+        <div class="bulle">
+          <span class="bulle-num">03</span>
+          <h3>Comment l'organiser ?</h3>
+          <ul>
+            <li><strong>Google Alertes</strong> sur les mots-clés "ZTNA" et "Zero Trust"</li>
+            <li>Flux <strong>RSS Palo Alto Networks</strong></li>
+            <li>Flux <strong>RSS Fortinet</strong></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
   </div>
-</article>
+
+  <footer>
+    <div class="footer-meta">© 2026 — JET SET CORPORATION</div>
+    <div class="footer-name">Owen LE MOAL · BTS SIO SISR</div>
+  </footer>
+</body>
+</html>
