@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jet Set Corporation — Raccourcis</title>
+<title>Jet Set Corporation</title>
 <meta name="description" content="Des raccourcis iPhone pensés pour le quotidien. Mode Nuit et Save Video, par Jet Set Corporation.">
 <style>
   :root {
@@ -21,9 +21,59 @@
     background: var(--blanc);
     -webkit-font-smoothing: antialiased;
     line-height: 1.47;
+    overflow-x: hidden;
   }
   a { text-decoration: none; color: var(--bleu); }
   a:hover { text-decoration: underline; }
+
+  /* ---------- Splash vidéo intro ---------- */
+  #splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease-out, visibility 0.8s;
+  }
+  #splash.done {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  #splash video {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  #splash .skip {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    color: rgba(255,255,255,0.6);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    padding: 8px 14px;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(6px);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  #splash .skip:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.6);
+  }
+
+  #site {
+    opacity: 0;
+    transition: opacity 0.6s ease-in;
+  }
+  #site.visible { opacity: 1; }
 
   /* ---------- Nav ---------- */
   nav {
@@ -82,244 +132,233 @@
     background: linear-gradient(90deg, #1d1d1f 30%, #6e6e73);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: transparent;
+    max-width: 900px;
+    margin: 0 auto 22px;
   }
-  .hero p.sous {
-    font-size: clamp(19px, 3vw, 26px);
+  .hero .accroche {
+    font-size: 21px;
     color: var(--gris-texte);
-    margin-top: 16px;
+    max-width: 640px;
+    margin: 0 auto 40px;
+    line-height: 1.4;
+  }
+  .hero .liens {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero .liens a {
+    font-size: 17px;
+    color: var(--bleu);
+  }
+  .hero .liens a::after {
+    content: " ›";
     font-weight: 400;
   }
-  .hero .liens { margin-top: 26px; font-size: 19px; }
 
-  /* ---------- Sections produit ---------- */
-  section.produit {
+  /* ---------- Sections ---------- */
+  section {
     padding: 100px 22px;
-    text-align: center;
-    overflow: hidden;
   }
-  section.produit .contenu {
-    max-width: 720px;
+  .contenu {
+    max-width: 900px;
     margin: 0 auto;
+    text-align: center;
   }
-  section.produit .eyebrow {
-    font-size: 15px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 12px;
-  }
-  section.produit h2 {
-    font-size: clamp(36px, 6vw, 60px);
+  section h2 {
+    font-size: clamp(36px, 6vw, 56px);
     font-weight: 700;
     letter-spacing: -0.015em;
     line-height: 1.08;
+    margin-bottom: 20px;
   }
-  section.produit p.pitch {
-    font-size: clamp(18px, 2.5vw, 23px);
-    margin-top: 16px;
+  section .pitch {
+    font-size: 21px;
+    color: var(--gris-texte);
+    max-width: 620px;
+    margin: 0 auto 44px;
+    line-height: 1.4;
   }
-  section.produit .details {
-    margin-top: 34px;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
+  .details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+    max-width: 780px;
+    margin: 0 auto 44px;
+    text-align: left;
+  }
+  .details > div {
     font-size: 15px;
+    line-height: 1.5;
+    color: var(--gris-texte);
   }
-  section.produit .details div { max-width: 200px; }
-  section.produit .details strong { display: block; font-size: 17px; margin-bottom: 4px; }
+  .details strong {
+    display: block;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--encre);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
   .pilule {
     display: inline-block;
-    margin-top: 34px;
-    padding: 11px 24px;
+    padding: 10px 22px;
     border-radius: 980px;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 500;
-    cursor: default;
+    letter-spacing: 0.02em;
+  }
+  #mode-nuit .pilule {
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  #save-video .pilule {
+    background: rgba(29,29,31,0.06);
+    color: var(--gris-texte);
+    border: 1px solid rgba(29,29,31,0.12);
   }
 
-  /* Mode Nuit : section sombre */
   #mode-nuit {
     background: #000;
     color: #f5f5f7;
     position: relative;
+    overflow: hidden;
   }
-  #mode-nuit .eyebrow { color: #f5b50c; }
-  #mode-nuit p.pitch { color: #a1a1a6; }
-  #mode-nuit .details { color: #a1a1a6; }
-  #mode-nuit .details strong { color: #f5f5f7; }
-  #mode-nuit .pilule {
-    background: #1d1d1f;
-    color: #86868b;
-    border: 1px solid #424245;
-  }
-  .lune {
-    width: 130px;
-    height: 130px;
-    margin: 0 auto 40px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #f7e8b8, #d8b64a 60%, #8a6d1d);
-    box-shadow: 0 0 80px 30px rgba(245, 181, 12, 0.18);
-    position: relative;
-  }
-  .lune::after {
+  #mode-nuit::before {
     content: "";
     position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: radial-gradient(circle at 68% 40%, transparent 55%, #000 56%);
-  }
-
-  /* Save Video : section claire */
-  #save-video { background: var(--gris); }
-  #save-video .eyebrow { color: var(--bleu); }
-  #save-video p.pitch { color: var(--gris-texte); }
-  #save-video .details { color: var(--gris-texte); }
-  #save-video .details strong { color: var(--encre); }
-  #save-video .pilule {
-    background: #e8e8ed;
-    color: #86868b;
-  }
-  .tuiles {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    margin-bottom: 44px;
-  }
-  .tuile {
-    width: 92px;
-    height: 150px;
-    border-radius: 18px;
-    background: linear-gradient(160deg, #c7c7cc, #8e8e93);
-    position: relative;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-  }
-  .tuile:nth-child(2) {
-    background: linear-gradient(160deg, #0a84ff, #0040dd);
-    transform: translateY(-12px) scale(1.06);
-  }
-  .tuile:nth-child(3) { background: linear-gradient(160deg, #ff375f, #c9184a); }
-  .tuile::after {
-    content: "";
-    position: absolute;
+    top: 15%;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border-left: 16px solid rgba(255, 255, 255, 0.9);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
+    transform: translateX(-50%);
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 210, 130, 0.28) 0%, transparent 65%);
+    filter: blur(20px);
+    pointer-events: none;
+  }
+  #mode-nuit .contenu { position: relative; z-index: 1; }
+  #mode-nuit .pitch { color: #a1a1a6; }
+  #mode-nuit .details > div { color: #a1a1a6; }
+  #mode-nuit .details strong { color: #f5f5f7; }
+
+  #save-video {
+    background: var(--gris);
   }
 
-  /* ---------- Registre ---------- */
   #registre {
     background: var(--blanc);
-    padding: 100px 22px;
     text-align: center;
   }
-  #registre .contenu { max-width: 640px; margin: 0 auto; }
-  #registre h2 {
-    font-size: clamp(32px, 5vw, 48px);
-    font-weight: 700;
-    letter-spacing: -0.015em;
-  }
+  #registre .contenu { max-width: 700px; }
   #registre p {
     font-size: 19px;
     color: var(--gris-texte);
-    margin-top: 14px;
+    max-width: 540px;
+    margin: 0 auto 36px;
   }
-  #registre .bouton {
+  .bouton {
     display: inline-block;
-    margin-top: 28px;
     padding: 12px 26px;
-    border-radius: 980px;
     background: var(--bleu);
     color: #fff;
-    font-size: 16px;
+    border-radius: 980px;
+    font-size: 15px;
     font-weight: 500;
+    letter-spacing: -0.01em;
+    transition: background 0.2s;
   }
-  #registre .bouton:hover { background: #0077ed; text-decoration: none; }
+  .bouton:hover {
+    background: #0077ed;
+    text-decoration: none;
+  }
 
-  /* ---------- Footer ---------- */
   footer {
+    padding: 30px 22px;
     background: var(--gris);
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-    padding: 26px 22px;
+    border-top: 1px solid rgba(0,0,0,0.06);
   }
   footer .inner {
     max-width: 980px;
     margin: 0 auto;
-    font-size: 12px;
-    color: var(--gris-texte);
     display: flex;
     justify-content: space-between;
-    gap: 12px;
+    font-size: 12px;
+    color: var(--gris-texte);
     flex-wrap: wrap;
+    gap: 8px;
   }
 
-  /* ---------- Apparitions au scroll ---------- */
   .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
   }
   .reveal.visible {
     opacity: 1;
-    transform: none;
+    transform: translateY(0);
   }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .reveal { opacity: 1; transform: none; transition: none; }
+
+  @media (max-width: 640px) {
+    nav ul { gap: 18px; }
+    nav ul a { font-size: 11px; }
+    section { padding: 70px 22px; }
+    .hero { padding: 70px 22px 70px; }
   }
 </style>
 </head>
 <body>
 
+<div id="splash">
+  <video id="introVideo" playsinline muted autoplay preload="auto">
+    <source src="assets/intro.mp4" type="video/mp4">
+  </video>
+  <div class="skip" onclick="finirSplash()">Passer</div>
+</div>
+
+<div id="site">
+
 <nav>
   <div class="inner">
-    <a class="marque" href="#">Jet Set Corporation</a>
+    <a href="#" class="marque">Jet Set Corporation</a>
     <ul>
       <li><a href="#mode-nuit">Mode Nuit</a></li>
       <li><a href="#save-video">Save Video</a></li>
-      <li><a href="http://13.53.65.247:8080/admin">Registre</a></li>
+      <li><a href="#registre">Registre</a></li>
     </ul>
   </div>
 </nav>
 
-<header class="hero">
-  <p class="eyebrow">Raccourcis</p>
+<div class="hero">
+  <div class="eyebrow">Jet Set Corporation</div>
   <h1>Le quotidien,<br>en un geste.</h1>
-  <p class="sous">Des raccourcis iPhone pensés, construits et hébergés par Jet Set Corporation.</p>
+  <p class="accroche">Des raccourcis iPhone pensés pour vraiment servir. Rien de superflu, juste ce qu'il faut là où il faut.</p>
   <div class="liens">
-    <a href="#mode-nuit">Découvrir&nbsp;&gt;</a>
+    <a href="#mode-nuit">Découvrir Mode Nuit</a>
+    <a href="#save-video">Découvrir Save Video</a>
   </div>
-</header>
+</div>
 
-<section class="produit" id="mode-nuit">
+<section id="mode-nuit">
   <div class="contenu reveal">
-    <div class="lune" aria-hidden="true"></div>
-    <p class="eyebrow">Mode Nuit</p>
-    <h2>Coupez tout.<br>Dormez vraiment.</h2>
-    <p class="pitch">Un seul geste avant de dormir. Le Wi-Fi et le Bluetooth sont réellement désactivés, pas seulement déconnectés. Le réseau se coupe, l'écran s'assombrit, le téléphone se tait.</p>
+    <h2>Mode Nuit.<br>Vraiment coupé.</h2>
+    <p class="pitch">Un seul appui du soir coupe les ondes, baisse la luminosité, active Ne pas déranger et rend le sommeil au silence.</p>
     <div class="details">
-      <div><strong>Vraiment coupé</strong>Wi-Fi et Bluetooth désactivés au niveau des réglages système.</div>
-      <div><strong>Écran de nuit</strong>Luminosité au minimum, Night Shift, point blanc réduit.</div>
-      <div><strong>Silence total</strong>Ne pas déranger, mode silence et volume au plus bas.</div>
+      <div><strong>Sans ondes</strong>Wi-Fi, Bluetooth et données cellulaires réellement désactivés — pas juste déconnectés.</div>
+      <div><strong>Œil doux</strong>Luminosité au minimum, Night Shift chaud, point blanc réduit.</div>
+      <div><strong>Silence complet</strong>Ne pas déranger, mode silencieux, mode économie d'énergie.</div>
     </div>
     <span class="pilule">Bientôt disponible</span>
   </div>
 </section>
 
-<section class="produit" id="save-video">
+<section id="save-video">
   <div class="contenu reveal">
-    <div class="tuiles" aria-hidden="true">
-      <div class="tuile"></div>
-      <div class="tuile"></div>
-      <div class="tuile"></div>
-    </div>
-    <p class="eyebrow">Save Video</p>
-    <h2>Partager. Enregistrer.<br>C'est tout.</h2>
-    <p class="pitch">Une vidéo drôle sur TikTok, X ou Instagram&nbsp;? Bouton Partager, Save Video, et elle est dans vos photos. Sans filigrane, sans site rempli de publicités, sans copier de lien.</p>
+    <h2>Une vidéo.<br>Enregistrer.<br>C'est tout.</h2>
+    <p class="pitch">Une vidéo drôle sur TikTok, X ou Instagram ? Bouton Partager, Save Video, et elle est dans vos photos. Sans filigrane, sans site rempli de publicités, sans copier de lien.</p>
     <div class="details">
       <div><strong>Sans filigrane</strong>Les vidéos TikTok arrivent propres, les GIF restent animés.</div>
       <div><strong>Infrastructure privée</strong>Un serveur dédié, aucune donnée confiée à un site tiers.</div>
@@ -332,24 +371,43 @@
 <section id="registre">
   <div class="contenu reveal">
     <h2>Le Registre.</h2>
-    <p>Le tableau de bord du service&nbsp;: membres, activité et historique des téléchargements. Accès réservé à l'administrateur.</p>
+    <p>Le tableau de bord du service : membres, activité et historique des téléchargements. Accès réservé à l'administrateur.</p>
     <a class="bouton" href="http://13.53.65.247:8080/admin">Ouvrir le Registre</a>
   </div>
 </section>
 
 <footer>
   <div class="inner">
-    <span>Jet Set Corporation — {{ ANNEE }}</span>
+    <span id="annee">Jet Set Corporation</span>
     <span>Conçu et hébergé par Owen Le Moal</span>
   </div>
 </footer>
 
+</div>
+
 <script>
-  // Année du footer
-  document.querySelector("footer .inner span").textContent =
+  const splash = document.getElementById("splash");
+  const site = document.getElementById("site");
+  const video = document.getElementById("introVideo");
+
+  function finirSplash() {
+    splash.classList.add("done");
+    site.classList.add("visible");
+    document.body.style.overflow = "auto";
+  }
+
+  document.body.style.overflow = "hidden";
+  video.addEventListener("ended", finirSplash);
+  video.addEventListener("error", finirSplash);
+  setTimeout(() => {
+    if (!splash.classList.contains("done") && video.readyState < 2) {
+      finirSplash();
+    }
+  }, 8000);
+
+  document.getElementById("annee").textContent =
     "Jet Set Corporation — " + new Date().getFullYear();
 
-  // Apparition au scroll
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (e.isIntersecting) {
