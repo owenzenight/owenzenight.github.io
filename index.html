@@ -7,9 +7,9 @@
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; background: #ffffff; font-family: Arial, sans-serif; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: Arial, sans-serif; }
 
-    /* ---------- Splash vidéo (cut net) ---------- */
+    /* ---------- Splash vidéo ---------- */
     #splash {
       position: fixed;
       inset: 0;
@@ -19,7 +19,6 @@
       align-items: center;
       justify-content: center;
     }
-    #splash.done { display: none; }
     #splash video {
       max-width: 100%;
       max-height: 100%;
@@ -43,15 +42,27 @@
     }
     #splash .skip:hover { color: #fff; border-color: rgba(255,255,255,0.6); }
 
-    /* ---------- Page Welcome ---------- */
-    #snake-canvas {
+    /* ---------- Page Welcome (cachée par défaut) ---------- */
+    #welcome {
+      display: none;
       position: fixed;
+      inset: 0;
+      background: #ffffff;
+      z-index: 1;
+    }
+    /* Quand on active la page Welcome, on la montre INSTANTANÉMENT (aucune transition) */
+    #welcome.actif {
+      display: block;
+    }
+
+    #snake-canvas {
+      position: absolute;
       inset: 0;
       z-index: 1;
     }
 
     .welcome-link {
-      position: fixed;
+      position: absolute;
       top: 24px;
       left: 24px;
       z-index: 10;
@@ -65,7 +76,7 @@
     .welcome-link:hover { color: #FF0000; }
 
     .meta-info {
-      position: fixed;
+      position: absolute;
       bottom: 12px;
       left: 12px;
       font-family: Arial, sans-serif;
@@ -75,7 +86,7 @@
     }
 
     .visitor-counter {
-      position: fixed;
+      position: absolute;
       bottom: 12px;
       right: 12px;
       font-family: 'Courier New', Courier, monospace;
@@ -88,14 +99,13 @@
     }
 
     #hint {
-      position: fixed;
+      position: absolute;
       top: 60px;
       left: 24px;
       font-family: Arial, sans-serif;
       font-size: 11px;
       color: #aaa;
       z-index: 10;
-      transition: opacity 0.5s;
     }
   </style>
 </head>
@@ -109,41 +119,51 @@
     <div class="skip" onclick="finirSplash()">Passer</div>
   </div>
 
-  <!-- PAGE WELCOME -->
-  <canvas id="snake-canvas"></canvas>
-
-  <a href="raccourcis/" class="welcome-link">Welcome</a>
-  <div id="hint">click "Welcome" to enter — or play with the snake (arrow keys)</div>
-
-  <div class="meta-info">
-    Best viewed in Internet Explorer 6 — © 2026 Owen LE MOAL
-  </div>
-
-  <div class="visitor-counter">
-    visitors: 000847
+  <!-- PAGE WELCOME (cachée) -->
+  <div id="welcome">
+    <canvas id="snake-canvas"></canvas>
+    <a href="raccourcis/" class="welcome-link">Welcome</a>
+    <div id="hint">click "Welcome" to enter — or play with the snake (arrow keys)</div>
+    <div class="meta-info">
+      Best viewed in Internet Explorer 6 — © 2026 Owen LE MOAL
+    </div>
+    <div class="visitor-counter">
+      visitors: 000847
+    </div>
   </div>
 
   <script>
-    // ============ SPLASH ============
     const splash = document.getElementById("splash");
+    const welcome = document.getElementById("welcome");
     const video = document.getElementById("introVideo");
+    let splashDone = false;
 
     function finirSplash() {
-      splash.classList.add("done");
+      if (splashDone) return;
+      splashDone = true;
+
+      // 1. On révèle la page Welcome DERRIÈRE la vidéo (invisible car splash z-index 9999)
+      welcome.classList.add("actif");
+      // On force le navigateur à peindre la page Welcome AVANT de retirer le splash
+      welcome.offsetHeight; // reflow forcé
+      // 2. On retire le splash instantanément — le Welcome est déjà peint dessous, aucun flash
+      splash.remove();
+      // 3. On démarre le snake maintenant que Welcome est visible
+      initSnake();
     }
 
     video.addEventListener("ended", finirSplash);
     video.addEventListener("error", finirSplash);
 
-    // Fallback si la vidéo ne charge pas après 8s
+    // Fallback : si la vidéo ne charge pas après 8s
     setTimeout(() => {
-      if (!splash.classList.contains("done") && video.readyState < 2) {
+      if (!splashDone && video.readyState < 2) {
         finirSplash();
       }
     }, 8000);
 
     // ============ SNAKE ============
-    (function() {
+    function initSnake() {
       const canvas = document.getElementById('snake-canvas');
       const ctx = canvas.getContext('2d');
       const hintEl = document.getElementById('hint');
@@ -263,7 +283,7 @@
         if ((e.key==='ArrowLeft'||e.key==='q') && dir.x!==1) nextDir = {x:-1,y:0};
         if ((e.key==='ArrowRight'||e.key==='d') && dir.x!==-1) nextDir = {x:1,y:0};
       });
-    })();
+    }
   </script>
 </body>
 </html>
