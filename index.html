@@ -1,205 +1,365 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Welcome</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; background: #ffffff; font-family: Arial, sans-serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jet Set Corporation — Raccourcis</title>
+<meta name="description" content="Des raccourcis iPhone pensés pour le quotidien. Mode Nuit et Save Video, par Jet Set Corporation.">
+<style>
+  :root {
+    --encre: #1d1d1f;
+    --gris: #f5f5f7;
+    --gris-texte: #6e6e73;
+    --bleu: #0071e3;
+    --blanc: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--encre);
+    background: var(--blanc);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.47;
+  }
+  a { text-decoration: none; color: var(--bleu); }
+  a:hover { text-decoration: underline; }
 
-    #snake-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-    }
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(251, 251, 253, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  nav .inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 22px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav .marque {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--encre);
+    letter-spacing: -0.02em;
+  }
+  nav .marque:hover { text-decoration: none; }
+  nav ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  nav ul a {
+    font-size: 12px;
+    color: rgba(29, 29, 31, 0.8);
+  }
+  nav ul a:hover { color: var(--encre); text-decoration: none; }
 
-    .welcome-link {
-      position: fixed;
-      top: 24px;
-      left: 24px;
-      z-index: 10;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      color: #0000EE;
-      text-decoration: underline;
-      cursor: pointer;
-    }
-    .welcome-link:visited { color: #551A8B; }
-    .welcome-link:hover { color: #FF0000; }
+  /* ---------- Hero ---------- */
+  .hero {
+    text-align: center;
+    padding: 110px 22px 100px;
+    background: var(--blanc);
+  }
+  .hero .eyebrow {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--gris-texte);
+    margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-size: clamp(44px, 8vw, 80px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    background: linear-gradient(90deg, #1d1d1f 30%, #6e6e73);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero p.sous {
+    font-size: clamp(19px, 3vw, 26px);
+    color: var(--gris-texte);
+    margin-top: 16px;
+    font-weight: 400;
+  }
+  .hero .liens { margin-top: 26px; font-size: 19px; }
 
-    .meta-info {
-      position: fixed;
-      bottom: 12px;
-      left: 12px;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      color: #888;
-      z-index: 10;
-    }
+  /* ---------- Sections produit ---------- */
+  section.produit {
+    padding: 100px 22px;
+    text-align: center;
+    overflow: hidden;
+  }
+  section.produit .contenu {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  section.produit .eyebrow {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  section.produit h2 {
+    font-size: clamp(36px, 6vw, 60px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.08;
+  }
+  section.produit p.pitch {
+    font-size: clamp(18px, 2.5vw, 23px);
+    margin-top: 16px;
+  }
+  section.produit .details {
+    margin-top: 34px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    font-size: 15px;
+  }
+  section.produit .details div { max-width: 200px; }
+  section.produit .details strong { display: block; font-size: 17px; margin-bottom: 4px; }
+  .pilule {
+    display: inline-block;
+    margin-top: 34px;
+    padding: 11px 24px;
+    border-radius: 980px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: default;
+  }
 
-    .visitor-counter {
-      position: fixed;
-      bottom: 12px;
-      right: 12px;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 11px;
-      color: #444;
-      background: #FFFF99;
-      padding: 4px 8px;
-      border: 1px solid #999;
-      z-index: 10;
-    }
+  /* Mode Nuit : section sombre */
+  #mode-nuit {
+    background: #000;
+    color: #f5f5f7;
+    position: relative;
+  }
+  #mode-nuit .eyebrow { color: #f5b50c; }
+  #mode-nuit p.pitch { color: #a1a1a6; }
+  #mode-nuit .details { color: #a1a1a6; }
+  #mode-nuit .details strong { color: #f5f5f7; }
+  #mode-nuit .pilule {
+    background: #1d1d1f;
+    color: #86868b;
+    border: 1px solid #424245;
+  }
+  .lune {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #f7e8b8, #d8b64a 60%, #8a6d1d);
+    box-shadow: 0 0 80px 30px rgba(245, 181, 12, 0.18);
+    position: relative;
+  }
+  .lune::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 68% 40%, transparent 55%, #000 56%);
+  }
 
-    #hint {
-      position: fixed;
-      top: 60px;
-      left: 24px;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      color: #aaa;
-      z-index: 10;
-      transition: opacity 0.5s;
-    }
-  </style>
+  /* Save Video : section claire */
+  #save-video { background: var(--gris); }
+  #save-video .eyebrow { color: var(--bleu); }
+  #save-video p.pitch { color: var(--gris-texte); }
+  #save-video .details { color: var(--gris-texte); }
+  #save-video .details strong { color: var(--encre); }
+  #save-video .pilule {
+    background: #e8e8ed;
+    color: #86868b;
+  }
+  .tuiles {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .tuile {
+    width: 92px;
+    height: 150px;
+    border-radius: 18px;
+    background: linear-gradient(160deg, #c7c7cc, #8e8e93);
+    position: relative;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+  .tuile:nth-child(2) {
+    background: linear-gradient(160deg, #0a84ff, #0040dd);
+    transform: translateY(-12px) scale(1.06);
+  }
+  .tuile:nth-child(3) { background: linear-gradient(160deg, #ff375f, #c9184a); }
+  .tuile::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-left: 16px solid rgba(255, 255, 255, 0.9);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
+
+  /* ---------- Registre ---------- */
+  #registre {
+    background: var(--blanc);
+    padding: 100px 22px;
+    text-align: center;
+  }
+  #registre .contenu { max-width: 640px; margin: 0 auto; }
+  #registre h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  #registre p {
+    font-size: 19px;
+    color: var(--gris-texte);
+    margin-top: 14px;
+  }
+  #registre .bouton {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 26px;
+    border-radius: 980px;
+    background: var(--bleu);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  #registre .bouton:hover { background: #0077ed; text-decoration: none; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--gris);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 26px 22px;
+  }
+  footer .inner {
+    max-width: 980px;
+    margin: 0 auto;
+    font-size: 12px;
+    color: var(--gris-texte);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ---------- Apparitions au scroll ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
 </head>
 <body>
-  <canvas id="snake-canvas"></canvas>
 
-  <a href="portfolio/" class="welcome-link">Welcome</a>
-  <div id="hint">click "Welcome" to enter — or play with the snake (arrow keys)</div>
-
-  <div class="meta-info">
-    Best viewed in Internet Explorer 6 — © 2026 Owen LE MOAL
+<nav>
+  <div class="inner">
+    <a class="marque" href="#">Jet Set Corporation</a>
+    <ul>
+      <li><a href="#mode-nuit">Mode Nuit</a></li>
+      <li><a href="#save-video">Save Video</a></li>
+      <li><a href="http://13.53.65.247:8080/admin">Registre</a></li>
+    </ul>
   </div>
+</nav>
 
-  <div class="visitor-counter">
-    visitors: 000847
+<header class="hero">
+  <p class="eyebrow">Raccourcis</p>
+  <h1>Le quotidien,<br>en un geste.</h1>
+  <p class="sous">Des raccourcis iPhone pensés, construits et hébergés par Jet Set Corporation.</p>
+  <div class="liens">
+    <a href="#mode-nuit">Découvrir&nbsp;&gt;</a>
   </div>
+</header>
 
-  <script>
-    (function() {
-      const canvas = document.getElementById('snake-canvas');
-      const ctx = canvas.getContext('2d');
-      const hintEl = document.getElementById('hint');
+<section class="produit" id="mode-nuit">
+  <div class="contenu reveal">
+    <div class="lune" aria-hidden="true"></div>
+    <p class="eyebrow">Mode Nuit</p>
+    <h2>Coupez tout.<br>Dormez vraiment.</h2>
+    <p class="pitch">Un seul geste avant de dormir. Le Wi-Fi et le Bluetooth sont réellement désactivés, pas seulement déconnectés. Le réseau se coupe, l'écran s'assombrit, le téléphone se tait.</p>
+    <div class="details">
+      <div><strong>Vraiment coupé</strong>Wi-Fi et Bluetooth désactivés au niveau des réglages système.</div>
+      <div><strong>Écran de nuit</strong>Luminosité au minimum, Night Shift, point blanc réduit.</div>
+      <div><strong>Silence total</strong>Ne pas déranger, mode silence et volume au plus bas.</div>
+    </div>
+    <span class="pilule">Bientôt disponible</span>
+  </div>
+</section>
 
-      const CELL = 22;
-      const GREEN = '#2a8c2a';
-      const RED = '#ff2222';
-      const SPEED = 160;
+<section class="produit" id="save-video">
+  <div class="contenu reveal">
+    <div class="tuiles" aria-hidden="true">
+      <div class="tuile"></div>
+      <div class="tuile"></div>
+      <div class="tuile"></div>
+    </div>
+    <p class="eyebrow">Save Video</p>
+    <h2>Partager. Enregistrer.<br>C'est tout.</h2>
+    <p class="pitch">Une vidéo drôle sur TikTok, X ou Instagram&nbsp;? Bouton Partager, Save Video, et elle est dans vos photos. Sans filigrane, sans site rempli de publicités, sans copier de lien.</p>
+    <div class="details">
+      <div><strong>Sans filigrane</strong>Les vidéos TikTok arrivent propres, les GIF restent animés.</div>
+      <div><strong>Infrastructure privée</strong>Un serveur dédié, aucune donnée confiée à un site tiers.</div>
+      <div><strong>Accès sur invitation</strong>Chaque membre dispose de sa propre clé personnelle.</div>
+    </div>
+    <span class="pilule">Bientôt disponible</span>
+  </div>
+</section>
 
-      function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+<section id="registre">
+  <div class="contenu reveal">
+    <h2>Le Registre.</h2>
+    <p>Le tableau de bord du service&nbsp;: membres, activité et historique des téléchargements. Accès réservé à l'administrateur.</p>
+    <a class="bouton" href="http://13.53.65.247:8080/admin">Ouvrir le Registre</a>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <span>Jet Set Corporation — {{ ANNEE }}</span>
+    <span>Conçu et hébergé par Owen Le Moal</span>
+  </div>
+</footer>
+
+<script>
+  // Année du footer
+  document.querySelector("footer .inner span").textContent =
+    "Jet Set Corporation — " + new Date().getFullYear();
+
+  // Apparition au scroll
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+        obs.unobserve(e.target);
       }
-      resize();
-      window.addEventListener('resize', resize);
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+</script>
 
-      const cols = () => Math.floor(canvas.width / CELL);
-      const rows = () => Math.floor(canvas.height / CELL);
-
-      const STATE = { WAITING: 'waiting', PLAYING: 'playing', DYING: 'dying' };
-      let state = STATE.WAITING;
-
-      let snake = null, dir = {x:1,y:0}, nextDir = {x:1,y:0}, food = null, particles = [];
-
-      function startSnake() {
-        const cx = Math.floor(cols()/2), cy = Math.floor(rows()/2);
-        snake = [{x:cx,y:cy},{x:cx-1,y:cy},{x:cx-2,y:cy}];
-        dir = {x:1,y:0}; nextDir = {x:1,y:0}; food = spawnFood();
-        particles = []; state = STATE.PLAYING;
-        hintEl.style.opacity = '0';
-      }
-
-      function spawnFood() {
-        let f;
-        do {
-          f = {x: Math.floor(Math.random()*(cols()-2))+1, y: Math.floor(Math.random()*(rows()-2))+1};
-        } while (snake && snake.some(s => s.x===f.x && s.y===f.y));
-        return f;
-      }
-
-      function drawHead(x, y) {
-        ctx.fillStyle = GREEN;
-        ctx.fillRect(x*CELL, y*CELL, CELL-1, CELL-1);
-        ctx.fillStyle = '#fff';
-        const es = Math.max(2, Math.floor(CELL/5)), off = Math.floor(CELL/4);
-        if (dir.x===1) { ctx.fillRect(x*CELL+CELL-off-es, y*CELL+off, es, es); ctx.fillRect(x*CELL+CELL-off-es, y*CELL+CELL-off-es-1, es, es); }
-        else if (dir.x===-1) { ctx.fillRect(x*CELL+off, y*CELL+off, es, es); ctx.fillRect(x*CELL+off, y*CELL+CELL-off-es-1, es, es); }
-        else if (dir.y===-1) { ctx.fillRect(x*CELL+off, y*CELL+off, es, es); ctx.fillRect(x*CELL+CELL-off-es-1, y*CELL+off, es, es); }
-        else { ctx.fillRect(x*CELL+off, y*CELL+CELL-off-es-1, es, es); ctx.fillRect(x*CELL+CELL-off-es-1, y*CELL+CELL-off-es-1, es, es); }
-        ctx.fillStyle = RED;
-        const ls = Math.max(2, Math.floor(CELL/7)), mx = x*CELL+Math.floor((CELL-1)/2), my = y*CELL+Math.floor((CELL-1)/2);
-        if (dir.x===1) ctx.fillRect(x*CELL+CELL-1, my-ls, ls*2, ls);
-        if (dir.x===-1) ctx.fillRect(x*CELL-ls*2, my-ls, ls*2, ls);
-        if (dir.y===-1) ctx.fillRect(mx-ls, y*CELL-ls*2, ls, ls*2);
-        if (dir.y===1) ctx.fillRect(mx-ls, y*CELL+CELL-1, ls, ls*2);
-      }
-
-      function triggerDeath() {
-        state = STATE.DYING;
-        particles = snake.map(seg => ({
-          x: seg.x*CELL+Math.random()*CELL, y: seg.y*CELL+Math.random()*CELL,
-          vy: 1+Math.random()*3, vx: (Math.random()-0.5)*2, size: CELL-1, alpha: 1
-        }));
-        snake = null; food = null;
-      }
-
-      function updateParticles() {
-        particles.forEach(p => {
-          p.vy += 0.4; p.y += p.vy; p.x += p.vx;
-          const floor = canvas.height - p.size;
-          if (p.y >= floor) { p.y = floor; p.vy = -p.vy*0.45; p.vx *= 0.8; if (Math.abs(p.vy)<0.8) { p.vy = 0; p.vx *= 0.9; } p.alpha -= 0.025; }
-        });
-        particles = particles.filter(p => p.alpha > 0);
-        if (particles.length === 0) { state = STATE.WAITING; hintEl.style.opacity = '1'; }
-      }
-
-      function drawParticles() {
-        particles.forEach(p => { ctx.fillStyle = `rgba(42,140,42,${p.alpha})`; ctx.fillRect(p.x, p.y, p.size, p.size); });
-      }
-
-      let lastTick = 0;
-      function update(ts) {
-        if (state === STATE.PLAYING && ts-lastTick > SPEED) {
-          lastTick = ts; dir = {...nextDir};
-          const head = { x:(snake[0].x+dir.x+cols())%cols(), y:(snake[0].y+dir.y+rows())%rows() };
-          if (head.x === food.x && head.y === food.y) { food = spawnFood(); }
-          else snake.pop();
-          if (snake.some(s => s.x===head.x && s.y===head.y)) { snake.unshift(head); triggerDeath(); return; }
-          snake.unshift(head);
-        }
-        if (state === STATE.DYING) updateParticles();
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if (state === STATE.PLAYING && snake) {
-          for (let i=1; i<snake.length; i++) { ctx.fillStyle = GREEN; ctx.fillRect(snake[i].x*CELL, snake[i].y*CELL, CELL-1, CELL-1); }
-          drawHead(snake[0].x, snake[0].y);
-          const pulse = 0.5 + 0.5 * Math.sin(Date.now()/200);
-          ctx.fillStyle = `rgba(255,34,34,${pulse})`;
-          ctx.fillRect(food.x*CELL, food.y*CELL, CELL-1, CELL-1);
-        }
-        if (state === STATE.DYING) drawParticles();
-      }
-
-      function loop(ts) { update(ts); draw(); requestAnimationFrame(loop); }
-      requestAnimationFrame(loop);
-
-      const KEYS = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','z','q','s','d'];
-      document.addEventListener('keydown', e => {
-        if (!KEYS.includes(e.key)) return;
-        if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) e.preventDefault();
-        if (state === STATE.WAITING) { startSnake(); return; }
-        if (state !== STATE.PLAYING) return;
-        if ((e.key==='ArrowUp'||e.key==='z') && dir.y!==1) nextDir = {x:0,y:-1};
-        if ((e.key==='ArrowDown'||e.key==='s') && dir.y!==-1) nextDir = {x:0,y:1};
-        if ((e.key==='ArrowLeft'||e.key==='q') && dir.x!==1) nextDir = {x:-1,y:0};
-        if ((e.key==='ArrowRight'||e.key==='d') && dir.x!==-1) nextDir = {x:1,y:0};
-      });
-    })();
-  </script>
 </body>
 </html>
