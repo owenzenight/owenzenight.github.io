@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jet Set Corporation — Raccourcis</title>
+<meta name="description" content="Des raccourcis iPhone pensés pour le quotidien. Mode Nuit et Save Video, par Jet Set Corporation.">
+<style>
+  :root {
+    --encre: #1d1d1f;
+    --gris: #f5f5f7;
+    --gris-texte: #6e6e73;
+    --bleu: #0071e3;
+    --blanc: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--encre);
+    background: var(--blanc);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.47;
+    overflow-x: hidden;
+  }
+  a { text-decoration: none; color: var(--bleu); }
+  a:hover { text-decoration: underline; }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(251, 251, 253, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  nav .inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 22px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav .marque {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--encre);
+    letter-spacing: -0.02em;
+  }
+  nav .marque:hover { text-decoration: none; }
+  nav ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  nav ul a {
+    font-size: 12px;
+    color: rgba(29, 29, 31, 0.8);
+  }
+  nav ul a:hover { color: var(--encre); text-decoration: none; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    text-align: center;
+    padding: 110px 22px 100px;
+    background: var(--blanc);
+  }
+  .hero .eyebrow {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--gris-texte);
+    margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-size: clamp(44px, 8vw, 80px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    background: linear-gradient(90deg, #1d1d1f 30%, #6e6e73);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    max-width: 900px;
+    margin: 0 auto 22px;
+  }
+  .hero .accroche {
+    font-size: 21px;
+    color: var(--gris-texte);
+    max-width: 640px;
+    margin: 0 auto 40px;
+    line-height: 1.4;
+  }
+  .hero .liens {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero .liens a {
+    font-size: 17px;
+    color: var(--bleu);
+  }
+  .hero .liens a::after {
+    content: " ›";
+    font-weight: 400;
+  }
+
+  /* ---------- Sections ---------- */
+  section {
+    padding: 100px 22px;
+  }
+  .contenu {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  section h2 {
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.08;
+    margin-bottom: 20px;
+  }
+  section .pitch {
+    font-size: 21px;
+    color: var(--gris-texte);
+    max-width: 620px;
+    margin: 0 auto 44px;
+    line-height: 1.4;
+  }
+  .details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+    max-width: 780px;
+    margin: 0 auto 44px;
+    text-align: left;
+  }
+  .details > div {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--gris-texte);
+  }
+  .details strong {
+    display: block;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--encre);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .pilule {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 980px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  #mode-nuit .pilule {
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  #save-video .pilule {
+    background: rgba(29,29,31,0.06);
+    color: var(--gris-texte);
+    border: 1px solid rgba(29,29,31,0.12);
+  }
+
+  #mode-nuit {
+    background: #000;
+    color: #f5f5f7;
+    position: relative;
+    overflow: hidden;
+  }
+  #mode-nuit::before {
+    content: "";
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 210, 130, 0.28) 0%, transparent 65%);
+    filter: blur(20px);
+    pointer-events: none;
+  }
+  #mode-nuit .contenu { position: relative; z-index: 1; }
+  #mode-nuit .pitch { color: #a1a1a6; }
+  #mode-nuit .details > div { color: #a1a1a6; }
+  #mode-nuit .details strong { color: #f5f5f7; }
+
+  #save-video {
+    background: var(--gris);
+  }
+
+  footer {
+    padding: 30px 22px;
+    background: var(--gris);
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  footer .inner {
+    max-width: 980px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--gris-texte);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 640px) {
+    nav ul { gap: 18px; }
+    nav ul a { font-size: 11px; }
+    section { padding: 70px 22px; }
+    .hero { padding: 70px 22px 70px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="../" class="marque">Jet Set Corporation</a>
+    <ul>
+      <li><a href="#mode-nuit">Mode Nuit</a></li>
+      <li><a href="#save-video">Save Video</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="eyebrow">Jet Set Corporation</div>
+  <h1>Le quotidien,<br>en un geste.</h1>
+  <p class="accroche">Des raccourcis iPhone pensés pour vraiment servir. Rien de superflu, juste ce qu'il faut là où il faut.</p>
+  <div class="liens">
+    <a href="#mode-nuit">Découvrir Mode Nuit</a>
+    <a href="#save-video">Découvrir Save Video</a>
+  </div>
+</div>
+
+<section id="mode-nuit">
+  <div class="contenu reveal">
+    <h2>Mode Nuit.<br>Vraiment coupé.</h2>
+    <p class="pitch">Un seul appui du soir coupe les ondes, baisse la luminosité, active Ne pas déranger et rend le sommeil au silence.</p>
+    <div class="details">
+      <div><strong>Sans ondes</strong>Wi-Fi, Bluetooth et données cellulaires réellement désactivés — pas juste déconnectés.</div>
+      <div><strong>Œil doux</strong>Luminosité au minimum, Night Shift chaud, point blanc réduit.</div>
+      <div><strong>Silence complet</strong>Ne pas déranger, mode silencieux, mode économie d'énergie.</div>
+    </div>
+    <span class="pilule">Bientôt disponible</span>
+  </div>
+</section>
+
+<section id="save-video">
+  <div class="contenu reveal">
+    <h2>Une vidéo.<br>Enregistrer.<br>C'est tout.</h2>
+    <p class="pitch">Une vidéo drôle sur TikTok, X ou Instagram ? Bouton Partager, Save Video, et elle est dans vos photos. Sans filigrane, sans site rempli de publicités, sans copier de lien.</p>
+    <div class="details">
+      <div><strong>Sans filigrane</strong>Les vidéos TikTok arrivent propres, les GIF restent animés.</div>
+      <div><strong>Infrastructure privée</strong>Un serveur dédié, aucune donnée confiée à un site tiers.</div>
+      <div><strong>Accès sur invitation</strong>Chaque membre dispose de sa propre clé personnelle.</div>
+    </div>
+    <span class="pilule">Bientôt disponible</span>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <span id="annee">Jet Set Corporation</span>
+    <span>Conçu et hébergé par Owen Le Moal</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("annee").textContent =
+    "Jet Set Corporation — " + new Date().getFullYear();
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+</script>
+
+</body>
+</html>
