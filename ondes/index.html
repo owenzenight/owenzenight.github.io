@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les ondes la nuit — Jet Set Corporation</title>
+<meta name="description" content="Comprendre simplement ce que fait le Mode Nuit sans ondes, et pourquoi couper les ondes la nuit.">
+<style>
+  :root {
+    --encre: #1d1d1f;
+    --gris: #f5f5f7;
+    --gris-texte: #6e6e73;
+    --bleu: #0071e3;
+    --blanc: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--encre);
+    background: var(--blanc);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.47;
+    overflow-x: hidden;
+  }
+  a, button {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    color: var(--bleu);
+  }
+  a:hover { text-decoration: underline; }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(251, 251, 253, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  nav .inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 22px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav .marque {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--encre);
+    letter-spacing: -0.02em;
+  }
+  nav .marque:hover { text-decoration: none; }
+  nav ul { display: flex; gap: 28px; list-style: none; }
+  nav ul a { font-size: 12px; color: rgba(29, 29, 31, 0.8); }
+  nav ul a:hover { color: var(--encre); text-decoration: none; }
+
+  .hero {
+    text-align: center;
+    padding: 100px 22px 70px;
+  }
+  .hero .eyebrow {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--gris-texte);
+    margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 68px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.06;
+    background: linear-gradient(90deg, #1d1d1f 30%, #6e6e73);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    max-width: 760px;
+    margin: 0 auto 20px;
+  }
+  .hero .accroche {
+    font-size: 20px;
+    color: var(--gris-texte);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.45;
+  }
+
+  .bloc {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 22px;
+  }
+  .bloc h2 {
+    font-size: clamp(28px, 4.5vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .bloc p {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .bloc p.gris {
+    color: var(--gris-texte);
+  }
+  .bloc strong { font-weight: 600; color: var(--encre); }
+
+  .encadre {
+    background: var(--gris);
+    border-radius: 18px;
+    padding: 36px 32px;
+    margin: 32px 0;
+  }
+  .encadre h3 {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .encadre p { font-size: 16px; margin-bottom: 0; }
+
+  /* Comparaison WiFi (point 4) */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 32px 0;
+  }
+  .compare .cote {
+    background: var(--gris);
+    border-radius: 18px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .compare .cote.reel {
+    background: #ecf7ee;
+    border: 1px solid rgba(52, 199, 89, 0.3);
+  }
+  .img-placeholder {
+    background: #e8e8ed;
+    border: 2px dashed #c7c7cc;
+    border-radius: 14px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #86868b;
+    margin-bottom: 16px;
+    padding: 12px;
+    text-align: center;
+  }
+  .compare h4 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .compare p {
+    font-size: 14px;
+    color: var(--gris-texte);
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+  .compare .cote.reel h4 { color: #248a3d; }
+
+  ul.liste {
+    list-style: none;
+    margin: 20px 0;
+  }
+  ul.liste li {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+    padding-left: 28px;
+    position: relative;
+    margin-bottom: 14px;
+  }
+  ul.liste li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--bleu);
+    font-weight: 600;
+  }
+
+  .sources {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 22px 80px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+  .sources h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gris-texte);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+  }
+  .sources ul { list-style: none; }
+  .sources li {
+    font-size: 14px;
+    color: var(--gris-texte);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  footer {
+    padding: 30px 22px;
+    background: var(--gris);
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  footer .inner {
+    max-width: 980px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--gris-texte);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 640px) {
+    nav ul { gap: 16px; }
+    nav ul a { font-size: 11px; }
+    .compare { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="../" class="marque">Jet Set Corporation</a>
+    <ul>
+      <li><a href="../raccourcis/">Raccourcis</a></li>
+      <li><a href="../raccourcis/#mode-nuit">Mode Nuit</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="eyebrow">Ressources</div>
+  <h1>Les ondes,<br>la nuit.</h1>
+  <p class="accroche">Comprendre simplement ce que coupe le Mode Nuit, et pourquoi ça peut valoir le coup.</p>
+</div>
+
+<div class="bloc">
+  <h2>Ce que fait le Mode Nuit « sans ondes »</h2>
+  <p>Un téléphone posé sur la table de nuit n'est jamais vraiment au repos. Toute la nuit, il émet et reçoit des ondes : il cherche le Wi-Fi, maintient le Bluetooth, reste connecté aux antennes du réseau mobile et relève ses notifications.</p>
+  <p>Le Mode Nuit « sans ondes » coupe réellement ces émissions. Le téléphone cesse d'émettre à côté de votre tête pendant que vous dormez. C'est le seul but : réduire l'exposition aux ondes pendant les heures où vous n'en avez pas besoin.</p>
+</div>
+
+<div class="bloc">
+  <h2>La vraie coupure du Wi-Fi</h2>
+  <p class="gris">C'est le point le plus important, et le plus mal connu.</p>
+  <p>Quand vous désactivez le Wi-Fi depuis le centre de contrôle iOS (le panneau qu'on ouvre en glissant depuis le coin), <strong>le Wi-Fi n'est pas vraiment coupé</strong>. iOS le déconnecte simplement du réseau actuel, mais l'antenne continue de chercher des réseaux en arrière-plan et se reconnecte parfois toute seule.</p>
+
+  <!-- COMPARAISON VISUELLE (point 4) -->
+  <div class="compare">
+    <div class="cote">
+      <div class="img-placeholder">[ Capture à insérer : icône Wi-Fi du centre de contrôle, bleue / juste déconnectée ]</div>
+      <h4>Juste déconnecté</h4>
+      <p>Centre de contrôle iOS. L'antenne reste active et rescanne en arrière-plan. Les ondes continuent.</p>
+    </div>
+    <div class="cote reel">
+      <div class="img-placeholder">[ Capture à insérer : Réglages › Wi-Fi désactivé, interrupteur gris / vraiment coupé ]</div>
+      <h4>Vraiment coupé</h4>
+      <p>Réglages › Wi-Fi désactivé. C'est ce que fait le raccourci : l'antenne s'éteint réellement.</p>
+    </div>
+  </div>
+
+  <p>Le raccourci Mode Nuit agit directement dans les vrais réglages, pas dans le centre de contrôle. Il éteint vraiment l'antenne Wi-Fi, et fait de même pour le Bluetooth et les données cellulaires.</p>
+</div>
+
+<div class="bloc">
+  <h2>Pourquoi couper la nuit</h2>
+  <ul class="liste">
+    <li>Moins d'émissions d'ondes à côté de la tête pendant le sommeil.</li>
+    <li>Un sommeil non interrompu : aucune notification, aucune vibration nocturne.</li>
+    <li>Un téléphone qui se repose, qui chauffe moins et consomme moins de batterie.</li>
+    <li>Un vrai temps de déconnexion, sans sollicitation jusqu'au réveil.</li>
+  </ul>
+
+  <div class="encadre">
+    <h3>Et le coût ? Zéro.</h3>
+    <p>Couper les ondes la nuit ne coûte rien, n'abîme pas le téléphone, et se défait en un geste au réveil. Dans le pire des cas, vous n'y voyez aucune différence. Dans le meilleur, vous dormez mieux et vous exposez moins.</p>
+  </div>
+</div>
+
+<div class="bloc">
+  <h2>Ce qu'il faut retenir</h2>
+  <p>Les organismes de santé publique considèrent aujourd'hui que l'exposition aux ondes des téléphones reste sous les seuils réglementaires. Le sujet des effets à long terme fait toujours l'objet de recherches, et le principe de précaution reste recommandé, notamment pour limiter l'exposition inutile.</p>
+  <p class="gris">Le Mode Nuit ne prétend rien soigner. Il applique simplement une idée de bon sens : si le téléphone n'a rien à faire pendant que vous dormez, autant qu'il n'émette pas.</p>
+</div>
+
+<div class="sources">
+  <h3>Sources</h3>
+  <ul>
+    <li>Organisation mondiale de la santé (OMS) — Aide-mémoire sur les champs électromagnétiques et la santé publique.</li>
+    <li>ANSES (Agence nationale de sécurité sanitaire) — Rapports sur l'exposition aux radiofréquences.</li>
+    <li>ANFR (Agence nationale des fréquences) — Mesures du débit d'absorption spécifique (DAS) des téléphones.</li>
+    <li>Apple — Documentation officielle sur Night Shift et les réglages Wi-Fi / Bluetooth dans iOS.</li>
+  </ul>
+</div>
+
+<footer>
+  <div class="inner">
+    <span id="annee">Jet Set Corporation</span>
+    <span>Conçu et hébergé par Owen Le Moal</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("annee").textContent =
+    "Jet Set Corporation — " + new Date().getFullYear();
+</script>
+
+</body>
+</html>
