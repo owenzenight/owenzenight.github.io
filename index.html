@@ -98,6 +98,30 @@
       z-index: 10;
     }
 
+    /* Coeur + prénom au centre (derrière le serpent) */
+    #coeur {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    #coeur text { font-family: Georgia, 'Times New Roman', serif; }
+
+    /* Choix fille / garçon */
+    #genre {
+      position: absolute;
+      top: 88px;
+      left: 24px;
+      z-index: 10;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #444;
+    }
+    #genre label { margin-right: 14px; cursor: pointer; user-select: none; }
+    #genre input { margin-right: 4px; cursor: pointer; }
+
     #hint {
       position: absolute;
       top: 60px;
@@ -123,7 +147,16 @@
   <div id="welcome">
     <canvas id="snake-canvas"></canvas>
     <a href="raccourcis/" class="welcome-link">Welcome</a>
+    <svg id="coeur" viewBox="0 0 100 90" width="240" height="216" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 85 C10 55 0 30 15 15 C28 3 45 10 50 25 C55 10 72 3 85 15 C100 30 90 55 50 85 Z"
+            fill="none" stroke="#ff4d6d" stroke-width="3"/>
+      <text x="50" y="40" text-anchor="middle" dominant-baseline="middle" font-size="15" fill="#ff4d6d">Sarah</text>
+    </svg>
     <div id="hint">click "Welcome" to enter — or play with the snake (arrow keys)</div>
+    <div id="genre">
+      <label><input type="checkbox" id="chkFille"> Fille</label>
+      <label><input type="checkbox" id="chkGarcon"> Garçon</label>
+    </div>
     <div class="meta-info">
       Best viewed in Internet Explorer 6 — © 2026 Jet Set Corporation
     </div>
@@ -162,6 +195,21 @@
       }
     }, 8000);
 
+    // ============ COULEUR DU SERPENT ============
+    let snakeRGB = [42, 140, 42]; // vert par défaut
+    const snakeColor = () => `rgb(${snakeRGB[0]},${snakeRGB[1]},${snakeRGB[2]})`;
+
+    const chkFille = document.getElementById('chkFille');
+    const chkGarcon = document.getElementById('chkGarcon');
+    function majCouleur() {
+      if (chkGarcon.checked) snakeRGB = [30, 111, 224];      // bleu
+      else if (chkFille.checked) snakeRGB = [255, 105, 180]; // rose
+      else snakeRGB = [42, 140, 42];                         // vert
+    }
+    // une seule case cochée à la fois
+    chkGarcon.addEventListener('change', () => { if (chkGarcon.checked) chkFille.checked = false; majCouleur(); });
+    chkFille.addEventListener('change', () => { if (chkFille.checked) chkGarcon.checked = false; majCouleur(); });
+
     // ============ SNAKE ============
     function initSnake() {
       const canvas = document.getElementById('snake-canvas');
@@ -169,7 +217,6 @@
       const hintEl = document.getElementById('hint');
 
       const CELL = 22;
-      const GREEN = '#2a8c2a';
       const RED = '#ff2222';
       const SPEED = 160;
 
@@ -205,7 +252,7 @@
       }
 
       function drawHead(x, y) {
-        ctx.fillStyle = GREEN;
+        ctx.fillStyle = snakeColor();
         ctx.fillRect(x*CELL, y*CELL, CELL-1, CELL-1);
         ctx.fillStyle = '#fff';
         const es = Math.max(2, Math.floor(CELL/5)), off = Math.floor(CELL/4);
@@ -241,7 +288,7 @@
       }
 
       function drawParticles() {
-        particles.forEach(p => { ctx.fillStyle = `rgba(42,140,42,${p.alpha})`; ctx.fillRect(p.x, p.y, p.size, p.size); });
+        particles.forEach(p => { ctx.fillStyle = `rgba(${snakeRGB[0]},${snakeRGB[1]},${snakeRGB[2]},${p.alpha})`; ctx.fillRect(p.x, p.y, p.size, p.size); });
       }
 
       let lastTick = 0;
@@ -260,7 +307,7 @@
       function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         if (state === STATE.PLAYING && snake) {
-          for (let i=1; i<snake.length; i++) { ctx.fillStyle = GREEN; ctx.fillRect(snake[i].x*CELL, snake[i].y*CELL, CELL-1, CELL-1); }
+          for (let i=1; i<snake.length; i++) { ctx.fillStyle = snakeColor(); ctx.fillRect(snake[i].x*CELL, snake[i].y*CELL, CELL-1, CELL-1); }
           drawHead(snake[0].x, snake[0].y);
           const pulse = 0.5 + 0.5 * Math.sin(Date.now()/200);
           ctx.fillStyle = `rgba(255,34,34,${pulse})`;
